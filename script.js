@@ -1,224 +1,337 @@
-const nav = document.querySelector('.nav')
-const logo = document.querySelector('.nav-logo svg');
-const progressBar = document.querySelector('.progress-container');
-window.addEventListener('scroll', fixNav)
+/**
+ * CGT Alteia Website JavaScript
+ * Main script for handling UI interactions and initializations
+ */
 
-logo.querySelectorAll('path').forEach(path => {
-    path.setAttribute('fill', 'white');
-});
+// Immediately-invoked Function Expression for encapsulation
+(function() {
+    'use strict';
 
-window.onscroll = function() {scrollProgress()};
-function scrollProgress() {
-    var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    var scrolled = (winScroll / height) * 100;
-    progressBar.style.width = scrolled + "%";
-}
-
-function fixNav() {
-
-    if (window.scrollY > 0) {
-        nav.classList.add('active');
-        nav.classList.add('nav-scrolled');
-        progressBar.classList.add('scrolled');
-    } else {
-        nav.classList.remove('active');
-        nav.classList.remove('nav-scrolled');
-        progressBar.classList.remove('scrolled');
-    }
-}
-
-document.querySelector('.nav-logo').addEventListener('click', function (e) {
-    e.preventDefault();
-    document.querySelector('body').scrollIntoView({
-        behavior: 'smooth'
-    });
-});
-
-document.querySelectorAll('.nav-container a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth', 
-            block: 'center'
-        });
-    });
-});
-
-document.querySelector('.qui-sommes-nous-link').addEventListener('click', function (e) {
-    e.preventDefault();
-    document.querySelector('body').scrollIntoView({
-        behavior: 'smooth', 
-        block: 'start'
-    });
-});
-
-document.querySelectorAll('.dropdown').forEach(dropdown => {
-    dropdown.addEventListener('click', function (e) {
-        e.preventDefault();
-        dropdown.classList.toggle('active');
-    });
-    // if click outside the dropdown, close it
-    document.addEventListener('click', function (e) {
-        if (!dropdown.contains(e.target) && !dropdown.contains(e.target)) {
-            dropdown.classList.remove('active');
-        }
-    });
-    // if scroll, close the dropdown
-});
-
-document.querySelectorAll('.dropdown-content a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        window.open(this.getAttribute('href'), '_blank');
-    });
-});
-
-var headerTitle = "std::cout << \"Bienvenue, camarade !\" << std::endl;";
-var headerSubtitle = "Retrouve toutes les informations nécessaires sur la section syndicale, ce qu'elle peut faire pour toi et comment la rejoindre.";
-const headerContent = document.getElementById('header-title');
-const headerSubtitleContent = document.getElementById('header-subtitle');
-
-let i = 0;
-let j = 0;
-var speed_title = 30;
-var speed_subtitle = 10;
-
-function typeWriter() {
-    if (i < headerTitle.length) {
-      headerContent.innerHTML += headerTitle.charAt(i);
-      i++;
-      setTimeout(typeWriter, speed_title);
-    }
-    else {
-        
-        if (j < headerSubtitle.length) {
-            headerSubtitleContent.innerHTML += headerSubtitle.charAt(j);
-            j++;
-            setTimeout(typeWriter, speed_subtitle);
-        }
-    }
-  }
-
-typeWriter();
-
-document.addEventListener('DOMContentLoaded', function () {
-    const faqItems = document.querySelectorAll('.faq-item');
-
-    faqItems.forEach(item => {
-        const title = item.querySelector('.faq-title');
-
-        title.addEventListener('click', () => {
-            // Close all other items
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('active');
-                    var content = otherItem.querySelector('.faq-content');
-                    content.style.maxHeight = null;
-                    otherItem.style.height = '60px';
-                }
-            });
-            
-            // Toggle current item
-            item.classList.toggle('active');
-            var content = item.querySelector('.faq-content');
-            if (content.style.maxHeight){
-              content.style.maxHeight = null;
-              item.style.height = '60px';
-            } else {
-              content.style.maxHeight = content.scrollHeight + "px";
-              item.style.height = 100 + content.scrollHeight + "px";
-            }
-        });
-    });
-});
-
-function initMap() {
-
-    /* markers */
-    const markers = [
-        {
-            position: { lat: 43.609080040558375, lng: 1.4367670648787751 },
-            title: "Union Départementale - Bourse du Travail de Toulouse",
-            address: "19 Pl. Saint-Sernin, 31000 Toulouse",
-            phone: "05 61 21 53 75",
-        },
-        {
-            position: { lat: 43.541360527559846, lng: 1.5225178242916866 },
-            title: "Union Locale de Labège",
-            address: "2058 Rte de Baziege la Lauragaise, 31670 Labège",
-            phone: "05 61 80 01 99"
-        },
-        {
-            position: { lat: 43.54355109518269, lng: 1.5079677919071945 },
-            title: "Section Syndicale CGT Alteia",
-            address: "1 L'Occitane, 31670 Labège",
-            phone: "06 46 76 55 54"
-        },
-    ]
-    /* center of the map is average position of all markers */
-    const bounds = new google.maps.LatLngBounds();
-
-    const customIcon = "./poi.svg";
-
-    const mapOptions = {
-        zoom: 12,
-        styles: [
-            { featureType: "all", elementType: "labels", stylers: [{ visibility: "simplified" }] },
-            { featureType: "all", elementType: "labels.text", stylers: [{ color: "#444444" }] },
-            { featureType: "administrative.country", elementType: "all", stylers: [{ visibility: "simplified" }] },
-            { featureType: "administrative.country", elementType: "geometry", stylers: [{ visibility: "simplified" }] },
-            { featureType: "administrative.province", elementType: "all", stylers: [{ visibility: "off" }] },
-            { featureType: "administrative.locality", elementType: "all", stylers: [{ visibility: "simplified" }, { saturation: -100 }, { lightness: 30 }] },
-            { featureType: "administrative.neighborhood", elementType: "all", stylers: [{ visibility: "off" }] },
-            { featureType: "administrative.land_parcel", elementType: "all", stylers: [{ visibility: "off" }] },
-            { featureType: "landscape", elementType: "all", stylers: [{ visibility: "simplified" }, { gamma: 0.00 }, { lightness: 74 }] },
-            { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#ffffff" }] },
-            { featureType: "poi", elementType: "all", stylers: [{ visibility: "off" }] },
-            { featureType: "road", elementType: "geometry", stylers: [{ visibility: "simplified" }, { color: "#ff0000" }, { saturation: -15 }, { lightness: 40 }, { gamma: 1.25 }] },
-            { featureType: "road", elementType: "labels", stylers: [{ visibility: "off" }] },
-            { featureType: "transit", elementType: "labels", stylers: [{ visibility: "simplified" }] },
-            { featureType: "transit", elementType: "labels.icon", stylers: [{ visibility: "off" }] },
-            { featureType: "transit.line", elementType: "geometry", stylers: [{ color: "#ff0000" }, { lightness: 80 }] },
-            { featureType: "transit.station", elementType: "geometry", stylers: [{ color: "#e5e5e5" }] },
-            { featureType: "water", elementType: "geometry", stylers: [{ color: "#efefef" }] },
-            { featureType: "water", elementType: "labels", stylers: [{ visibility: "off" }] }
-        ]
+    // DOM Elements
+    const elements = {
+        nav: document.querySelector('.nav'),
+        logo: document.querySelector('.nav-logo svg'),
+        progressBar: document.querySelector('.progress-container'),
+        headerTitle: document.getElementById('header-title'),
+        headerSubtitle: document.getElementById('header-subtitle'),
+        contentText: document.querySelector('.content-text'),
+        navLogo: document.querySelector('.nav-logo'),
+        navLinks: document.querySelectorAll('.nav-container a'),
+        quiSommesNousLink: document.querySelector('.qui-sommes-nous-link'),
+        dropdowns: document.querySelectorAll('.dropdown'),
+        dropdownLinks: document.querySelectorAll('.dropdown-content a'),
+        faqItems: document.querySelectorAll('.faq-item')
     };
 
-    const map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+    // Constants
+    const HEADER_TEXT = {
+        title: "std::cout << \"Bienvenue, camarade !\" << std::endl;",
+        subtitle: "Retrouve toutes les informations nécessaires sur la section syndicale, ce qu'elle peut faire pour toi et comment la rejoindre."
+    };
+    const TYPE_SPEED = {
+        title: 20,
+        subtitle: 10
+    };
 
-    const infoWindow = new google.maps.InfoWindow({
-        minWidth: 200,
-        maxWidth: 200
+    // Initialize everything when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        initNavigation();
+        initTypewriter();
+        initFAQ();
+        updateCurrentYear();
     });
 
-    markers.forEach(marker => {
-        const markerObj = new google.maps.Marker({
-            position: marker.position,
-            map: map,
-            title: marker.title,
-            icon: customIcon
+    /**
+     * Update copyright year in footer
+     */
+    function updateCurrentYear() {
+        const yearElement = document.getElementById('current-year');
+        if (yearElement) {
+            yearElement.textContent = new Date().getFullYear();
+        }
+    }
+
+    /**
+     * Navigation Functionality
+     */
+    function initNavigation() {
+        // Set logo path colors
+        elements.logo.querySelectorAll('path').forEach(path => {
+            path.setAttribute('fill', 'white');
         });
 
-        markerObj.addListener('click', () => {
-            infoWindow.setContent(`
-                <div class="info-window">
-                    <h3>${marker.title}</h3>
-                    <address>
-                        <p>${marker.address}</p>
-                    </address>
-                    <p>${marker.phone}</p>
-                </div>
-            `);
-            infoWindow.open(map, markerObj);
+        // Scroll progress bar
+        window.addEventListener('scroll', function() {
+            updateScrollProgress();
+            updateNavigationState();
         });
 
+        // Navigation links smooth scrolling
+        elements.navLinks.forEach(anchor => {
+            anchor.addEventListener('click', handleSmoothScroll);
+        });
 
-        bounds.extend(new google.maps.LatLng(marker.position.lat, marker.position.lng));
+        // Qui sommes-nous link special handling
+        elements.quiSommesNousLink.addEventListener('click', scrollToTop);
+
+        // Dropdown menu handling
+        initDropdowns();
+    }
+
+    /**
+     * Initialize dropdown functionality
+     */
+    function initDropdowns() {
+        elements.dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('click', function(e) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            });
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            elements.dropdowns.forEach(dropdown => {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        });
+
+        // Close dropdowns when scrolling
+        document.addEventListener('scroll', function() {
+            elements.dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        });
+
+        // Handle dropdown links
+        elements.dropdownLinks.forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.open(this.getAttribute('href'), '_blank');
+            });
+        });
+    }
+
+    /**
+     * Update navigation based on scroll position
+     */
+    function updateNavigationState() {
+        if (window.scrollY > 0) {
+            elements.nav.classList.add('active', 'nav-scrolled');
+            elements.progressBar.classList.add('scrolled');
+        } else {
+            elements.nav.classList.remove('active', 'nav-scrolled');
+            elements.progressBar.classList.remove('scrolled');
+        }
+    }
+
+    /**
+     * Update scroll progress bar
+     */
+    function updateScrollProgress() {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        elements.progressBar.style.width = scrolled + "%";
+    }
+
+    /**
+     * Handle smooth scrolling for navigation links
+     */
+    function handleSmoothScroll(e) {
+        e.preventDefault();
+        const targetElement = document.querySelector(this.getAttribute('href'));
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+    }
+
+    /**
+     * Scroll to top of page
+     */
+    function scrollToTop(e) {
+        e.preventDefault();
+        document.querySelector('body').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+
+    /**
+     * Typewriter effect for header
+     */
+    function initTypewriter() {
+        let titleIndex = 0;
+        let subtitleIndex = 0;
+
+        function typeWriter() {
+            // Type the title first
+            if (titleIndex < HEADER_TEXT.title.length) {
+                elements.headerTitle.innerHTML += HEADER_TEXT.title.charAt(titleIndex);
+                titleIndex++;
+                setTimeout(typeWriter, TYPE_SPEED.title);
+            } 
+            // Then type the subtitle
+            else if (subtitleIndex < HEADER_TEXT.subtitle.length) {
+                elements.headerSubtitle.innerHTML += HEADER_TEXT.subtitle.charAt(subtitleIndex);
+                subtitleIndex++;
+                setTimeout(typeWriter, TYPE_SPEED.subtitle);
+            }
+            // Finally show the content
+            else {
+                elements.contentText.style.opacity = '100';
+            }
+        }
+
+        // Start the typewriter effect
+        typeWriter();
+    }
+
+    /**
+     * FAQ accordion functionality
+     */
+    function initFAQ() {
+        elements.faqItems.forEach(item => {
+            const title = item.querySelector('.faq-title');
+
+            title.addEventListener('click', () => {
+                // Close other items
+                elements.faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        const content = otherItem.querySelector('.faq-content');
+                        content.style.maxHeight = null;
+                        otherItem.style.height = '60px';
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+                const content = item.querySelector('.faq-content');
+                
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    item.style.height = '60px';
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    item.style.height = 100 + content.scrollHeight + "px";
+                }
+            });
+        });
+    }
+
+    /**
+     * Google Maps initialization
+     */
+    window.initMap = function() {
+        // Map markers
+        const markers = [
+            {
+                position: { lat: 43.609080040558375, lng: 1.4367670648787751 },
+                title: "Union Départementale - Bourse du Travail de Toulouse",
+                address: "19 Pl. Saint-Sernin, 31000 Toulouse",
+                phone: "05 61 21 53 75",
+            },
+            {
+                position: { lat: 43.541360527559846, lng: 1.5225178242916866 },
+                title: "Union Locale de Labège",
+                address: "2058 Rte de Baziege la Lauragaise, 31670 Labège",
+                phone: "05 61 80 01 99"
+            },
+            {
+                position: { lat: 43.54355109518269, lng: 1.5079677919071945 },
+                title: "Section Syndicale CGT Alteia",
+                address: "1 L'Occitane, 31670 Labège",
+                phone: "06 46 76 55 54"
+            },
+        ];
+
+        // Map configuration
+        const mapOptions = {
+            zoom: 12,
+            styles: [
+                { featureType: "all", elementType: "labels", stylers: [{ visibility: "simplified" }] },
+                { featureType: "all", elementType: "labels.text", stylers: [{ color: "#444444" }] },
+                { featureType: "administrative.country", elementType: "all", stylers: [{ visibility: "simplified" }] },
+                { featureType: "administrative.country", elementType: "geometry", stylers: [{ visibility: "simplified" }] },
+                { featureType: "administrative.province", elementType: "all", stylers: [{ visibility: "off" }] },
+                { featureType: "administrative.locality", elementType: "all", stylers: [{ visibility: "simplified" }, { saturation: -100 }, { lightness: 30 }] },
+                { featureType: "administrative.neighborhood", elementType: "all", stylers: [{ visibility: "off" }] },
+                { featureType: "administrative.land_parcel", elementType: "all", stylers: [{ visibility: "off" }] },
+                { featureType: "landscape", elementType: "all", stylers: [{ visibility: "simplified" }, { gamma: 0.00 }, { lightness: 74 }] },
+                { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#ffffff" }] },
+                { featureType: "poi", elementType: "all", stylers: [{ visibility: "off" }] },
+                { featureType: "road", elementType: "geometry", stylers: [{ visibility: "simplified" }, { color: "#ff0000" }, { saturation: -15 }, { lightness: 40 }, { gamma: 1.25 }] },
+                { featureType: "road", elementType: "labels", stylers: [{ visibility: "off" }] },
+                { featureType: "transit", elementType: "labels", stylers: [{ visibility: "simplified" }] },
+                { featureType: "transit", elementType: "labels.icon", stylers: [{ visibility: "off" }] },
+                { featureType: "transit.line", elementType: "geometry", stylers: [{ color: "#ff0000" }, { lightness: 80 }] },
+                { featureType: "transit.station", elementType: "geometry", stylers: [{ color: "#e5e5e5" }] },
+                { featureType: "water", elementType: "geometry", stylers: [{ color: "#efefef" }] },
+                { featureType: "water", elementType: "labels", stylers: [{ visibility: "off" }] }
+            ]
+        };
+
+        try {
+            const bounds = new google.maps.LatLngBounds();
+            const mapElement = document.getElementById('google-map');
+            
+            if (!mapElement) {
+                console.error('Map element not found');
+                return;
+            }
+
+            const map = new google.maps.Map(mapElement, mapOptions);
+            const infoWindow = new google.maps.InfoWindow({
+                minWidth: 200,
+                maxWidth: 200
+            });
+            const customIcon = "./poi.svg";
+
+            // Add markers to map
+            markers.forEach(markerData => {
+                const markerObj = new google.maps.Marker({
+                    position: markerData.position,
+                    map: map,
+                    title: markerData.title,
+                    icon: customIcon
+                });
+
+                // Add click listener to marker
+                markerObj.addListener('click', () => {
+                    infoWindow.setContent(`
+                        <div class="info-window">
+                            <h3>${markerData.title}</h3>
+                            <address>
+                                <p>${markerData.address}</p>
+                            </address>
+                            <p>${markerData.phone}</p>
+                        </div>
+                    `);
+                    infoWindow.open(map, markerObj);
+                });
+
+                // Extend bounds for map centering
+                bounds.extend(new google.maps.LatLng(markerData.position.lat, markerData.position.lng));
+            });
+            
+            // Fit map to all markers
+            map.fitBounds(bounds);
+        } catch (error) {
+            console.error('Error initializing Google Maps:', error);
+        }
+    };
+
+    // Logo click event - scroll to top
+    elements.navLogo.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector('body').scrollIntoView({
+            behavior: 'smooth'
+        });
     });
-    
-    map.fitBounds(bounds);
-
-}
+})();

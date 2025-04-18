@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site de la section syndicale CGT d'Alteia - Informations, actualités et contacts">
+    <meta name="theme-color" content="#f03e3e">
     <title>CGT Alteia</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="desktop.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,11 +19,11 @@
 </head>
 
 <body>
-    <nav class="nav">
+    <nav class="nav" aria-label="Navigation principale">
         <div class="nav-container">
-            <h1 class="nav-logo">
-                <img src="logo.png" alt="CGT Alteia" height="50" style="padding-right: 10px;">
-                <svg width="80" height=auto viewBox="0 0 50 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div class="nav-logo">
+                <img src="logo.png" alt="Logo CGT Alteia" height="50px">
+                <svg width="80" viewBox="0 0 50 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path
                         d="M2.43328 14.8676H0L5.3568 0.352742H8.15869L13.4953 14.8661H10.9807L9.6309 11.2788H3.76297L2.43403 14.8668L2.43328 14.8676ZM6.68649 2.92366L4.41662 9.24753H8.9765L6.68649 2.92366Z"
                         fill="black"></path>
@@ -40,159 +42,142 @@
                         d="M44.5139 14.995C43.5202 15.0427 42.5401 14.7487 41.7351 14.1615C41.3939 13.8914 41.1213 13.5438 40.9397 13.1473C40.7581 12.7508 40.6727 12.3167 40.6905 11.8807C40.6659 11.3983 40.7582 10.9172 40.9594 10.4786C41.1606 10.04 41.4646 9.65688 41.8456 9.36221C42.836 8.71379 44.0087 8.40481 45.1884 8.4815H47.8053V7.83839C47.8172 7.57334 47.7681 7.3091 47.6617 7.06624C47.5553 6.82339 47.3945 6.60848 47.1919 6.43825C46.7028 6.07498 46.1024 5.89518 45.4951 5.93007C44.9377 5.90814 44.3862 6.05236 43.9102 6.34456C43.7124 6.47047 43.5435 6.63726 43.4149 6.83383C43.2862 7.03041 43.2007 7.25225 43.1641 7.48461H40.9964C41.0319 6.99417 41.1749 6.51769 41.4154 6.08939C41.6559 5.66108 41.9878 5.29157 42.3873 5.00738C43.3391 4.38335 44.4619 4.07529 45.5973 4.12667C46.7652 4.0531 47.92 4.40668 48.8484 5.12206C49.2374 5.48037 49.5421 5.92124 49.7402 6.41263C49.9383 6.90402 50.025 7.43358 49.9938 7.96282V14.8676H48.0717L47.8874 13.3535C47.516 13.8573 47.0376 14.2716 46.4868 14.5663C45.8732 14.8669 45.1963 15.014 44.5139 14.995ZM45.0661 10.1432C44.5121 10.109 43.9614 10.2503 43.4916 10.5472C43.3087 10.6846 43.1626 10.8653 43.0662 11.0733C42.9699 11.2813 42.9263 11.51 42.9395 11.739C42.9337 11.9506 42.9781 12.1606 43.0689 12.3516C43.1597 12.5426 43.2943 12.7093 43.4618 12.8378C43.874 13.1333 44.3738 13.2797 44.8795 13.2531C45.2673 13.2754 45.6556 13.2207 46.0223 13.0921C46.389 12.9634 46.7269 12.7635 47.0166 12.5035C47.2754 12.2426 47.4787 11.9316 47.6143 11.5894C47.7499 11.2472 47.8148 10.8809 47.8053 10.5127V10.138L45.0661 10.1432Z"
                         fill="black"></path>
                 </svg>
-            </h1>
-            <ul>
-                <li><a href="#qui-sommes-nous" class="qui-sommes-nous-link">Qui sommes-nous ?</a></li>
-                <li><a href="#actualites">Actualités</a></li>
-                <li><a href="#se-syndiquer">Se syndiquer</a></li>
-                <li><a href="#contact">Contactez-nous</a></li>
-                <li class="dropdown">
-                    <a href="#autres-ressources">Autres ressources <span class="material-symbols-outlined"
-                            style="font-size: 18px; vertical-align: text-bottom;">keyboard_arrow_down</span></a>
-                    <ul class="dropdown-content">
-                        <li><a href="https://www.cgt.fr" target="_blank">Site de la CGT</a></li>
-                        <li><a href="https://cgt31.fr" target="_blank">Site de la CGT 31</a></li>
+            </div>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="#qui-sommes-nous" class="qui-sommes-nous-link" role="menuitem">Qui sommes-nous ?</a></li>
+                <li role="none"><a href="#actualites" role="menuitem">Actualités</a></li>
+                <li role="none"><a href="#se-syndiquer" role="menuitem">Se syndiquer</a></li>
+                <li role="none"><a href="#contact" role="menuitem">Contactez-nous</a></li>
+                <li class="dropdown" role="none">
+                    <a href="#autres-ressources" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                        Autres ressources 
+                        <span class="material-symbols-outlined" aria-hidden="true" style="vertical-align: bottom;">keyboard_arrow_down</span>
+                    </a>
+                    <ul class="dropdown-content" role="menu" aria-label="Ressources externes">
+                        <li role="none"><a href="https://www.cgt.fr" target="_blank" rel="noopener noreferrer" role="menuitem">Site de la CGT</a></li>
+                        <li role="none"><a href="https://cgt31.fr" target="_blank" rel="noopener noreferrer" role="menuitem">Site de la CGT 31</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
-        <div class="progress-container">
-            <div class="progress-bar" id="myBar">
-
-            </div>
+        <div class="progress-container" aria-hidden="true">
+            <div class="progress-bar" id="myBar"></div>
         </div>
     </nav>
     <main>
-        <div class="header">
-            <div class="left-header">
-                <div class="header-code">
-                    <div class="header-code-top">
-                        <span class="header-code-top-dot"></span>
-                        <span class="header-code-top-dot"></span>
-                        <span class="header-code-top-dot"></span>
-                    </div>
-                    <div class="header-code-content">
-                        <p id="header-title" class="header-title">
-                            <!-- Header title will be loaded here -->
-                        </p>
-
-                        <p id="header-subtitle" class="header-subtitle">
-                            <!-- Header subtitle will be loaded here -->
-                        </p>
-                    </div>
-                    <img src="job.webp" style="position: absolute; bottom: 0; right: 0; height: 100px; width: 100px;">
-                </div>
-                <div class="banner">
-                    <img src="banniere.jpg" style="vertical-align: bottom;">
-                </div>
+        <section class="header-code" aria-labelledby="header-title">
+            <div class="header-code-top">
+                <span class="header-code-top-dot" style="background:#ED594A;" aria-hidden="true"></span>
+                <span class="header-code-top-dot" style="background:#FDD800;" aria-hidden="true"></span>
+                <span class="header-code-top-dot" style="background:#5AC05A;" aria-hidden="true"></span>
             </div>
-            <div class="right-header">
-                <div class="qui-sommes-nous">
-                    <h2 class="content-title">
-                        Qui sommes-nous ?
-                    </h2>
+            <div class="header-code-content">
+                <h2 id="header-title" class="header-title">
+                    <!-- Header title will be loaded here -->
+                </h2>
 
-                    <p class="content-text">
-                        La <b style="color: #f03e3e;">CGT (Confédération Générale du Travail)</b> est l'une des
+                <p id="header-subtitle" class="header-subtitle">
+                    <!-- Header subtitle will be loaded here -->
+                </p>
+                <div class="content-text">
+                    <p>
+                        La <strong class="highlight">CGT (Confédération Générale du Travail)</strong> est l'une des
                         principales organisations syndicales en France. Elle regroupe des salarié·es de tous les
                         secteurs, publics comme privés, pour défendre leurs droits, améliorer leurs conditions de
                         travail, et faire entendre leur voix face aux employeurs et aux pouvoirs publics.
-                        <br>
-                        <br>
+                    </p>
+                    <p>
                         La CGT est présente sur tout le territoire grâce à un maillage d'organisations réparties à
                         différentes échelles territoriales : des structures régionales appelées Comités Régionaux,
                         les Unions Départementales, et en proximité les Union Locales.
-                        <br>
-                        <br>
-                        <b style="color: #f03e3e;">Notre section syndicale CGT est présente au sein d'Alteia pour
-                        représenter l'ensemble des salarié·es, syndiqué·es ou non.</b> Nous sommes des collègues
+                    </p>
+                    <p>
+                        <strong class="highlight">Notre section syndicale CGT est présente au sein d'Alteia pour
+                        représenter l'ensemble des salarié·es, syndiqué·es ou non.</strong> Nous sommes des collègues
                         de travail, élu·es ou mandaté·es, engagé·es pour faire respecter vos droits, lutter contre
                         les injustices, et porter des revendications collectives.
                     </p>
                 </div>
             </div>
-        </div>
+            <img src="job.webp" alt="Illustration représentant le monde du travail" loading="lazy">
+        </section>
 
-        <div id="actualites" class="actualites-container">
-            <h2 class="actualites-title">
-                Actualités
+        <section id="actualites" class="actualites-container" aria-labelledby="actualites-title">
+            <h2 id="actualites-title" class="actualites-title">Actualités</h2>
+            <div class="actualites-content">
+                <!-- Actualites will be loaded here -->
+            </div>
+        </section>
+
+        <section id="faq-container" class="faq-container" aria-labelledby="faq-header">
+            <h2 id="faq-header" class="faq-header" style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">
+                Foire aux&nbsp;<em>Questions</em>
             </h2>
 
-            <p class="actualites-content">
-                
-            </p>
-        </div>
-
-        <div id="faq-container" class="faq-container">
-            <h1 class="faq-header" style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">
-                Foire aux&nbsp;<i>Questions</i>
-            </h1>
-
             <div class="faq-item">
-                <h3 class="faq-title">
+                <h3 class="faq-title" tabindex="0">
                     A quoi sert une section syndicale ?
                 </h3>
-
-                <p class="faq-content">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
+                <div class="faq-content">
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                </div>
             </div>
 
             <div class="faq-item">
-                <h3 class="faq-title">
+                <h3 class="faq-title" tabindex="0">
                     Faut-il se syndiquer pour être représenté·e ?
                 </h3>
-
-                <p class="faq-content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
-                </p>
+                <div class="faq-content">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+                    </p>
+                </div>
             </div>
 
             <div class="faq-item">
-                <h3 class="faq-title">
+                <h3 class="faq-title" tabindex="0">
                     Est-ce que je prend un risque si je me syndique ?
                 </h3>
-
-                <p class="faq-content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
-                </p>
+                <div class="faq-content">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+                    </p>
+                </div>
             </div>
 
             <div class="faq-item">
-                <h3 class="faq-title">
+                <h3 class="faq-title" tabindex="0">
                     Comment me tenir informé·e sur les évènements syndicaux ?
                 </h3>
-                <p class="faq-content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
-                </p>
+                <div class="faq-content">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+                    </p>
+                </div>
             </div>
 
             <div class="faq-item">
-                <h3 class="faq-title">
+                <h3 class="faq-title" tabindex="0">
                     Pourquoi me syndiquer ? Combien ça coûte ?
                 </h3>
-
-                <p class="faq-content">
-                    La cotisation syndicale versée régulièrement par le syndiqué matérialise son appartenance à la
-                    C.G.T. et constitue un
-                    élément vital au financement de l’activité de toute la C.G.T., du syndicat qui mène l’action à
-                    l’entreprise jusqu’à la
-                    Confédération. Elle garantit son indépendance à l’égard du patronat et des pouvoirs publics.
-                    <br>
-                    <br>
-                    La cotisation fixée statutairement à 1 % du salaire net est un principe d’égalité. Chaque adhérent
-                    cotise
-                    proportionnellement à ses revenus.
-                </p>
+                <div class="faq-content">
+                    <p>
+                        La cotisation syndicale versée régulièrement par le syndiqué matérialise son appartenance à la
+                        C.G.T. et constitue un élément vital au financement de l'activité de toute la C.G.T., du syndicat qui mène l'action à
+                        l'entreprise jusqu'à la Confédération. Elle garantit son indépendance à l'égard du patronat et des pouvoirs publics.
+                    </p>
+                    <p>
+                        La cotisation fixée statutairement à 1 % du salaire net est un principe d'égalité. Chaque adhérent
+                        cotise proportionnellement à ses revenus.
+                    </p>
+                </div>
             </div>
-        </div>
-        </div>
+        </section>
 
-        <div id="se-syndiquer" class="content-container">
-            <h2 class="content-title">
-                Se syndiquer
-            </h2>
-
+        <section id="se-syndiquer" class="content-container" aria-labelledby="se-syndiquer-title">
+            <h2 id="se-syndiquer-title" class="content-title">Se syndiquer</h2>
             <p class="content-text">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione dolorem voluptates eveniet tempora ut
                 cupiditate magnam, sapiente, hic quo in ipsum iste soluta eaque perferendis nihil recusandae dolore
@@ -203,27 +188,24 @@
                 recusandae quae excepturi facere, iure rerum sequi? Illum velit delectus dicta et iste dolorum obcaecati
                 minus odio eligendi!
             </p>
-        </div>
+        </section>
 
-        <div id="contact" class="contact-container">
-            <h2 class="content-title">Contactez-nous</h2>
-            <div class="contact-content" style="display: flex; flex-direction: row; justify-content: space-between;">
+        <section id="contact" class="contact-container" aria-labelledby="contact-title">
+            <div class="contact-content">
+                <h2 id="contact-title" class="content-title">Contactez-nous</h2>
                 <div class="contact-info">
-                    <p><strong>Email :</strong> cgt.alteia@gmail.com</p>
-                    <p><strong>Téléphone :</strong> +33 6 46 76 55 54</p>
+                    <p><strong>Email :</strong> <a href="mailto:cgt.alteia@gmail.com">cgt.alteia@gmail.com</a></p>
+                    <p><strong>Téléphone :</strong> <a href="tel:+33646765554">+33 6 46 76 55 54</a></p>
                     <p><strong>Adresse :</strong> 1 L'Occitane, 31670 Labège</p>
                     <p><strong>Horaires :</strong> Lundi au Vendredi, 9h-17h</p>
                 </div>
-                <div id="google-map">
-                    <!-- Google Map will be loaded here -->
-                </div>
             </div>
-
-
-        </div>
+            <div id="google-map" aria-label="Carte Google Maps montrant l'emplacement du syndicat"></div>
+        </section>
     </main>
+
     <footer>
-        <p>&copy; 2025 CGT Alteia</p>
+        <p>&copy; <span id="current-year">2025</span> CGT Alteia</p>
     </footer>
 
     <script defer
