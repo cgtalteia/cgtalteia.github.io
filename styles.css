@@ -1,0 +1,241 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    transition: all 0.2s ease;
+}
+
+.nav {
+    font-weight: bold;
+    position: fixed;
+    background-color: #f03e3e;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: all 0.2s ease;
+    z-index: 1000;
+}
+
+.nav .nav-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.nav .nav-logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+.nav .nav-container ul {
+  display: flex;
+  list-style-type: none;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav .nav-container a {
+  color: #fff;
+  text-decoration: none;
+  padding: 7px 15px;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+
+.nav.active {
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav.active .nav-logo {
+  color: #000;
+}
+
+.nav.active .nav-container a {
+  color: #000;
+}
+
+.nav.active .nav-container {
+  padding: 0px 0;
+}
+
+.nav .nav-container a.current,
+.nav .nav-container a:hover {
+  background-color: #ffffff;
+  color: #f03e3e;
+}
+
+.nav.active .nav-container a.current,
+.nav.active .nav-container a:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.nav-logo svg path {
+    transition: fill 0.2s ease;
+}
+
+.nav-scrolled .nav-logo svg path {
+    fill: black;
+}
+
+/* The progress container (grey background) */
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: #ffffff;
+  }
+  
+  /* The progress bar (scroll indicator) */
+  .progress-bar {
+    height: 8px;
+    background: #f03e3e;
+    width: 0%;
+  }
+
+.progress-container.scrolled {
+background: #f03e3e;
+}
+
+.header {
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 4em;
+}
+
+.header p {
+    font-size: 1.2em;
+}
+
+main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+main .content-container {
+    scroll-margin-top: 100px;
+    margin-bottom: 2em;
+}
+
+main h2 {
+    border-bottom: 2px solid #e60000;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+main p {
+    font-size: 1em;
+    color: #333;
+}
+
+
+footer {
+    background-color: #f03e3e;
+    width: 100%;
+    padding: 1em 0;
+    text-align: center;
+    position: relative;
+}
+
+footer p {
+    color: white;
+    font-size: 0.9em;
+}
+
+h1.faq-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f03e3e;
+}
+
+.faq-container {
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.faq-title {
+    padding: 1rem;
+    margin: 0;
+    /* background-color: #f9f9f9; */
+    cursor: pointer;
+    position: relative;
+}
+
+.faq-title:hover {
+    /* background-color: #f0f0f0; */
+    transition: all 0.2s ease;
+    color: #ffffff;
+    box-shadow: inset 1200px 0 0 0 #f03e3e;
+}
+
+.faq-content {
+    /* padding: 0 1rem; */
+    display:none;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.faq-item.active .faq-content {
+    display:block;
+    max-height: 200px;
+    padding: 1rem;
+}
+
+.faq-title::after {
+    content: '+';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.faq-item.active .faq-title::after {
+    content: '-';
+}
+
+#google-map {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    height: 450px;
+    border-radius: 15px;
+    margin: 20px 0;
+}
+
