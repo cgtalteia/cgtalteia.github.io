@@ -8,9 +8,8 @@ body {
 }
 /* Color scale
   #030003 black
-  #80184C purple
+  #12223E dark blue
   #f03E3E red
-  #FB804F orange
   #FFBE63 light orange
   #FFF47A yellow
   #FFFFFF white
@@ -19,13 +18,12 @@ body {
 /* Navbar */
 .nav {
   width: 100%;
-  max-width: 1300px;
-  border-radius: 10px;
+  /* max-width: 1300px; */
+  /* border-radius: 10px; */
   margin: 0 auto;
   font-weight: bold;
   position: fixed;
-  background-color: #f03e3e;
-  top: 10px;
+  background-color: #12223E;
   left: 0;
   right: 0;
   transition: all 0.2s ease;
@@ -47,6 +45,7 @@ body {
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin: 0;
 }
 
 
@@ -76,7 +75,7 @@ body {
 }
 
 .nav.active .nav-container a {
-  color: #000;
+  color: #12223E;
 }
 
 .nav.active .nav-container {
@@ -86,12 +85,12 @@ body {
 .nav .nav-container a.current,
 .nav .nav-container a:hover {
   background-color: #ffffff;
-  color: #f03e3e;
+  color: #12223E;
 }
 
 .nav.active .nav-container a.current,
 .nav.active .nav-container a:hover {
-  background-color: #000000;
+  background-color: #12223E;
   color: #ffffff;
 }
 
@@ -103,7 +102,7 @@ body {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f03e3e;
+  background-color: #ffffff;
   min-width: 200px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   z-index: 1;
@@ -121,7 +120,7 @@ body {
 }
 
 .dropdown-content a {
-  color: #fff;
+  color: #12223E;
   padding: 12px 16px;
   text-decoration: none;
   display: none;
@@ -136,6 +135,7 @@ body {
 
 .dropdown.active .dropdown-content a {
   display: block;
+  color: #12223E;
 }
 
 .dropdown:hover .dropdown-content {
@@ -143,26 +143,23 @@ body {
 }
 
 .dropdown:hover .dropdown-content a {
-
   display: block;
+  color: #12223E;
 }
 
-.dropdown-content a:hover {
-  background-color: #ffffff;
-  color: #f03e3e;
+.dropdown:hover .dropdown-content a:hover {
+  display: block;
+  color: #ffffff;
+  background-color: #12223E;
 }
 
 .nav.active .dropdown-content {
-  background-color: #fff;
+  background-color: #ffffff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.nav.active .dropdown-content a {
-  color: #000;
-}
-
 .nav.active .dropdown-content a:hover {
-  background-color: #000000;
+  background-color: #12223E;
   color: #ffffff;
 }
 
@@ -171,13 +168,13 @@ body {
 }
 
 .nav-scrolled .nav-logo svg path {
-  fill: black;
+  fill: #12223E;
 }
 
 /* Progress bar */
 .progress-container {
   width: 100%;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   height: 8px;
   background: #ffffff;
   display: none;
@@ -265,7 +262,7 @@ body {
   line-height: 1;
   font-size: 1rem;
   font-weight: normal;
-  color: #333333;
+  color: #1a1c2e;
 }
 
 
@@ -279,6 +276,10 @@ main {
   padding: 48px;
 }
 
+main p {
+  color: #12223E;
+}
+
 .qui-sommes-nous {
   position: absolute;
   top: 0;
@@ -289,7 +290,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid #f1ae1c;
+  border: 1px solid #12223E;
   border-radius: 10px;
 }
 
@@ -297,8 +298,8 @@ main {
   margin-top: 1em;
   font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
-  color: #f1ae1c;
-  border-bottom: 2px solid #f1ae1c;
+  color: #12223E;
+  border-bottom: 2px solid #12223E;
   margin-bottom: 0;
 }
 
@@ -318,18 +319,26 @@ main {
 
 }
 
+.actualites-container {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 48px;
+  border: 1px solid #12223E;
+  border-radius: 10px;
+}
+
 .actualites-title {
   font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
-  color: #1a1c2e;
-  border-bottom: 2px solid #1a1c2e;
+  color: #f03e3e;
+  border-bottom: 2px solid #f03e3e;
   margin-bottom: 0;
   text-align: center;
 }
 
 
 footer {
-  background-color: #f03e3e;
+  background-color: #12223E;
   width: 100%;
   padding: 1em 0;
   text-align: center;
@@ -338,7 +347,7 @@ footer {
 
 footer p {
   color: white;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 
 h1.faq-header {
@@ -347,7 +356,7 @@ h1.faq-header {
   align-items: center;
   font-size: 2rem;
   font-weight: bold;
-  color: #f03e3e;
+  color: #ff9e17;
 }
 
 .faq-container {
@@ -378,7 +387,7 @@ h1.faq-header {
 .faq-title:hover {
   transition: all 0.2s ease;
   color: #ffffff;
-  box-shadow: inset 1200px 0 0 0 #f03e3e;
+  box-shadow: inset 1200px 0 0 0 #ff9e17;
 }
 
 .faq-content {
