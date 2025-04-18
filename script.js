@@ -40,21 +40,64 @@ document.querySelectorAll('.nav-container a').forEach(anchor => {
         e.preventDefault();
 
         document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+            behavior: 'smooth', 
+            block: 'center'
         });
     });
 });
 
-var txt = "Bienvenue sur le site de la CGT Alteia";
+document.querySelector('.qui-sommes-nous-link').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector('body').scrollIntoView({
+        behavior: 'smooth', 
+        block: 'start'
+    });
+});
+
+document.querySelectorAll('.dropdown').forEach(dropdown => {
+    dropdown.addEventListener('click', function (e) {
+        e.preventDefault();
+        dropdown.classList.toggle('active');
+    });
+    // if click outside the dropdown, close it
+    document.addEventListener('click', function (e) {
+        if (!dropdown.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.remove('active');
+        }
+    });
+    // if scroll, close the dropdown
+});
+
+document.querySelectorAll('.dropdown-content a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.open(this.getAttribute('href'), '_blank');
+    });
+});
+
+var headerTitle = "std::cout << \"Bienvenue, camarade !\" << std::endl;";
+var headerSubtitle = "Retrouve toutes les informations nécessaires sur la section syndicale, ce qu'elle peut faire pour toi et comment la rejoindre.";
 const headerContent = document.getElementById('header-title');
+const headerSubtitleContent = document.getElementById('header-subtitle');
+
 let i = 0;
-const speed = 100;
+let j = 0;
+var speed_title = 30;
+var speed_subtitle = 10;
 
 function typeWriter() {
-    if (i < txt.length) {
-      headerContent.innerHTML += txt.charAt(i);
+    if (i < headerTitle.length) {
+      headerContent.innerHTML += headerTitle.charAt(i);
       i++;
-      setTimeout(typeWriter, speed);
+      setTimeout(typeWriter, speed_title);
+    }
+    else {
+        
+        if (j < headerSubtitle.length) {
+            headerSubtitleContent.innerHTML += headerSubtitle.charAt(j);
+            j++;
+            setTimeout(typeWriter, speed_subtitle);
+        }
     }
   }
 
@@ -71,11 +114,22 @@ document.addEventListener('DOMContentLoaded', function () {
             faqItems.forEach(otherItem => {
                 if (otherItem !== item) {
                     otherItem.classList.remove('active');
+                    var content = otherItem.querySelector('.faq-content');
+                    content.style.maxHeight = null;
+                    otherItem.style.height = '60px';
                 }
             });
-
+            
             // Toggle current item
             item.classList.toggle('active');
+            var content = item.querySelector('.faq-content');
+            if (content.style.maxHeight){
+              content.style.maxHeight = null;
+              item.style.height = '60px';
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+              item.style.height = 100 + content.scrollHeight + "px";
+            }
         });
     });
 });

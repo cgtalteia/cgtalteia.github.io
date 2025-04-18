@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=keyboard_arrow_down" />
 </head>
 
 <body>
@@ -38,115 +42,93 @@
                 </svg>
             </h1>
             <ul>
-                <li><a href="#qui-sommes-nous">Qui sommes-nous ?</a></li>
+                <li><a href="#qui-sommes-nous" class="qui-sommes-nous-link">Qui sommes-nous ?</a></li>
                 <li><a href="#actualites">Actualités</a></li>
                 <li><a href="#se-syndiquer">Se syndiquer</a></li>
                 <li><a href="#contact">Contactez-nous</a></li>
+                <li class="dropdown">
+                    <a href="#autres-ressources">Autres ressources <span class="material-symbols-outlined"
+                            style="font-size: 18px; vertical-align: text-bottom;">keyboard_arrow_down</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="https://www.cgt.fr" target="_blank">Site de la CGT</a></li>
+                        <li><a href="https://cgt31.fr" target="_blank">Site de la CGT 31</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div class="progress-container">
             <div class="progress-bar" id="myBar">
-                
+
             </div>
         </div>
     </nav>
     <main>
         <div class="header">
-            <h1 id="header-title" class="header-title">
-                
-            </h1>
+            <div class="left-header">
+                <div class="header-code">
+                    <div class="header-code-top">
+                        <span class="header-code-top-dot"></span>
+                        <span class="header-code-top-dot"></span>
+                        <span class="header-code-top-dot"></span>
+                    </div>
+                    <div class="header-code-content">
+                        <p id="header-title" class="header-title">
+                            <!-- Header title will be loaded here -->
+                        </p>
 
-            <p class="header-subtitle">
-                Pour t'informer et participer.
-            </p>
-        </div>
-
-        <div id="qui-sommes-nous" class="content-container">
-            <h2 class="content-title">
-                Qui sommes-nous ?
-            </h2>
-
-            <p class="content-text">
-                La <b>CGT (Confédération Générale du Travail)</b> est l'une des principales organisations syndicales en France.
-                Elle regroupe des salarié·es de tous les secteurs, publics comme privés, pour défendre leurs droits,
-                améliorer leurs conditions de travail, et faire entendre leur voix face aux employeurs et aux pouvoirs
-                publics.
-                <br>
-                <br>
-                La CGT est présente sur tout le territoire grâce à un maillage d'organisations réparties à différentes échelles
-                territoriales : des structures régionales appelées Comités Régionaux, les Unions Départementales, et en proximité les
-                Union Locales.
-                <br>
-                <br>
-                Notre section syndicale CGT est présente au sein d'Alteia pour représenter l'ensemble des salarié·es,
-                syndiqué·es ou non. Nous sommes des collègues de travail, élu·es ou mandaté·es, engagé·es pour faire
-                respecter vos droits, lutter contre les injustices, et porter des revendications collectives.
-
-            </p>
-
-            <div id="faq-container" class="faq-container">
-                <h1 class="faq-header" style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">
-                    Foire aux&nbsp;<i>Questions</i>
-                </h1>
-
-                <div class="faq-item">
-                    <h3 class="faq-title">
-                        A quoi sert une section syndicale ?
-                    </h3>
-
-                    <p class="faq-content">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
+                        <p id="header-subtitle" class="header-subtitle">
+                            <!-- Header subtitle will be loaded here -->
+                        </p>
+                    </div>
+                    <img src="job.webp" style="position: absolute; bottom: 0; right: 0; height: 100px; width: 100px;">
                 </div>
-
-                <div class="faq-item">
-                    <h3 class="faq-title">
-                        Faut-il se syndiquer pour être représenté·e ? 
-                    </h3>
-
-                    <p class="faq-content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
-                    </p>
+                <div class="banner">
+                    <img src="banniere.jpg" style="vertical-align: bottom;">
                 </div>
+            </div>
+            <div class="right-header">
+                <div class="qui-sommes-nous">
+                    <h2 class="content-title">
+                        Qui sommes-nous ?
+                    </h2>
 
-                <div class="faq-item">
-                    <h3 class="faq-title">
-                        Est-ce que je prend un risque si je me syndique ?
-                    </h3>
+                    <p class="content-text">
+                        La <b>CGT (Confédération Générale du Travail)</b> est l'une des principales organisations
+                        syndicales en
+                        France.
+                        Elle regroupe des salarié·es de tous les secteurs, publics comme privés, pour défendre leurs
+                        droits,
+                        améliorer leurs conditions de travail, et faire entendre leur voix face aux employeurs et aux
+                        pouvoirs
+                        publics.
+                        <br>
+                        <br>
+                        La CGT est présente sur tout le territoire grâce à un maillage d'organisations réparties à
+                        différentes
+                        échelles
+                        territoriales : des structures régionales appelées Comités Régionaux, les Unions
+                        Départementales, et en
+                        proximité les
+                        Union Locales.
+                        <br>
+                        <br>
+                        Notre section syndicale CGT est présente au sein d'Alteia pour représenter l'ensemble des
+                        salarié·es,
+                        syndiqué·es ou non. Nous sommes des collègues de travail, élu·es ou mandaté·es, engagé·es pour
+                        faire
+                        respecter vos droits, lutter contre les injustices, et porter des revendications collectives.
 
-                    <p class="faq-content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
-                    </p>
-                </div>
-
-                <div class="faq-item">
-                    <h3 class="faq-title">
-                        Comment me tenir informé·e sur les évènements syndicaux ?
-                    </h3>
-
-                    <p class="faq-content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
-                    </p>
-                </div>
-
-                <div class="faq-item">
-                    <h3 class="faq-title">
-                        Se syndiquer, pourquoi faire ? Combien ça coûte ?
-                    </h3>
-
-                    <p class="faq-content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
                     </p>
                 </div>
             </div>
         </div>
 
-        <div id="actualites" class="content-container">
-            <h2 class="content-title">
+        <div id="actualites" class="actualites-container">
+            <h2 class="actualites-title">
                 Actualités
             </h2>
 
-            <p class="content-text">
+            <p class="actualites-content">
                 Retrouve les dernières actualités de la CGT Alteia.
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione dolorem voluptates eveniet tempora ut
                 cupiditate magnam, sapiente, hic quo in ipsum iste soluta eaque perferendis nihil recusandae dolore
@@ -178,6 +160,71 @@
                 minus odio eligendi!
 
             </p>
+        </div>
+
+        <div id="faq-container" class="faq-container">
+            <h1 class="faq-header" style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">
+                Foire aux&nbsp;<i>Questions</i>
+            </h1>
+
+            <div class="faq-item">
+                <h3 class="faq-title">
+                    A quoi sert une section syndicale ?
+                </h3>
+
+                <p class="faq-content">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-title">
+                    Faut-il se syndiquer pour être représenté·e ?
+                </h3>
+
+                <p class="faq-content">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-title">
+                    Est-ce que je prend un risque si je me syndique ?
+                </h3>
+
+                <p class="faq-content">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-title">
+                    Comment me tenir informé·e sur les évènements syndicaux ?
+                </h3>
+                <p class="faq-content">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-title">
+                    Pourquoi me syndiquer ? Combien ça coûte ?
+                </h3>
+
+                <p class="faq-content">
+                    La cotisation syndicale versée régulièrement par le syndiqué matérialise son appartenance à la
+                    C.G.T. et constitue un
+                    élément vital au financement de l’activité de toute la C.G.T., du syndicat qui mène l’action à
+                    l’entreprise jusqu’à la
+                    Confédération. Elle garantit son indépendance à l’égard du patronat et des pouvoirs publics.
+                    <br>
+                    <br>
+                    La cotisation fixée statutairement à 1 % du salaire net est un principe d’égalité. Chaque adhérent
+                    cotise
+                    proportionnellement à ses revenus.
+                </p>
+            </div>
+        </div>
         </div>
 
         <div id="se-syndiquer" class="content-container">
@@ -217,8 +264,9 @@
     <footer>
         <p>&copy; 2025 CGT Alteia</p>
     </footer>
-    
-    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHe3Vb4L8M7SICMWh1Om8-y97-R6f4mio&callback=initMap"></script>
+
+    <script defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHe3Vb4L8M7SICMWh1Om8-y97-R6f4mio&callback=initMap"></script>
     <script src="script.js"></script>
 </body>
 
