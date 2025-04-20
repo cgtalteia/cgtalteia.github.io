@@ -20,6 +20,7 @@
         quiSommesNousLink: document.querySelector('.qui-sommes-nous-link'),
         dropdowns: document.querySelectorAll('.dropdown'),
         dropdownLinks: document.querySelectorAll('.dropdown-content a'),
+        hamburger: document.querySelector('.hamburger'),
         faqItems: document.querySelectorAll('.faq-item')
     };
 
@@ -76,6 +77,17 @@
 
         // Dropdown menu handling
         initDropdowns();
+
+        // Hamburger menu handling
+        elements.hamburger.addEventListener('click', function() {
+            const overlay = elements.hamburger.querySelector('.overlay');
+            if (overlay.style.height == '100%') {
+                overlay.style.height = 0;
+            } else {
+                overlay.style.height = '100%';
+            }
+
+        });
     }
 
     /**
@@ -113,6 +125,7 @@
             });
         });
     }
+
 
     /**
      * Update navigation based on scroll position

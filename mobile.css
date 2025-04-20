@@ -14,21 +14,43 @@
     .nav-menu{
         display: none !important;
     }
+    .hamburger {
+        display: block;
+        padding-right: 10px; 
+    }
+    .nav.active .hamburger .line {
+        background-color: var(--color-black);
+        
+    }
+    .hamburger .overlay {
+        height: 0;
+        width: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        border-radius: var(--border-radius-sm);
+        background-color: var(--color-black);
+        overflow-x: hidden; /* Disable horizontal scroll */
+        transition: var(--transition-default); 
+    }
+        .overlay .content {
+            position: relative;
+            top: 25%;
+            width: 100%;
+            text-align: center;
+        }
+            a {
+                display: block;
+            }
+        .nav.active .overlay {
+            background-color: var(--color-white);
+        }
+    
     .progress-container{
         display: none !important;
     }
-    .mobile-menu-toggle{
-        color: var(--color-white);
-        font-size: 1rem;
-        background: none;
-        border: none;
-        margin-right: 10px;
-        cursor: pointer;
-        display: block !important;
-    }
-    .nav.active .mobile-menu-toggle{
-        color: var(--color-dark-blue);
-    }
+
     .header-code{
         overflow-y: auto;
     }

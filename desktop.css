@@ -219,6 +219,18 @@ main {
   color: var(--color-white);
 }
 
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger .line {
+  width: 20px;
+  height: 3px;
+  background-color: var(--color-white);
+  margin: 5px;
+}
+
 /* Progress bar */
 .progress-container {
   width: 100%;
