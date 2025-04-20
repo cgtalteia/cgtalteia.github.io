@@ -248,12 +248,14 @@ main {
 
 /* ===== Header Section ===== */
 .header-code {
-  height: 500px;
+  min-height: 500px;
+  max-height: 80vh;
   border: 10px solid #1a1c2e;
   border-radius: var(--border-radius-sm);
   box-sizing: border-box;
   box-shadow: var(--shadow-lg);
   position: relative;
+  overflow: hidden;
 }
 
 .header-code-top {
@@ -274,6 +276,8 @@ main {
   width: 75%;
   position: relative;
   z-index: 1;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .header-code-content .content-text {

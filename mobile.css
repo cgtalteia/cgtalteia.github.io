@@ -58,9 +58,6 @@
         display: none !important;
     }
 
-    .header-code{
-        overflow-y: auto;
-    }
     .header-code-content{
         width: inherit;
     }
@@ -72,7 +69,7 @@
         font-size:x-large;
     }
     .faq-title {
-        padding-right: 1%;
+        padding-right: 10vw;
         font-size: medium;
         text-overflow: ellipsis;
     }
