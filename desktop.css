@@ -116,6 +116,9 @@ main {
 }
 
 .nav.active {
+  top: 0;
+  width: 100%;
+  border-radius: 0;
   background: var(--color-white);
   box-shadow: var(--shadow-sm);
 }
