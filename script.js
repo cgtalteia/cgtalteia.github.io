@@ -17,7 +17,7 @@
         contentText: document.querySelector('.content-text'),
         navLogo: document.querySelector('.nav-logo'),
         navLinks: document.querySelectorAll('.nav-container a'),
-        quiSommesNousLink: document.querySelector('.qui-sommes-nous-link'),
+        quiSommesNousLink: document.querySelectorAll('.qui-sommes-nous-link'),
         dropdowns: document.querySelectorAll('.dropdown'),
         dropdownLinks: document.querySelectorAll('.dropdown-content a'),
         hamburger: document.querySelector('.hamburger'),
@@ -75,7 +75,9 @@
         });
 
         // Qui sommes-nous link special handling
-        elements.quiSommesNousLink.addEventListener('click', scrollToTop);
+        elements.quiSommesNousLink.forEach(link => {
+            link.addEventListener('click', scrollToTop);
+        });
 
         // Dropdown menu handling
         initDropdowns();
