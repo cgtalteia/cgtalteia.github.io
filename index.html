@@ -202,18 +202,66 @@
             </div>
         </section>
 
-        <section id="se-syndiquer" class="content-container" aria-labelledby="se-syndiquer-title">
-            <h2 id="se-syndiquer-title" class="content-title">Se syndiquer</h2>
-            <p class="content-text">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione dolorem voluptates eveniet tempora ut
-                cupiditate magnam, sapiente, hic quo in ipsum iste soluta eaque perferendis nihil recusandae dolore
-                officia aperiam corporis similique. Facilis quos tempore labore totam! Consectetur molestiae iusto
-                ducimus error reiciendis aspernatur dolor, modi dolorem sit architecto, voluptate magni sunt unde est
-                quas? Voluptates a dolorum voluptatum quo perferendis aut sit. Aspernatur libero laboriosam ab eligendi
-                omnis delectus earum labore, placeat officiis sint illum rem voluptas ipsum repellendus iste eius
-                recusandae quae excepturi facere, iure rerum sequi? Illum velit delectus dicta et iste dolorum obcaecati
-                minus odio eligendi!
-            </p>
+        <section id="se-syndiquer" class="content-background" aria-labelledby="se-syndiquer-title">
+            <div class="content-container">
+                <h2 id="se-syndiquer-title" class="content-title">Se syndiquer</h2>
+                <p class="content-text">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione dolorem voluptates eveniet tempora ut
+                    cupiditate magnam, sapiente, hic quo in ipsum iste soluta eaque perferendis nihil recusandae dolore
+                    officia aperiam corporis similique. Facilis quos tempore labore totam! Consectetur molestiae iusto
+                    ducimus error reiciendis aspernatur dolor, modi dolorem sit architecto, voluptate magni sunt unde est
+                    quas? Voluptates a dolorum voluptatum quo perferendis aut sit. Aspernatur libero laboriosam ab eligendi
+                    omnis delectus earum labore, placeat officiis sint illum rem voluptas ipsum repellendus iste eius
+                    recusandae quae excepturi facere, iure rerum sequi? Illum velit delectus dicta et iste dolorum obcaecati
+                    minus odio eligendi!
+                </p>
+                <form id="adhesion-form">
+                    <label for="civility">Civilité</label>
+                    <select id="civility" name="civility">
+                        <option value="mr">Monsieur</option>
+                        <option value="mme">Madame</option>
+                    </select>
+                    <label for="name">Nom</label>
+                    <input type="text" id="name" name="name">
+                    <label for="firstname">Prénom</label>
+                    <input type="text" id="firstname" name="firstname">
+                    <label for="birthdate">Date de naissance</label>
+                    <input type="date" id="birthdate" name="birthdate">
+                    <label for="nationality">Nationalité</label>
+                    <input type="text" id="nationality" name="nationality">
+                    <label for="address">Adresse</label>
+                    <input type="text" id="address" name="address">
+                    <label for="city">Ville</label>
+                    <input type="text" id="city" name="city">
+                    <label for="zipcode">Code postal</label>
+                    <input type="text" id="zipcode" name="zipcode">
+                    <label for="telephone"></label>Téléphone</label>
+                    <input type="tel" id="telephone" name="telephone">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                    <label for="adhesion-date">Date d'adhésion</label>
+                    <input type="date" id="adhesion-date" name="adhesion-date">
+                    <label for="statut">Statut</label>
+                    <label for="category">Catégorie</label>
+                    <select id="category" name="category">
+                        <option value="Ouvrier.e/Employe.e">Ouvrier.e/Employe.e</option>
+                        <option value="Technicien.ne">Technicien.ne</option>
+                        <option value="Agent de maîtrise">Agent de maîtrise</option>
+                        <option value="Ingénieur.e/Cadre">Ingénieur.e/Cadre</option>
+                    </select>
+                    <label for="mailing-list">Je souhaite recevoir les lettres d'information de la CGT par...</label>
+                    <select id="mailing-list" name="mailing-list">
+                        <option value="email">Email</option>
+                        <option value="courrier">Courrier</option>
+                        <option value="aucun">Aucun des deux</option>
+                    </select>
+
+                    <label for="company-name">Nom de l'entreprise</label>
+                    <input type="text" id="company-name" name="company-name">
+                    <label for="company-address">Lieu de travail</label>                    
+                    <button type="submit">Télécharger le formulaire d'adhésion pré-rempli</button>
+                </form>
+            </div>
         </section>
 
         <section id="contact" class="contact-container" aria-labelledby="contact-title">

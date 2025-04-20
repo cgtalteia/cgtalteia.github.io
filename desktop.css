@@ -1,4 +1,10 @@
 :root {
+  /* Size variables */
+  --max-width: 1400px;
+  --content-width-md: 65%;
+  --content-width-lg: 85%;
+  --content-width-xl: 100%;
+
   /* Color variables */
   --color-black: #292929;
   --color-red: #f03E3E;
@@ -48,12 +54,6 @@ body {
   line-height: 1.6;
   transition: var(--transition-default);
   scroll-margin-top: 20vh;
-}
-
-main {
-  width: 96%;
-  margin: auto;
-  margin-top: 10em;
 }
 
 .highlight {
@@ -237,7 +237,8 @@ main {
 /* Progress bar */
 .progress-container {
   width: 100%;
-  border-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
   height: 8px;
   background: var(--color-white);
   display: none;
@@ -251,10 +252,14 @@ main {
 
 /* ===== Header Section ===== */
 .header-code {
+  width: var(--content-width-md);
+  max-width: var(--max-width);
+  margin: auto;
+  margin-top: 15vh;
   min-height: 500px;
   max-height: 80vh;
   border: 10px solid #1a1c2e;
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--border-radius-md);
   box-sizing: border-box;
   box-shadow: var(--shadow-lg);
   position: relative;
@@ -317,6 +322,9 @@ main {
 
 /* ===== FAQ Section ===== */
 .content-title {
+  width: var(--content-width-md);
+  max-width: var(--max-width);
+  margin: 1em auto 1em auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -327,6 +335,8 @@ main {
 }
 
 .faq-container {
+  width: var(--content-width-md);
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 
@@ -335,7 +345,7 @@ main {
   border: 1px solid #ddd;
   border-radius: var(--border-radius-xl);
   overflow: hidden;
-  transition: var(--transition-default);
+  transition: var(--transition-fast);
 }
 
 .faq-item:hover {
@@ -361,7 +371,7 @@ main {
   padding: 0 1rem;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.1s ease-out;
+  transition: var(--transition-slow);
 }
 
 .faq-title::after {
@@ -376,21 +386,34 @@ main {
   content: '-';
 }
 
-/* ===== Google Maps ===== */
-#google-map {
-  color: #1a1c2e;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 600px;
-  height: 40vh;
-  border-radius: var(--border-radius-xl);
-  margin: 20px 0;
-  border: 2px solid var(--color-white);
+/* ===== Se syndiquer Section ===== */
+
+#se-syndiquer {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  height: auto;
+  background: var(--color-red);
+}
+
+#se-syndiquer .content-container {
+  width: var(--content-width-md);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+#se-syndiquer .content-title {
+  color: var(--color-white);
+}
+
+#se-syndiquer .content-text {
+  color: var(--color-white);
 }
 
 /* ===== Contact Section ===== */
 .contact-container {
+  width: var(--content-width-md);
+  max-width: var(--max-width);
+  margin: 2em auto 0 auto;
   color: var(--color-white);
   background: var(--gradient-primary);
   box-shadow: var(--shadow-lg);
@@ -431,19 +454,29 @@ main {
   opacity: 0.8;
 }
 
+/* ===== Google Maps ===== */
+#google-map {
+  color: #1a1c2e;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  height: 40vh;
+  border-radius: var(--border-radius-xl);
+  margin: 20px 0;
+  border: 2px solid var(--color-white);
+}
+
+
 /* ===== Footer ===== */
 footer {
   position: relative;
-  width: 96%;
+  width: 100%;
   padding: 1em 0;
   margin: 0 auto;
-  margin-bottom: 1em;
-  border-radius: var(--border-radius-lg);
+  bottom: 0;
   top: var(--spacing-sm);
-  bottom: var(--spacing-sm);
   text-align: center;
-  background-color: var(--color-white);
-  box-shadow: var(--shadow-sm);
 }
 
 footer p {

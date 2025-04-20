@@ -1,7 +1,51 @@
+:root {
+    /* Size variables */
+    --max-width: 1400px;
+    --content-width-md: 80%;
+    --content-width-lg: 90%;
+    --content-width-xl: 100%;
+  
+    /* Color variables */
+    --color-black: #292929;
+    --color-red: #f03E3E;
+    --color-orange: #daae51;
+    --color-light-orange: #FFBE63;
+    --color-yellow: #FFF47A;
+    --color-white: #FFFFFF;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(90deg, var(--color-red) 0%, var(--color-orange) 100%);
+    
+    /* Spacing */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 30px;
+    
+    /* Border radius */
+    --border-radius-sm: 4px;
+    --border-radius-md: 5px;
+    --border-radius-lg: 10px;
+    --border-radius-xl: 15px;
+    
+    /* Transitions */
+    --transition-fast: all 0.1s ease;
+    --transition-default: all 0.2s ease;
+    --transition-slow: all 0.3s ease;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.15);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 0 10px rgba(0, 0, 0, 0.2);
+    
+    /* Typography */
+    --font-family-primary: 'Arial', sans-serif;
+    --font-family-serif: 'Playfair Display', serif;
+    --font-family-mono: 'Ubuntu Mono', monospace;
+  }
+
 @media (max-width: 768px) {
-    main{
-        margin-top: 6em;
-    }
     .nav{
         height: 50px;
         display: flex;
@@ -58,9 +102,12 @@
     .progress-container{
         display: none !important;
     }
-
+    .header-code{
+        margin-top: 10vh;
+    }
     .header-code-content{
-        width: inherit;
+        width: 90%;
+        margin: auto;
     }
     .header-code img{
         display: none;
@@ -83,6 +130,8 @@
         flex-direction: column;
     }
     #google-map {
+        justify-content: center;
+        margin: 0 auto;
         height: 30vh;
     }
 }
