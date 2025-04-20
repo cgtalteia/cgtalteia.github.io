@@ -23,7 +23,8 @@
         hamburger: document.querySelector('.hamburger'),
         openBtn: document.querySelector('.openbtn'),
         closeBtn: document.querySelector('.closebtn'),
-        faqItems: document.querySelectorAll('.faq-item')
+        faqItems: document.querySelectorAll('.faq-item'),
+        adhesionForm: document.querySelector('#adhesion-form')
     };
 
     // Constants
@@ -66,6 +67,7 @@
         // Scroll progress bar
         window.addEventListener('scroll', function() {
             updateScrollProgress();
+            updateAdhesionForm();
             updateNavigationState();
         });
 
@@ -154,6 +156,15 @@
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = (winScroll / height) * 105;
         elements.progressBar.style.width = scrolled + "%";
+    }
+
+    function updateAdhesionForm() {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 105;
+        if (elements.adhesionForm.style.marginLeft != "0%") {
+            elements.adhesionForm.style.marginLeft = Math.max(0, 50 - scrolled) + "%";
+        }
     }
 
     /**

@@ -38,6 +38,7 @@
   --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.15);
   --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
   --shadow-lg: 0 0 10px rgba(0, 0, 0, 0.2);
+  --white-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
   
   /* Typography */
   --font-family-primary: 'Arial', sans-serif;
@@ -388,25 +389,78 @@ body {
 
 /* ===== Se syndiquer Section ===== */
 
-#se-syndiquer {
+#adhesion {
   padding-top: 1em;
   padding-bottom: 1em;
   height: auto;
   background: var(--color-red);
 }
 
-#se-syndiquer .content-container {
+#adhesion .container {
   width: var(--content-width-md);
-  max-width: var(--max-width);
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
 }
 
-#se-syndiquer .content-title {
+#adhesion .content-title {
+  color: var(--color-white) !important;
+}
+
+#adhesion .text {
   color: var(--color-white);
 }
 
-#se-syndiquer .content-text {
+#adhesion-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  margin-left: 0%;
+  padding: var(--spacing-lg);
+  background: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-default);
+}
+
+#adhesion-form:hover {
+  transform: scale(1.01);
+  box-shadow: var(--white-shadow);
+  transition: var(--transition-default);
+}
+
+#adhesion-form label {
+  color: var(--color-black);
+  font-weight: bold;
+  margin-bottom: var(--spacing-xs);
+}
+
+#adhesion-form input,
+#adhesion-form select {
+  padding: var(--spacing-sm);
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-family-primary);
+}
+
+#adhesion-form button {
+  grid-column: 1 / -1;
+  padding: var(--spacing-md);
+  background: var(--color-black);
   color: var(--color-white);
+  border: none;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  font-weight: bold;
+  transition: var(--transition-default);
+}
+
+#adhesion-form button:hover {
+  background: green;
+  transform: scale(1.01);
 }
 
 /* ===== Contact Section ===== */

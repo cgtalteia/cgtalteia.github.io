@@ -47,7 +47,7 @@
             <ul class="nav-menu" role="menubar">
                 <li role="none"><a href="#qui-sommes-nous" class="qui-sommes-nous-link" role="menuitem">Qui sommes-nous ?</a></li>
                 <li role="none"><a href="#actualites" role="menuitem">Actualités</a></li>
-                <li role="none"><a href="#se-syndiquer" role="menuitem">Se syndiquer</a></li>
+                <li role="none"><a href="#adhesion" role="menuitem">Se syndiquer</a></li>
                 <li role="none"><a href="#contact" role="menuitem">Contactez-nous</a></li>
                 <li class="dropdown" role="none">
                     <a href="#autres-ressources" role="menuitem" aria-haspopup="true" aria-expanded="false">
@@ -71,7 +71,7 @@
                     <div class="content">
                         <a href="#qui-sommes-nous" class="qui-sommes-nous-link" role="menuitem">Qui sommes-nous ?</a>
                         <a href="#actualites" role="menuitem">Actualités</a>
-                        <a href="#se-syndiquer" role="menuitem">Se syndiquer</a>
+                        <a href="#adhesion" role="menuitem">Se syndiquer</a>
                         <a href="#contact" role="menuitem">Contactez-nous</a>
                         <li class="dropdown" role="none">
                             <a href="#autres-ressources" role="menuitem" aria-haspopup="true" aria-expanded="false">
@@ -202,10 +202,10 @@
             </div>
         </section>
 
-        <section id="se-syndiquer" class="content-background" aria-labelledby="se-syndiquer-title">
-            <div class="content-container">
-                <h2 id="se-syndiquer-title" class="content-title">Se syndiquer</h2>
-                <p class="content-text">
+        <section id="adhesion" class="content-background" aria-labelledby="adhesion-title">
+            <h2 id="adhesion-title" class="content-title">Se syndiquer</h2>
+            <div class="container">
+                <p class="text">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione dolorem voluptates eveniet tempora ut
                     cupiditate magnam, sapiente, hic quo in ipsum iste soluta eaque perferendis nihil recusandae dolore
                     officia aperiam corporis similique. Facilis quos tempore labore totam! Consectetur molestiae iusto
@@ -235,13 +235,12 @@
                     <input type="text" id="city" name="city">
                     <label for="zipcode">Code postal</label>
                     <input type="text" id="zipcode" name="zipcode">
-                    <label for="telephone"></label>Téléphone</label>
-                    <input type="tel" id="telephone" name="telephone">
+                    <label for="phone">Téléphone</label>
+                    <input type="tel" id="phone" name="phone">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email">
                     <label for="adhesion-date">Date d'adhésion</label>
                     <input type="date" id="adhesion-date" name="adhesion-date">
-                    <label for="statut">Statut</label>
                     <label for="category">Catégorie</label>
                     <select id="category" name="category">
                         <option value="Ouvrier.e/Employe.e">Ouvrier.e/Employe.e</option>
@@ -249,16 +248,18 @@
                         <option value="Agent de maîtrise">Agent de maîtrise</option>
                         <option value="Ingénieur.e/Cadre">Ingénieur.e/Cadre</option>
                     </select>
+                    <label for="company-address">Lieu de travail</label>     
+                    <select id="company-address" name="company-address">
+                        <option value="Lyon">Lyon</option>
+                        <option value="Paris">Paris</option>
+                        <option value="Toulouse">Toulouse</option>
+                    </select>
                     <label for="mailing-list">Je souhaite recevoir les lettres d'information de la CGT par...</label>
                     <select id="mailing-list" name="mailing-list">
                         <option value="email">Email</option>
                         <option value="courrier">Courrier</option>
                         <option value="aucun">Aucun des deux</option>
                     </select>
-
-                    <label for="company-name">Nom de l'entreprise</label>
-                    <input type="text" id="company-name" name="company-name">
-                    <label for="company-address">Lieu de travail</label>                    
                     <button type="submit">Télécharger le formulaire d'adhésion pré-rempli</button>
                 </form>
             </div>
