@@ -21,6 +21,8 @@
         dropdowns: document.querySelectorAll('.dropdown'),
         dropdownLinks: document.querySelectorAll('.dropdown-content a'),
         hamburger: document.querySelector('.hamburger'),
+        openBtn: document.querySelector('.openbtn'),
+        closeBtn: document.querySelector('.closebtn'),
         faqItems: document.querySelectorAll('.faq-item')
     };
 
@@ -79,14 +81,16 @@
         initDropdowns();
 
         // Hamburger menu handling
-        elements.hamburger.addEventListener('click', function() {
+        elements.openBtn.addEventListener('click', function() {
             const overlay = elements.hamburger.querySelector('.overlay');
-            if (overlay.style.height == '100%') {
-                overlay.style.height = 0;
-            } else {
-                overlay.style.height = '100%';
-            }
+            overlay.style.height = 'auto';
+        });
 
+        document.addEventListener('click', function(e) {
+            if (!elements.openBtn.contains(e.target)) {
+                const overlay = elements.hamburger.querySelector('.overlay');
+                overlay.style.height = '0%';
+            }
         });
     }
 
