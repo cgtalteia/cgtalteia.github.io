@@ -1,7 +1,6 @@
 :root {
   /* Color variables */
-  --color-black: #030003;
-  --color-dark-blue: #12223E;
+  --color-black: #292929;
   --color-red: #f03E3E;
   --color-orange: #daae51;
   --color-light-orange: #FFBE63;
@@ -48,16 +47,13 @@ body {
   padding: 0;
   line-height: 1.6;
   transition: var(--transition-default);
+  scroll-margin-top: 10em;
 }
 
 main {
   width: 96%;
   margin: auto;
   margin-top: 10em;
-}
-
-main p {
-  color: var(--color-dark-blue);
 }
 
 .highlight {
@@ -129,7 +125,7 @@ main p {
 }
 
 .nav.active .nav-container a {
-  color: var(--color-dark-blue);
+  color: var(--color-black);
 }
 
 .nav.active .nav-container {
@@ -139,12 +135,12 @@ main p {
 .nav .nav-container a.current,
 .nav .nav-container a:hover {
   background-color: var(--color-white);
-  color: var(--color-dark-blue);
+  color: var(--color-black);
 }
 
 .nav.active .nav-container a.current,
 .nav.active .nav-container a:hover {
-  background-color: var(--color-dark-blue);
+  background-color: var(--color-black);
   color: var(--color-white);
 }
 
@@ -153,7 +149,7 @@ main p {
 }
 
 .nav-scrolled .nav-logo svg path {
-  fill: var(--color-dark-blue);
+  fill: var(--color-black);
 }
 
 /* Dropdown styles */
@@ -181,7 +177,7 @@ main p {
 }
 
 .dropdown-content a {
-  color: var(--color-dark-blue);
+  color: var(--color-black);
   text-decoration: none;
   display: none;
   text-align: left;
@@ -195,7 +191,7 @@ main p {
 
 .dropdown.active .dropdown-content a {
   display: block;
-  color: var(--color-dark-blue);
+  color: var(--color-black);
 }
 
 .dropdown:hover .dropdown-content {
@@ -204,13 +200,13 @@ main p {
 
 .dropdown:hover .dropdown-content a {
   display: block;
-  color: var(--color-dark-blue);
+  color: var(--color-black);
 }
 
 .dropdown:hover .dropdown-content a:hover {
   display: block;
   color: var(--color-white);
-  background-color: var(--color-dark-blue);
+  background-color: var(--color-black);
 }
 
 .nav.active .dropdown-content {
@@ -219,7 +215,7 @@ main p {
 }
 
 .nav.active .dropdown-content a:hover {
-  background-color: var(--color-dark-blue);
+  background-color: var(--color-black);
   color: var(--color-white);
 }
 
@@ -297,18 +293,18 @@ main p {
   line-height: 1;
   font-size: 1rem;
   font-weight: normal;
-  color: #1a1c2e;
+  color: #292929;
 }
 
 /* ===== FAQ Section ===== */
-.faq-header {
+.content-title {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 2.5rem;
   font-weight: bold;
-  color: #ff9e17;
-  font-family: var(--font-family-serif);
+  color: #292929;
+  scroll-margin-top: 3em;
 }
 
 .faq-container {
@@ -319,7 +315,6 @@ main p {
   margin-bottom: 1rem;
   border: 1px solid #ddd;
   border-radius: var(--border-radius-xl);
-  height: 60px;
   overflow: hidden;
   transition: var(--transition-default);
 }
@@ -336,10 +331,11 @@ main p {
   position: relative;
 }
 
-.faq-title:hover {
+.faq-item:hover {
   transition: var(--transition-default);
   color: var(--color-white);
-  box-shadow: inset 2000px 0 0 0 #ff9e17;
+  box-shadow: inset 2000px 0 0 0 var(--color-black);
+  
 }
 
 .faq-content {
@@ -393,6 +389,10 @@ main p {
   transition: var(--transition-default);
 }
 
+.contact-container .content-title {
+  color: var(--color-white);
+}
+
 .contact-content p {
   color: var(--color-white);
 }
@@ -423,10 +423,12 @@ footer {
   top: var(--spacing-sm);
   bottom: var(--spacing-sm);
   text-align: center;
-  background-color: var(--color-dark-blue);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-sm);
 }
 
 footer p {
-  color: var(--color-white);
+  color: var(--color-black);
+  font-weight: bold;
   font-size: 1em;
 }

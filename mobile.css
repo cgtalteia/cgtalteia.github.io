@@ -38,4 +38,20 @@
     .header-code img{
         display: none;
     }
+
+    .content-title {
+        font-size:x-large;
+    }
+    .faq-title {
+        font-size: medium;
+        text-overflow: ellipsis;
+    }
+
+    .faq-content {
+        font-size: small;
+    }
+
+    .contact-container {
+        flex-direction: column;
+    }
 }

@@ -142,11 +142,12 @@
      */
     function handleSmoothScroll(e) {
         e.preventDefault();
-        const targetElement = document.querySelector(this.getAttribute('href'));
-        if (targetElement) {
+        const hrefElement = document.querySelector(this.getAttribute('href'));
+
+        if (hrefElement) {
+            const targetElement = hrefElement.querySelector('.content-title');
             targetElement.scrollIntoView({
                 behavior: 'smooth',
-                block: 'center'
             });
         }
     }
@@ -158,7 +159,6 @@
         e.preventDefault();
         document.querySelector('body').scrollIntoView({
             behavior: 'smooth',
-            block: 'start'
         });
     }
 
@@ -197,16 +197,15 @@
      */
     function initFAQ() {
         elements.faqItems.forEach(item => {
-            const title = item.querySelector('.faq-title');
 
-            title.addEventListener('click', () => {
+            item.addEventListener('click', () => {
                 // Close other items
                 elements.faqItems.forEach(otherItem => {
                     if (otherItem !== item) {
                         otherItem.classList.remove('active');
                         const content = otherItem.querySelector('.faq-content');
                         content.style.maxHeight = null;
-                        otherItem.style.height = '60px';
+                        otherItem.style.height = 'auto';
                     }
                 });
                 
@@ -216,7 +215,7 @@
                 
                 if (content.style.maxHeight) {
                     content.style.maxHeight = null;
-                    item.style.height = '60px';
+                    item.style.height = 'auto';
                 } else {
                     content.style.maxHeight = content.scrollHeight + "px";
                     item.style.height = 100 + content.scrollHeight + "px";
@@ -331,7 +330,8 @@
     elements.navLogo.addEventListener('click', function(e) {
         e.preventDefault();
         document.querySelector('body').scrollIntoView({
-            behavior: 'smooth'
+            behavior: 'smooth',
+            block: 'start',
         });
     });
 })();
