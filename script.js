@@ -83,7 +83,7 @@
         // Hamburger menu handling
         elements.openBtn.addEventListener('click', function() {
             const overlay = elements.hamburger.querySelector('.overlay');
-            overlay.style.height = 'auto';
+            overlay.style.height = '100%';
         });
 
         document.addEventListener('click', function(e) {

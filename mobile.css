@@ -24,10 +24,10 @@
     }
     .hamburger .overlay {
         height: 0;
-        width: 96%;
+        width: 100%;
         position: fixed;
-        left:2%;
-        top: 1%;
+        left: 0;
+        top: 0;
         z-index: 1;
         border-radius: var(--border-radius-sm);
         background-color: var(--color-black);
@@ -36,6 +36,7 @@
     }
         .overlay .content {
             position: relative;
+            top: 25%;
             width: 100%;
             text-align: center;
         }
