@@ -47,7 +47,7 @@ body {
   padding: 0;
   line-height: 1.6;
   transition: var(--transition-default);
-  scroll-margin-top: 10em;
+  scroll-margin-top: 20vh;
 }
 
 main {
