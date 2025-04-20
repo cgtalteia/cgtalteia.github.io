@@ -269,9 +269,15 @@
             <div class="contact-content">
                 <h2 id="contact-title" class="content-title">Contactez-nous</h2>
                 <div class="contact-info">
-                    <p><strong>Email :</strong> <a href="mailto:cgt.alteia@gmail.com">cgt.alteia@gmail.com</a></p>
-                    <p><strong>Téléphone :</strong> <a href="tel:+33646765554">+33 6 46 76 55 54</a></p>
-                    <p><strong>Adresse :</strong> 1 L'Occitane, 31670 Labège</p>
+                    <p style="display: flex; align-items: center; gap: 10px;"><strong>Email :</strong> <a href="mailto:cgt.alteia@gmail.com" id="mail">cgt.alteia@gmail.com</a>
+                        <button class="copy-button" id="copyMail"><img src="content_copy.svg" class="copy-icon"></button>
+                    </p>
+                    <p style="display: flex; align-items: center; gap: 10px;"><strong>Téléphone :</strong> <a href="tel:+33646765554" id="tel">+33 6 46 76 55 54</a>
+                        <button class="copy-button" id="copyPhone"><img src="content_copy.svg" class="copy-icon"></button>
+                    </p>
+                    <p style="display: flex; align-items: center; gap: 10px;"><strong>Adresse :</strong> <span id="adresse">1 L'Occitane, 31670 Labège</span>
+                        <button class="copy-button" id="copyAddress"><img src="content_copy.svg" class="copy-icon"></button>
+                    </p>
                     <p><strong>Horaires :</strong> Lundi au Vendredi, 9h-17h</p>
                 </div>
             </div>
@@ -283,9 +289,11 @@
         <p>&copy; <span id="current-year">2025</span> CGT Alteia</p>
     </footer>
 
-    <script defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHe3Vb4L8M7SICMWh1Om8-y97-R6f4mio&callback=initMap"></script>
-    <script src="script.js"></script>
+    <div id="copiedSnackbar" class="copied-snackbar">
+        <!-- Snackbar will be loaded here -->
+    </div>
 </body>
-
+<script defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHe3Vb4L8M7SICMWh1Om8-y97-R6f4mio&callback=initMap"></script>
+<script src="script.js"></script>
 </html>

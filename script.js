@@ -96,6 +96,44 @@
                 overlay.style.height = '0%';
             }
         });
+        document.getElementById('copyPhone').addEventListener('click', async () => {
+            const textToCopy = document.getElementById('tel').innerText;
+            console.log('Texte à copier :', textToCopy);
+            try {
+                await navigator.clipboard.writeText(textToCopy);
+                copiedSnackbar(textToCopy);
+            } catch (err) {
+                console.error('Erreur lors de la copie :', err);
+            }
+        });
+        document.getElementById('copyMail').addEventListener('click', async () => {
+            const textToCopy = document.getElementById('mail').innerText;
+            try {
+                await navigator.clipboard.writeText(textToCopy);
+                copiedSnackbar(textToCopy);
+            } catch (err) {
+                console.error('Erreur lors de la copie :', err);
+            }
+        });
+        document.getElementById('copyAddress').addEventListener('click', async () => {
+            const textToCopy = document.getElementById('adresse').innerText;
+            try {
+                await navigator.clipboard.writeText(textToCopy);
+                copiedSnackbar(textToCopy);
+            } catch (err) {
+                console.error('Erreur lors de la copie :', err);
+            }
+        });
+
+
+        function copiedSnackbar(textToCopy) {
+            const snackbar = document.getElementById('copiedSnackbar');
+            snackbar.classList.add('show');
+            snackbar.innerHTML = `<p> Copié : ${textToCopy} </p>`;
+            setTimeout(() => {
+                snackbar.classList.remove('show');
+            }, 2000);
+        }
     }
 
     /**
@@ -133,8 +171,6 @@
             });
         });
     }
-
-
     /**
      * Update navigation based on scroll position
      */

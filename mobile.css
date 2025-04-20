@@ -126,6 +126,11 @@
         font-size: small;
     }
 
+    #adhesion .container {
+        grid-template-columns: none;
+        grid-template-rows: repeat(2, auto);
+        justify-items: center;
+    }
     .contact-container {
         flex-direction: column;
     }

@@ -323,8 +323,6 @@ body {
 
 /* ===== FAQ Section ===== */
 .content-title {
-  width: var(--content-width-md);
-  max-width: var(--max-width);
   margin: 1em auto 1em auto;
   display: flex;
   justify-content: center;
@@ -508,6 +506,16 @@ body {
   opacity: 0.8;
 }
 
+.copy-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.copy-icon {
+  width: 20px;
+  height: 20px;
+}
+
 /* ===== Google Maps ===== */
 #google-map {
   color: #1a1c2e;
@@ -537,4 +545,20 @@ footer p {
   color: var(--color-black);
   font-weight: bold;
   font-size: 1em;
+}
+
+.copied-snackbar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: none;
+}
+
+.copied-snackbar.show {
+  display: block;
 }
