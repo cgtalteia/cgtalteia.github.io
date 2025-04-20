@@ -3,6 +3,7 @@
  * Main script for handling UI interactions and initializations
  */
 
+
 // Immediately-invoked Function Expression for encapsulation
 (function() {
     'use strict';
@@ -96,6 +97,24 @@
                 overlay.style.height = '0%';
             }
         });
+
+        initCopyButton();
+
+        submitAdhesionForm();
+    }
+
+    /**
+     * Initialize copy button functionality
+     */
+    function initCopyButton() {
+        function copiedSnackbar(textToCopy) {
+            const snackbar = document.getElementById('copiedSnackbar');
+            snackbar.classList.add('show');
+            snackbar.innerHTML = `<p> Copié : ${textToCopy} </p>`;
+            setTimeout(() => {
+                snackbar.classList.remove('show');
+            }, 2000);
+        }
         document.getElementById('copyPhone').addEventListener('click', async () => {
             const textToCopy = document.getElementById('tel').innerText;
             console.log('Texte à copier :', textToCopy);
@@ -124,18 +143,8 @@
                 console.error('Erreur lors de la copie :', err);
             }
         });
-
-
-        function copiedSnackbar(textToCopy) {
-            const snackbar = document.getElementById('copiedSnackbar');
-            snackbar.classList.add('show');
-            snackbar.innerHTML = `<p> Copié : ${textToCopy} </p>`;
-            setTimeout(() => {
-                snackbar.classList.remove('show');
-            }, 2000);
-        }
     }
-
+    
     /**
      * Initialize dropdown functionality
      */
@@ -201,6 +210,86 @@
         if (elements.adhesionForm.style.marginLeft != "0%") {
             elements.adhesionForm.style.marginLeft = Math.max(0, 50 - scrolled) + "%";
         }
+    }
+
+    function submitAdhesionForm() {
+        document.getElementById("adhesion-form").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+        
+            const existingPdfBytes = await fetch("http://localhost:8000/static/adhesion.pdf").then(res => res.arrayBuffer());
+        
+            const { PDFDocument } = PDFLib;
+            const pdfDoc = await PDFDocument.load(existingPdfBytes);
+            
+            const page = pdfDoc.getPages()[0];
+            
+            const { width, height } = page.getSize();
+            
+            if (formData.get('civility') == 'mr') {
+                page.drawText('X', {
+                    x: 160,
+                    y: height - 170,
+                    size: 12,
+                    color: PDFLib.rgb(0, 0, 0),
+                });
+            } else {
+                page.drawText('X', {
+                    x: 225,
+                    y: height - 170,
+                    size: 12,
+                    color: PDFLib.rgb(0, 0, 0),
+                });
+            }
+            page.drawText(formData.get('name'), {
+                x: 165,
+                y: height - 185,
+                size: 12,
+                color: PDFLib.rgb(0, 0, 0),
+            });
+            page.drawText(formData.get('firstname'), {
+                x: 465,
+                y: height - 185,
+                size: 12,
+                color: PDFLib.rgb(0, 0, 0),
+            });
+            var birthdate = formData.get('birthdate').split('-');
+            page.drawText(birthdate[2] + '   ' + birthdate[1] + '   ' + birthdate[0], {
+                x: 160,
+                y: height - 213,
+                size: 12,
+                color: PDFLib.rgb(0, 0, 0),
+            });
+            page.drawText(formData.get('nationality'), {
+                x: 465,
+                y: height - 210,
+                size: 12,
+                color: PDFLib.rgb(0, 0, 0),
+            });
+            
+            // page.getTextField('civility').setText(formData.get('civility'));
+            // page.getTextField('name').setText(formData.get('name'));
+            // page.getTextField('firstname').setText(formData.get('firstname'));
+            // page.getTextField('birthdate').setText(formData.get('birthdate'));
+            // page.getTextField('nationality').setText(formData.get('nationality'));
+            // page.getTextField('address').setText(formData.get('address'));
+            // page.getTextField('city').setText(formData.get('city'));
+            // page.getTextField('zipcode').setText(formData.get('zipcode'));
+            // page.getTextField('phone').setText(formData.get('phone'));
+            // page.getTextField('email').setText(formData.get('email'));
+            // page.getTextField('adhesion-date').setText(formData.get('adhesion-date'));
+            // page.getTextField('category').setText(formData.get('category'));
+            // page.getTextField('company-address').setText(formData.get('company-address'));
+            // page.getTextField('mailing-list').setText(formData.get('mailing-list'));
+        
+            const pdfBytes = await pdfDoc.save();
+        
+            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = "formulaire_adhesion.pdf";
+            link.click();
+        });
     }
 
     /**
@@ -356,7 +445,7 @@
                 minWidth: 200,
                 maxWidth: 200
             });
-            const customIcon = "./poi.svg";
+            const customIcon = "./media/poi.svg";
 
             // Add markers to map
             markers.forEach(markerData => {
