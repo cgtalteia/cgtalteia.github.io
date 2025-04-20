@@ -82,4 +82,7 @@
     .contact-container {
         flex-direction: column;
     }
+    #google-map {
+        height: 20vh;
+    }
 }

@@ -380,7 +380,7 @@ main {
   justify-content: center;
   width: 100%;
   max-width: 600px;
-  height: 450px;
+  height: 40vh;
   border-radius: var(--border-radius-xl);
   margin: 20px 0;
   border: 2px solid var(--color-white);
