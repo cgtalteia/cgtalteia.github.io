@@ -277,6 +277,7 @@ body {
   gap: var(--spacing-lg);
   position: relative;
   width: 75%;
+  height: 80vh;
   max-width: var(--max-width);
   margin: 0 auto;
 }
@@ -288,7 +289,9 @@ body {
 .hero-title {
   font-family: var(--font-family-mono);
   font-size: 3rem;
+  color: var(--color-white);
   height: 10vh;
+  text-shadow: var(--shadow-lg);
 }
 
 .hero-subtitle {
@@ -312,28 +315,30 @@ body {
   background-color: var(--color-white);
   width: 100%;
   max-width: 600px;
-  min-height: 60vh;
-  height: 90%; /* Adjust the height as needed */
+  height: 70vh;
 }
 
 /* Message list container */
 .message-list {
   flex: 1;
-  overflow-y: auto;
   padding-right: 10px; /* Optional: to avoid scrollbar overlap */
-  display: flex;
-  flex-direction: column;
   justify-content: flex-end;
+  overflow-y: auto;
+  height: 70vh;
 }
 
-/* Hide scrollbar */
 .message-list::-webkit-scrollbar {
-  display: none;
+  width: 8px;
 }
-
-.message-list {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+.message-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.message-list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+.message-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 /* Message bubble container */
