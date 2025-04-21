@@ -102,15 +102,29 @@
     .progress-container{
         display: none !important;
     }
-    .hero{
-        margin-top: 10vh;
-    }
+
     .hero-content{
         width: 90%;
+        height: 100%;
         margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        top: 8vh;
     }
-    .hero img{
-        display: none;
+    .hero-title{
+        font-size: 2rem;
+        margin-bottom: 0;
+        height: auto;
+    }
+    .hero-subtitle{
+        font-size: 1rem;
+    }
+    .chat-container{
+        width: 90%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
     }
 
     .content-title {
