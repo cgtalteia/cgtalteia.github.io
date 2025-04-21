@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="mobile.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
@@ -91,23 +92,18 @@
         </div>
     </nav>
     <main>
-        <section class="header-code" aria-labelledby="header-title">
-            <div class="header-code-top">
-                <span class="header-code-top-dot" style="background:#ED594A;" aria-hidden="true"></span>
-                <span class="header-code-top-dot" style="background:#FDD800;" aria-hidden="true"></span>
-                <span class="header-code-top-dot" style="background:#5AC05A;" aria-hidden="true"></span>
-            </div>
-            <div class="header-code-content">
-                <h2 id="header-title" class="header-title">
-                    <!-- Header title will be loaded here -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <h2 id="hero-title" class="hero-title">
+                    <!-- hero title will be loaded here -->
                 </h2>
-
-                <p id="header-subtitle" class="header-subtitle">
-                    <!-- Header subtitle will be loaded here -->
+                <p id="hero-subtitle" class="hero-subtitle">
+                    Retrouve toutes les informations nécessaires sur la section syndicale,
+                    ce qu'elle peut faire pour toi et comment la rejoindre.
                 </p>
                 <div class="content-text">
                     <p>
-                        La <strong class="highlight">CGT (Confédération Générale du Travail)</strong> est l'une des
+                        La CGT (Confédération Générale du Travail) est l'une des
                         principales organisations syndicales en France. Elle regroupe des salarié·es de tous les
                         secteurs, publics comme privés, pour défendre leurs droits, améliorer leurs conditions de
                         travail, et faire entendre leur voix face aux employeurs et aux pouvoirs publics.
@@ -118,14 +114,23 @@
                         les Unions Départementales, et en proximité les Union Locales.
                     </p>
                     <p>
-                        <strong class="highlight">Notre section syndicale CGT est présente au sein d'Alteia pour
-                        représenter l'ensemble des salarié·es, syndiqué·es ou non.</strong> Nous sommes des collègues
+                        Notre section syndicale CGT est présente au sein d'Alteia pour
+                        représenter l'ensemble des salarié·es, syndiqué·es ou non. Nous sommes des collègues
                         de travail, élu·es ou mandaté·es, engagé·es pour faire respecter vos droits, lutter contre
                         les injustices, et porter des revendications collectives.
                     </p>
                 </div>
+                <div class="chat-container">
+                    <div class="message-list" id="messageList">
+                        <!-- Existing messages will be added here dynamically -->
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="userInput" placeholder="Pose une question...">
+                        <button id="sendButton"><i class="fa-solid fa-arrow-up" style="color: #ffffff;"></i></button>
+                    </div>
+                </div>
+
             </div>
-            <img src="media/job.webp" alt="Illustration représentant le monde du travail" loading="lazy">
         </section>
 
         <section id="actualites" class="actualites-container" aria-labelledby="actualites-title">
@@ -135,8 +140,8 @@
             </div>
         </section>
 
-        <section id="faq-container" class="faq-container" aria-labelledby="faq-header">
-            <h2 id="faq-header" class="content-title">
+        <section id="faq-container" class="faq-container" aria-labelledby="faq-hero">
+            <h2 id="faq-hero" class="content-title">
                 Foire aux Questions
             </h2>
 
@@ -297,4 +302,5 @@
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHe3Vb4L8M7SICMWh1Om8-y97-R6f4mio&callback=initMap"></script>
 <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 <script src="script.js"></script>
+<script src="mistral.js"></script>
 </html>

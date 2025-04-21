@@ -102,14 +102,14 @@
     .progress-container{
         display: none !important;
     }
-    .header-code{
+    .hero{
         margin-top: 10vh;
     }
-    .header-code-content{
+    .hero-content{
         width: 90%;
         margin: auto;
     }
-    .header-code img{
+    .hero img{
         display: none;
     }
 

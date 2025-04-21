@@ -13,8 +13,7 @@
         nav: document.querySelector('.nav'),
         logo: document.querySelector('.nav-logo svg'),
         progressBar: document.querySelector('.progress-container'),
-        headerTitle: document.getElementById('header-title'),
-        headerSubtitle: document.getElementById('header-subtitle'),
+        heroTitle: document.getElementById('hero-title'),
         contentText: document.querySelector('.content-text'),
         navLogo: document.querySelector('.nav-logo'),
         navLinks: document.querySelectorAll('.nav-container a'),
@@ -29,13 +28,11 @@
     };
 
     // Constants
-    const HEADER_TEXT = {
+    const hero_TEXT = {
         title: "std::cout << \"Bienvenue, camarade !\" << std::endl;",
-        subtitle: "Retrouve toutes les informations nécessaires sur la section syndicale, ce qu'elle peut faire pour toi et comment la rejoindre."
-    };
+        };
     const TYPE_SPEED = {
         title: 20,
-        subtitle: 10
     };
 
     // Initialize everything when DOM is loaded
@@ -318,29 +315,18 @@
     }
 
     /**
-     * Typewriter effect for header
+     * Typewriter effect for hero
      */
     function initTypewriter() {
         let titleIndex = 0;
-        let subtitleIndex = 0;
 
         function typeWriter() {
             // Type the title first
-            if (titleIndex < HEADER_TEXT.title.length) {
-                elements.headerTitle.innerHTML += HEADER_TEXT.title.charAt(titleIndex);
+            if (titleIndex < hero_TEXT.title.length) {
+                elements.heroTitle.innerHTML += hero_TEXT.title.charAt(titleIndex);
                 titleIndex++;
                 setTimeout(typeWriter, TYPE_SPEED.title);
             } 
-            // Then type the subtitle
-            else if (subtitleIndex < HEADER_TEXT.subtitle.length) {
-                elements.headerSubtitle.innerHTML += HEADER_TEXT.subtitle.charAt(subtitleIndex);
-                subtitleIndex++;
-                setTimeout(typeWriter, TYPE_SPEED.subtitle);
-            }
-            // Finally show the content
-            else {
-                elements.contentText.style.opacity = '100';
-            }
         }
 
         // Start the typewriter effect
