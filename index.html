@@ -13,12 +13,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+    <link href="https://fonts.cdnfonts.com/css/varuna" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=keyboard_arrow_down" />
 </head>
+
+
+<!-- BODY -->
+
 
 <body>
     <nav class="nav" aria-label="Navigation principale">
@@ -48,7 +53,6 @@
             <ul class="nav-menu" role="menubar">
                 <li role="none"><a href="#qui-sommes-nous" class="qui-sommes-nous-link" role="menuitem">Qui sommes-nous ?</a></li>
                 <li role="none"><a href="#actualites" role="menuitem">Actualités</a></li>
-                <li role="none"><a href="#adhesion" role="menuitem">Se syndiquer</a></li>
                 <li role="none"><a href="#contact" role="menuitem">Contactez-nous</a></li>
                 <li class="dropdown" role="none">
                     <a href="#autres-ressources" role="menuitem" aria-haspopup="true" aria-expanded="false">
@@ -56,10 +60,11 @@
                         <span class="material-symbols-outlined" aria-hidden="true" style="vertical-align: bottom;">keyboard_arrow_down</span>
                     </a>
                     <ul class="dropdown-content" role="menu" aria-label="Ressources externes">
-                        <li role="none"><a href="https://www.cgt.fr" target="_blank" rel="noopener noreferrer" role="menuitem">Site de la CGT</a></li>
-                        <li role="none"><a href="https://cgt31.fr" target="_blank" rel="noopener noreferrer" role="menuitem">Site de la CGT 31</a></li>
+                        <li role="none"><a href="https://www.cgt.fr" target="_blank" rel="noopener noreferrer" role="menuitem">CGT.fr</a></li>
+                        <li role="none"><a href="https://cgt31.fr" target="_blank" rel="noopener noreferrer" role="menuitem">CGT31.fr</a></li>
                     </ul>
                 </li>
+                <li role="none"><a href="#adhesion" id="se-syndiquer" role="menuitem">Se syndiquer</a></li>
             </ul>
 
             <div class ="hamburger">
@@ -87,58 +92,40 @@
                 </div>
             </div>
         </div>
-        <div class="progress-container" aria-hidden="true">
-            <div class="progress-bar" id="myBar"></div>
-        </div>
     </nav>
     <main>
         <section class="hero" aria-labelledby="hero-title">
             <div class="hero-content">
-                <h2 id="hero-title" class="hero-title">
-                    <!-- hero title will be loaded here -->
-                </h2>
-                <p id="hero-subtitle" class="hero-subtitle">
-                    Retrouve toutes les informations nécessaires sur la section syndicale,
-                    ce qu'elle peut faire pour toi et comment la rejoindre.
-                </p>
-                <div class="content-text">
-                    <p>
-                        La CGT (Confédération Générale du Travail) est l'une des
-                        principales organisations syndicales en France. Elle regroupe des salarié·es de tous les
-                        secteurs, publics comme privés, pour défendre leurs droits, améliorer leurs conditions de
-                        travail, et faire entendre leur voix face aux employeurs et aux pouvoirs publics.
+                <div class="hero-text-content">
+                    <h2 id="hero-title" class="hero-title">
+                        Info, Lutte <br>
+                        & Camaraderie
+                    </h2>
+                    <p id="hero-subtitle" class="hero-subtitle">
+                        Retrouve toutes les informations nécessaires sur la section syndicale,
+                        ce qu'elle peut faire pour toi et comment la rejoindre.
                     </p>
-                    <p>
-                        La CGT est présente sur tout le territoire grâce à un maillage d'organisations réparties à
-                        différentes échelles territoriales : des structures régionales appelées Comités Régionaux,
-                        les Unions Départementales, et en proximité les Union Locales.
-                    </p>
-                    <p>
-                        Notre section syndicale CGT est présente au sein d'Alteia pour
-                        représenter l'ensemble des salarié·es, syndiqué·es ou non. Nous sommes des collègues
-                        de travail, élu·es ou mandaté·es, engagé·es pour faire respecter vos droits, lutter contre
-                        les injustices, et porter des revendications collectives.
-                        <!-- <i class="fa-solid fa-robot fa-shake" style="color: var(--color-white);"></i> -->
-                    </p>
-                </div>
-                <div class="chat-container">
-                    
-                    <div class="message-list" id="messageList">
-                        <!-- Existing messages will be added here dynamically -->
-                    </div>
-                    <div class="input-container">
-                        <input type="text" id="userInput" placeholder="Pose une question...">
-                        <button id="sendButton"><i class="fa-solid fa-arrow-up" style="color: #ffffff;"></i></button>
+                    <div class="content-text">
+                        <p>
+                            La CGT (Confédération Générale du Travail) est l'une des
+                            principales organisations syndicales en France. Elle regroupe des salarié·es de tous les
+                            secteurs, publics comme privés, pour défendre leurs droits, améliorer leurs conditions de
+                            travail, et faire entendre leur voix face aux employeurs et aux pouvoirs publics.
+                        </p>
+                        <p>
+                            La CGT est présente sur tout le territoire grâce à un maillage d'organisations réparties à
+                            différentes échelles territoriales : des structures régionales appelées Comités Régionaux,
+                            les Unions Départementales, et en proximité les Union Locales.
+                        </p>
+                        <p>
+                            Notre section syndicale CGT est présente au sein d'Alteia pour
+                            représenter l'ensemble des salarié·es, syndiqué·es ou non. Nous sommes des collègues
+                            de travail, élu·es ou mandaté·es, engagé·es pour faire respecter vos droits, lutter contre
+                            les injustices, et porter des revendications collectives.
+                            <!-- <i class="fa-solid fa-robot fa-shake" style="color: var(--color-white);"></i> -->
+                        </p>
                     </div>
                 </div>
-
-            </div>
-        </section>
-
-        <section id="actualites" class="actualites-container" aria-labelledby="actualites-title">
-            <h2 id="actualites-title" class="content-title">Actualités</h2>
-            <div class="actualites-content">
-                <!-- Actualites will be loaded here -->
             </div>
         </section>
 
@@ -146,7 +133,6 @@
             <h2 id="faq-hero" class="content-title">
                 Foire aux Questions
             </h2>
-
             <div class="faq-item">
                 <h3 class="faq-title" tabindex="0">
                     A quoi sert une section syndicale ?
@@ -207,6 +193,17 @@
                     </p>
                 </div>
             </div>
+
+            <div class="chat-container">
+                <div class="message-list" id="messageList">
+                    <!-- Existing messages will be added here dynamically -->
+                </div>
+                <div class="input-container">
+                    <input type="text" id="userInput" placeholder="Pose une question...">
+                    <button id="sendButton"><i class="fa-solid fa-arrow-up"></i></button>
+                </div>
+            </div>
+
         </section>
 
         <section id="adhesion" class="content-background" aria-labelledby="adhesion-title">

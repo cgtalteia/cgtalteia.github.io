@@ -12,8 +12,6 @@
     const elements = {
         nav: document.querySelector('.nav'),
         logo: document.querySelector('.nav-logo svg'),
-        progressBar: document.querySelector('.progress-container'),
-        heroTitle: document.getElementById('hero-title'),
         contentText: document.querySelector('.content-text'),
         navLogo: document.querySelector('.nav-logo'),
         navLinks: document.querySelectorAll('.nav-container a'),
@@ -27,18 +25,9 @@
         adhesionForm: document.querySelector('#adhesion-form')
     };
 
-    // Constants
-    const hero_TEXT = {
-        title: "std::cout << \"Bienvenue, camarade !\" << std::endl;",
-        };
-    const TYPE_SPEED = {
-        title: 20,
-    };
-
     // Initialize everything when DOM is loaded
     document.addEventListener('DOMContentLoaded', function() {
         initNavigation();
-        initTypewriter();
         initFAQ();
         updateCurrentYear();
     });
@@ -64,9 +53,7 @@
 
         // Scroll progress bar
         window.addEventListener('scroll', function() {
-            updateScrollProgress();
             updateAdhesionForm();
-            updateNavigationState();
         });
 
         // Navigation links smooth scrolling
@@ -146,29 +133,6 @@
      * Initialize dropdown functionality
      */
     function initDropdowns() {
-        elements.dropdowns.forEach(dropdown => {
-            dropdown.addEventListener('click', function(e) {
-                e.preventDefault();
-                dropdown.classList.toggle('active');
-            });
-        });
-
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function(e) {
-            elements.dropdowns.forEach(dropdown => {
-                if (!dropdown.contains(e.target)) {
-                    dropdown.classList.remove('active');
-                }
-            });
-        });
-
-        // Close dropdowns when scrolling
-        document.addEventListener('scroll', function() {
-            elements.dropdowns.forEach(dropdown => {
-                dropdown.classList.remove('active');
-            });
-        });
-
         // Handle dropdown links
         elements.dropdownLinks.forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -176,28 +140,6 @@
                 window.open(this.getAttribute('href'), '_blank');
             });
         });
-    }
-    /**
-     * Update navigation based on scroll position
-     */
-    function updateNavigationState() {
-        if (window.scrollY > 0) {
-            elements.nav.classList.add('active', 'nav-scrolled');
-            elements.progressBar.classList.add('scrolled');
-        } else {
-            elements.nav.classList.remove('active', 'nav-scrolled');
-            elements.progressBar.classList.remove('scrolled');
-        }
-    }
-
-    /**
-     * Update scroll progress bar
-     */
-    function updateScrollProgress() {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 105;
-        elements.progressBar.style.width = scrolled + "%";
     }
 
     function updateAdhesionForm() {
@@ -312,25 +254,6 @@
         document.querySelector('body').scrollIntoView({
             behavior: 'smooth',
         });
-    }
-
-    /**
-     * Typewriter effect for hero
-     */
-    function initTypewriter() {
-        let titleIndex = 0;
-
-        function typeWriter() {
-            // Type the title first
-            if (titleIndex < hero_TEXT.title.length) {
-                elements.heroTitle.innerHTML += hero_TEXT.title.charAt(titleIndex);
-                titleIndex++;
-                setTimeout(typeWriter, TYPE_SPEED.title);
-            } 
-        }
-
-        // Start the typewriter effect
-        typeWriter();
     }
 
     /**
