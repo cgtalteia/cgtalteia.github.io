@@ -289,8 +289,8 @@ body {
 .faq-item {
   width: 100%;
   margin-bottom: 1rem;
-  border: 0.3dvh solid var(--color-black);
-  box-shadow: 0.5dvh 0.5dvh var(--color-black);
+  border: var(--border-radius-sm) solid var(--color-black);
+  box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
   overflow: hidden;
   transition: var(--transition-default);
 }

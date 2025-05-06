@@ -72,12 +72,18 @@
     .hero-subtitle{
         font-size: 1rem;
     }
-    .chat-container{
+    
+    .faq-container{
+        width: 90%;
+        margin: auto;
+    }
+    
+    /* .chat-container{
         width: 90%;
         margin: auto;
         display: flex;
         flex-direction: column;
-    }
+    } */
 
     .content-title {
         font-size:x-large;
