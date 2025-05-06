@@ -560,7 +560,7 @@ body {
   padding: var(--spacing-md);
   background: var(--color-white);
   color: var(--color-black);
-  border: var(--border-radius-md) solid var(--color-black);
+  border: var(--border-radius-sm) solid var(--color-black);
   box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
   cursor: pointer;
   font-weight: bold;
