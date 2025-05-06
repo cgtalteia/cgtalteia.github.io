@@ -55,17 +55,20 @@
         display: none !important;
     }
 
+    .hero {
+        margin: 0 auto;
+        padding-top: max(10dvh, 100px);
+    }
+
     .hero-content{
         width: 90%;
         height: 100%;
-        margin: auto;
         display: flex;
         flex-direction: column;
         gap: var(--spacing-sm);
-        top: 8vh;
+        padding-bottom: 8vh;
     }
     .hero-title{
-        font-size: 2rem;
         margin-bottom: 0;
         height: auto;
     }
@@ -77,13 +80,6 @@
         width: 90%;
         margin: auto;
     }
-    
-    /* .chat-container{
-        width: 90%;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-    } */
 
     .content-title {
         font-size:x-large;

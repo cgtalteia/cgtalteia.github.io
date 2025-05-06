@@ -9,6 +9,7 @@
   --color-pink: #ff0040;
   --color-red: #f03E3E;
   --color-orange: #ff7300;
+  --color-yellow: #ffd700;
   --color-white: #FFFFFF;
   --color-gradient: linear-gradient(135deg, #3700ff 30%, #f03e3e 70%);
   --color-gradient-radial: radial-gradient(at right, #f0943e8a, #ff0000cb);
@@ -193,6 +194,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
+  padding-top: max(10dvh, 100px);
   min-height: 100vh;
   height: auto;
   margin: auto;
@@ -204,52 +206,52 @@ body {
   justify-content: center;
   align-items: center;
   padding: var(--spacing-lg);
-  border-bottom: 0.3dvh solid var(--color-black);
+  border-bottom: var(--border-radius-lg) solid var(--color-yellow);
 }
 
 .hero-content {
   display: grid;
-  grid-template-columns: 60% 1fr;
+  grid-template-columns: 55% 1fr;
   gap: var(--spacing-lg);
   position: relative;
   width: 75%;
   height: 80vh;
   max-width: var(--max-width);
-  margin: 0 auto;
-  margin-top: 5dvh;
 }
 
 .hero-content .content-text {
   font-family: var(--font-family-varuna);
   text-align: justify;
-  border: 2px solid var(--color-black);
+  border: var(--border-radius-sm) solid var(--color-black);
   border-radius: var(--border-radius-md);
-  box-shadow: 4px 4px var(--color-black);
+  box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
   background-color: var(--color-red);
   color: var(--color-black);
   padding: var(--spacing-md);
 }
 
 .hero-text-content {
+  height: 95%;
+  width: 95%;
   display: grid;
   grid-template-rows: auto auto;
-  margin: var(--spacing-md);
+  margin: auto;
 }
 
 .hero-title {
   font-family: var(--font-family-varuna);
   font-weight: bold;
-  font-size: 8dvh;
+  font-size: min(max(8vh, 3em), 8vw);
   color: var(--color-white);
-  text-shadow: 0.1dvh 0.1dvh var(--color-black),
-    0.2dvh 0.2dvh var(--color-black),
-    0.3dvh 0.3dvh var(--color-black),
-    0.4dvh 0.4dvh var(--color-black),
-    0.5dvh 0.5dvh var(--color-black),
-    0.6dvh 0.6dvh var(--color-black),
-    0.7dvh 0.7dvh var(--color-black),
-    0.8dvh 0.8dvh var(--color-black),
-    0.9dvh 0.9dvh var(--color-black);
+  text-shadow: max(0.1dvh, 0.5px) max(0.1dvh, 0.5px) var(--color-black),
+    max(0.2dvh, 1px) max(0.2dvh, 1px) var(--color-black),
+    max(0.3dvh, 1.5px) max(0.3dvh, 1.5px) var(--color-black),
+    max(0.4dvh, 2px) max(0.4dvh, 2px) var(--color-black),
+    max(0.5dvh, 2.5px) max(0.5dvh, 2.5px) var(--color-black),
+    max(0.6dvh, 3px) max(0.6dvh, 3px) var(--color-black),
+    max(0.7dvh, 3.5px) max(0.7dvh, 3.5px) var(--color-black),
+    max(0.8dvh, 4px) max(0.8dvh, 4px) var(--color-black),
+    max(0.9dvh, 4.5px) max(0.9dvh, 4.5px) var(--color-black);
   margin: auto;
   margin-left: 0;
   line-height: 1.2;
@@ -260,6 +262,29 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
   text-align: justify;
+}
+
+.prochain-evenement{
+  align-self:center;
+  height: 95%;
+  width: 95%;
+  display: flex;
+  border: var(--border-radius-sm) solid var(--color-black);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
+  background-color: var(--color-yellow);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.prochain-evenement img{
+  max-width: 100%;
+  max-height: 60dvh;
+  object-fit:scale-down;
+  border-radius: var(--border-radius-md);
+  border: var(--border-radius-md) solid var(--color-white);
 }
 
 /* ===== FAQ Section ===== */
