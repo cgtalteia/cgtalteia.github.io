@@ -109,6 +109,10 @@
         font-size: 1rem;
         text-align: center;
     }
+
+    #faq-hero {
+        text-align: center;
+    }
     #faq-transition{
         height: 100px;
         background: linear-gradient(to bottom, #f92217, var(--color-yellow));
@@ -116,6 +120,10 @@
     #adhesion-transition{
         height: 100px;
         background: linear-gradient(to bottom, var(--color-yellow), var(--color-red));
+    }
+    #contact-transition{
+        height: 100px;
+        background: linear-gradient(to bottom, var(--color-red), var(--color-pink));
     }
     .hero-text{
         text-align: left;
@@ -147,16 +155,12 @@
     }
 
     #adhesion .container {
+        width: 82%;
         grid-template-columns: none;
         grid-template-rows: repeat(2, auto);
         justify-items: center;
     }
     .contact-container {
         flex-direction: column;
-    }
-    #google-map {
-        justify-content: center;
-        margin: 0 auto;
-        height: 30vh;
     }
 }

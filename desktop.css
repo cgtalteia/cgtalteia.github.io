@@ -502,9 +502,11 @@ body {
 }
 
 #adhesion .container {
-  width: var(--content-width-md);
+  width: 100%;
   margin: 0 auto;
   display: grid;
+  align-items: center;
+  justify-content: center;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-lg);
 }
@@ -574,17 +576,15 @@ body {
 
 /* ===== Contact Section ===== */
 .contact-container {
-  width: var(--content-width-md);
+  width: 100%;
   max-width: var(--max-width);
-  margin: 2em auto 0 auto;
   background: var(--color-pink);
-  border: var(--border-radius-sm) solid var(--color-black);
-  box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
-  padding: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   transition: var(--transition-slow);
+  padding-bottom: var(--spacing-lg);
 }
 
 .contact-container .content-title {
@@ -626,10 +626,10 @@ body {
   color: #1a1c2e;
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 80%;
   max-width: 600px;
   height: 40vh;
-  margin: 20px 0;
+  margin: 0 auto;
   border: var(--border-radius-sm) solid var(--color-black);
 }
 
