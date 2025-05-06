@@ -8,7 +8,7 @@
   --color-black: #000000;
   --color-pink: #ff0040;
   --color-red: #f03E3E;
-  --color-orange: #ff7300;
+  --color-orange: #ff7920;
   --color-yellow: #ffd700;
   --color-white: #FFFFFF;
   --color-gradient: linear-gradient(135deg, #3700ff 30%, #f03e3e 70%);
@@ -91,8 +91,9 @@ body {
 
 .nav .nav-logo img {
   margin-right: var(--spacing-sm);
+  margin-left: 0;
   border: var(--border-radius-sm) solid var(--color-black);
-  border-radius: var(--border-radius-md);
+  border-radius: var(--border-radius-lg);
   background-color: var(--color-red);
 }
 
@@ -181,12 +182,6 @@ body {
   cursor: pointer;
 }
 
-.hamburger .line {
-  width: 20px;
-  height: 3px;
-  background-color: var(--color-white);
-  margin: 5px;
-}
 
 /* ===== hero Section ===== */
 .hero {
@@ -206,7 +201,6 @@ body {
   justify-content: center;
   align-items: center;
   padding: var(--spacing-lg);
-  border-bottom: var(--border-radius-lg) solid var(--color-yellow);
 }
 
 .hero-content {
@@ -219,13 +213,13 @@ body {
   max-width: var(--max-width);
 }
 
-.hero-content .content-text {
+.hero-text {
   font-family: var(--font-family-varuna);
   text-align: justify;
   border: var(--border-radius-sm) solid var(--color-black);
   border-radius: var(--border-radius-md);
   box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
-  background-color: var(--color-red);
+  background-color: var(--color-yellow);
   color: var(--color-black);
   padding: var(--spacing-md);
 }
@@ -241,17 +235,8 @@ body {
 .hero-title {
   font-family: var(--font-family-varuna);
   font-weight: bold;
-  font-size: min(max(8vh, 3em), 8vw);
+  font-size: min(max(8vh, 3em), 12vw);
   color: var(--color-white);
-  text-shadow: max(0.1dvh, 0.5px) max(0.1dvh, 0.5px) var(--color-black),
-    max(0.2dvh, 1px) max(0.2dvh, 1px) var(--color-black),
-    max(0.3dvh, 1.5px) max(0.3dvh, 1.5px) var(--color-black),
-    max(0.4dvh, 2px) max(0.4dvh, 2px) var(--color-black),
-    max(0.5dvh, 2.5px) max(0.5dvh, 2.5px) var(--color-black),
-    max(0.6dvh, 3px) max(0.6dvh, 3px) var(--color-black),
-    max(0.7dvh, 3.5px) max(0.7dvh, 3.5px) var(--color-black),
-    max(0.8dvh, 4px) max(0.8dvh, 4px) var(--color-black),
-    max(0.9dvh, 4.5px) max(0.9dvh, 4.5px) var(--color-black);
   margin: auto;
   margin-left: 0;
   line-height: 1.2;
@@ -513,7 +498,7 @@ body {
   padding-top: 1em;
   padding-bottom: 1em;
   height: auto;
-  background: var(--color-gradient-radial), var(--color-gradient);
+  background: var(--color-red);
 }
 
 #adhesion .container {
@@ -535,52 +520,56 @@ body {
 #adhesion-form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  text-align: center;
   width: 100%;
   gap: var(--spacing-md);
   margin-top: var(--spacing-lg);
   margin-left: 0%;
   padding: var(--spacing-lg);
   background: var(--color-white);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-md);
+  border: var(--border-radius-sm) solid var(--color-black);
+  box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
   transition: var(--transition-default);
 }
 
 #adhesion-form:hover {
-  transform: scale(1.01);
-  box-shadow: var(--white-shadow);
+  box-shadow: none;
   transition: var(--transition-default);
 }
 
 #adhesion-form label {
   color: var(--color-black);
   font-weight: bold;
-  margin-bottom: var(--spacing-xs);
+  font-family: var(--font-family-varuna);
+  margin: auto;
 }
 
 #adhesion-form input,
 #adhesion-form select {
   padding: var(--spacing-sm);
-  border: 1px solid #ddd;
-  border-radius: var(--border-radius-sm);
-  font-family: var(--font-family-primary);
+  border: var(--border-radius-sm) solid var(--color-black);
+  border-radius: var(--border-radius-md);
+  font-family: var(--font-family-varuna);
+  text-align: text-bottom;
 }
 
 #adhesion-form button {
   grid-column: 1 / -1;
   padding: var(--spacing-md);
-  background: var(--color-black);
-  color: var(--color-white);
-  border: none;
-  border-radius: var(--border-radius-md);
+  background: var(--color-white);
+  color: var(--color-black);
+  border: var(--border-radius-md) solid var(--color-black);
+  box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
   cursor: pointer;
   font-weight: bold;
   transition: var(--transition-default);
 }
 
 #adhesion-form button:hover {
-  background: green;
-  transform: scale(1.01);
+  background: var(--color-red);
+  color: var(--color-white);
+  box-shadow: none;
+  transition: var(--transition-default);
 }
 
 /* ===== Contact Section ===== */
