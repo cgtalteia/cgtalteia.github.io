@@ -196,6 +196,31 @@
         background-color: var(--color-white);
     }
 
+    .input-container {
+        width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .input-container input[type="text"] {
+        width: 70%;
+        margin: 0;
+    }
+
+    .input-container button {
+        width: 40px;
+        height: auto;
+        padding: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    .input-container button i {
+        margin: 0;
+    }
+
     .content-title {
         font-size: var(--font-size-lg);
     }

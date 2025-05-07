@@ -443,7 +443,6 @@ body {
 
 /* Send button */
 .input-container button {
-  flex: 1;
   width: fit-content;
   margin-left: 10px;
   margin-right: 10px;
