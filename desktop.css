@@ -193,13 +193,8 @@ body {
 /* ===== hero Section ===== */
 .hero {
   position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding-top: max(10dvh, 100px);
-  min-height: 100vh;
-  height: auto;
-  margin: auto;
+  height: min(max(90lvh, 600px), 700px);
+  margin: 0 auto;
   box-shadow: var(--shadow-lg);
   background: var(--color-gradient-radial), var(--color-gradient);
   color: var(--color-white);
@@ -215,8 +210,6 @@ body {
   grid-template-columns: 55% 1fr;
   gap: var(--spacing-lg);
   position: relative;
-  width: 75%;
-  height: 80vh;
   max-width: var(--max-width);
 }
 
@@ -232,8 +225,8 @@ body {
 }
 
 .hero-text-content {
-  height: 95%;
-  width: 95%;
+  width: 100%;
+  max-height: 600px;
   display: grid;
   grid-template-rows: auto auto;
   margin: auto;
