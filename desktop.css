@@ -423,7 +423,7 @@ body {
 /* Input container */
 .input-container {
   display: flex;
-  padding-top: 0.10dvh;
+  box-sizing: border-box;
 }
 
 /* Input field */
