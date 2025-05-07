@@ -430,7 +430,7 @@ body {
 .input-container input[type="text"] {
   flex: 1;
   margin-left: 10px;
-  padding: 10px;
+  /* padding: 10px; */
   border: 2px solid var(--color-black);
   border-radius: var(--border-radius-md);
   font-size: var(--font-size-md);
@@ -446,7 +446,6 @@ body {
   width: fit-content;
   margin-left: 10px;
   margin-right: 10px;
-  padding: 10px 20px;
   border: 2px solid var(--color-black);
   border-radius: var(--border-radius-md);
   box-shadow: 4px 4px var(--color-black);
