@@ -54,21 +54,23 @@ body {
 
 /* ===== Navigation ===== */
 .nav {
-  width: 90%;
-  border-radius: var(--border-radius-lg);
-  border: var(--border-radius-sm) solid var(--color-black);
-  box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
-  margin: 0 auto;
-  font-weight: bold;
-  font-size: max(1.5dvh, 12px);
   position: fixed;
-  background: var(--color-white);
   top: var(--spacing-sm);
   left: 0;
   right: 0;
+  width: 90%;
+  margin: 0 auto;
+  padding: var(--spacing-sm) 0;
+  font-weight: bold;
+  font-size: max(1.5dvh, 12px);
+  background: var(--color-white);
+  border: var(--border-radius-sm) solid var(--color-black);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
+
   transition: var(--transition-default);
   z-index: 1000;
-  padding: var(--spacing-sm) 0;
+  
 }
 
 .nav .nav-container {
@@ -82,7 +84,7 @@ body {
 }
 
 .nav .nav-logo {
-  padding: 0 var(--spacing-sm);
+  padding: 0 var(--spacing-xs);
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -93,7 +95,7 @@ body {
   margin-right: var(--spacing-sm);
   margin-left: 0;
   border: var(--border-radius-sm) solid var(--color-black);
-  border-radius: var(--border-radius-lg);
+  border-radius: var(--border-radius-md);
   background-color: var(--color-red);
 }
 
@@ -219,7 +221,7 @@ body {
   border: var(--border-radius-sm) solid var(--color-black);
   border-radius: var(--border-radius-md);
   box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
-  background-color: var(--color-yellow);
+  background-color: var(--color-orange);
   color: var(--color-black);
   padding: var(--spacing-md);
 }

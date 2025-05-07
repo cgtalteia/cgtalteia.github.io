@@ -10,6 +10,7 @@
 
     // DOM Elements
     const elements = {
+        heroText: document.querySelector('.hero-text'),
         nav: document.querySelector('.nav'),
         logo: document.querySelector('.nav-logo svg'),
         contentText: document.querySelector('.content-text'),
@@ -23,6 +24,16 @@
         closeBtn: document.querySelector('.closebtn'),
         faqItems: document.querySelectorAll('.faq-item'),
     };
+
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('hero-button') || e.target.classList.contains('hero-text')) {
+            if (elements.heroText.style.scale == '0') {
+                elements.heroText.style.scale = '1';
+            } else {
+                elements.heroText.style.scale = '0';
+            }
+        }
+    });
 
     // Initialize everything when DOM is loaded
     document.addEventListener('DOMContentLoaded', function() {
