@@ -15,17 +15,17 @@
   --color-gradient-radial: radial-gradient(at right, #f0943e8a, #ff0000cb);
 
   /* Spacing */
-  --spacing-xs: max(0.5dvh, 4px);
-  --spacing-sm: max(1dvh, 8px);
-  --spacing-md: max(1.5dvh, 12px);
-  --spacing-lg: max(2dvh, 16px);
-  --spacing-xl: max(3dvh, 24px);
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
 
   /* Border radius */
-  --border-radius-sm: max(0.3dvh, 2px);
-  --border-radius-md: max(0.6dvh, 4px);
-  --border-radius-lg: max(1dvh, 8px);
-  --border-radius-xl: max(1.5dvh, 12px);
+  --border-radius-sm: 2px;
+  --border-radius-md: 4px;
+  --border-radius-lg: 8px;
+  --border-radius-xl: 12px;
 
   /* Transitions */
   --transition-fast: all 0.1s ease;
@@ -37,6 +37,11 @@
   --font-family-serif: 'Playfair Display', serif;
   --font-family-mono: 'Ubuntu Mono', monospace;
   --font-family-varuna: 'VARUNA', sans-serif;
+
+  /* Font size */
+  --font-size-md: 1.5em;
+  --font-size-lg: 2em;
+  --font-size-xl: 3.5em;
 }
 
 /* Base Styles */
@@ -62,7 +67,7 @@ body {
   margin: 0 auto;
   padding: var(--spacing-sm) 0;
   font-weight: bold;
-  font-size: max(1.5dvh, 12px);
+  font-size: var(--font-size-md);
   background: var(--color-white);
   border: var(--border-radius-sm) solid var(--color-black);
   border-radius: var(--border-radius-lg);
@@ -237,7 +242,7 @@ body {
 .hero-title {
   font-family: var(--font-family-varuna);
   font-weight: bold;
-  font-size: min(max(8vh, 3em), 12vw);
+  font-size: var(--font-size-xl);
   color: var(--color-white);
   margin: auto;
   margin-left: 0;
@@ -246,7 +251,7 @@ body {
 
 .hero-subtitle {
   font-family: var(--font-family-varuna);
-  font-size: 1.5rem;
+  font-size: var(--font-size-lg);
   font-weight: bold;
   text-align: justify;
 }
@@ -284,7 +289,7 @@ body {
 
 #faq-hero {
   font-family: var(--font-family-varuna);
-  font-size: 8dvh;
+  font-size: var(--font-size-xl);
   font-weight: bold;
   color: var(--color-black);
   scroll-margin-top: 12vh;
@@ -396,7 +401,7 @@ body {
   max-width: 75%;
   padding: 10px 15px;
   border-radius: var(--border-radius-md);
-  font-size: 16px;
+  font-size: var(--font-size-md);
   font-weight: bold;
   line-height: 1.4;
   z-index: 1000;
@@ -435,7 +440,7 @@ body {
   padding: 10px;
   border: 2px solid var(--color-black);
   border-radius: var(--border-radius-md);
-  font-size: 16px;
+  font-size: var(--font-size-md);
   font-weight: bold;
 }
 
