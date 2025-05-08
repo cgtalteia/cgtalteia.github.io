@@ -1,114 +1,108 @@
-# CGT Alteia Website
+# Site Web CGT Alteia
 
-A modern, responsive website template for labor unions and workers' organizations. This project provides a foundation for creating professional, accessible websites that help labor organizations connect with their members and the public.
+Un modèle de site web moderne et responsive pour les syndicats et organisations de travailleurs. Ce projet fournit une base pour créer des sites web professionnels et accessibles qui aident les organisations syndicales à se connecter avec leurs membres et le public.
 
-## 🚧 Work in Progress
+## 🚧 En cours de développement
 
-This project is currently under development. We're working to make it production-ready and open-source for labor organizations worldwide.
+Ce projet est actuellement en développement. Nous travaillons à le rendre prêt pour la production et open-source pour les organisations syndicales du monde entier.
 
-## ✨ Features
+## ✨ Fonctionnalités
 
-- **Modern Design**: Clean, professional interface with a focus on accessibility
-- **Responsive Layout**: Fully responsive design that works on all devices
-- **Interactive Elements**:
-  - FAQ section with accordion functionality
-  - Interactive contact form
-  - AI-powered chat assistant for common questions
-  - Google Maps integration
-  - PDF form generation for membership applications
-- **Accessibility**: Built with WCAG guidelines in mind
-- **Multilingual Support**: Ready for internationalization
-- **Performance Optimized**: Fast loading times and smooth interactions
+- **Design Moderne** : Interface propre et professionnelle avec un accent sur l'accessibilité
+- **Mise en page Responsive** : Design entièrement responsive qui fonctionne sur tous les appareils
+- **Éléments Interactifs** :
+  - Section FAQ avec fonctionnalité d'accordéon
+  - Formulaire de contact interactif
+  - Assistant de chat alimenté par l'IA pour les questions courantes
+  - Intégration Google Maps
+  - Génération de formulaires PDF pour les demandes d'adhésion
+- **Accessibilité** : Construit selon les directives WCAG
+- **Support Multilingue** : Prêt pour l'internationalisation
+- **Performance Optimisée** : Temps de chargement rapides et interactions fluides
 
-## 🛠️ Technical Stack
+## 🛠️ Stack Technique
 
-- **Frontend**:
+- **Frontend** :
   - HTML5
-  - CSS3 (with CSS variables for theming)
-  - Vanilla JavaScript
-  - Google Maps API
-  - PDF-Lib for PDF generation
-  - Mistral AI for chat functionality
+  - CSS3 (avec variables CSS pour le thème)
+  - JavaScript Vanilla
+  - API Google Maps
+  - PDF-Lib pour la génération de PDF
+  - Mistral AI pour la fonctionnalité de chat
 
-## 📁 Project Structure
+## 📁 Structure du Projet
 
 ```
 project/
-├── index.html          # Main entry point
-├── desktop.css         # Desktop styles
-├── mobile.css          # Mobile styles
-├── script.js           # Main JavaScript functionality
-├── mistral.js          # AI chat integration
-├── static/            # Static assets
-│   └── adhesion.pdf   # Membership form template
-└── media/             # Media files
+├── index.html          # Point d'entrée principal
+├── desktop.css         # Styles desktop
+├── mobile.css          # Styles mobile
+├── script.js           # Fonctionnalités JavaScript principales
+├── mistral.js          # Intégration du chat IA
+├── static/            # Assets statiques
+│   └── adhesion.pdf   # Template du formulaire d'adhésion
+└── media/             # Fichiers médias
     ├── logo.png
     ├── favicon.png
     └── poi.svg
 ```
 
-## 🚀 Getting Started
+## 🚀 Pour Commencer
 
-1. Clone the repository:
+1. Clonez le dépôt :
    ```bash
-   git clone [repository-url]
+   git clone [url-du-depot]
    ```
 
-2. Set up your environment:
-   - Get a Google Maps API key
-   - Get a Mistral AI API key
-   - Update the API keys in the respective files
+2. Configurez votre environnement :
+   - Obtenez une clé API Google Maps
+   - Obtenez une clé API Mistral AI
+   - Mettez à jour les clés API dans les fichiers respectifs
 
-3. Start a local server:
+3. Démarrez un serveur local :
    ```bash
    python -m http.server 8000
    ```
 
-4. Open `http://localhost:8000` in your browser
+4. Ouvrez `http://localhost:8000` dans votre navigateur
 
 ## 🔧 Configuration
 
-### API Keys
-- Google Maps: Update in `index.html`
-- Mistral AI: Update in `mistral.js`
+### Clés API
+- Google Maps : Mettre à jour dans `index.html`
+- Mistral AI : Mettre à jour dans `mistral.js`
 
-### Customization
-- Colors and themes can be modified in `desktop.css` using CSS variables
-- Content can be updated in `index.html`
-- Form fields can be modified in the adhesion section
+### Personnalisation
+- Les couleurs et thèmes peuvent être modifiés dans `desktop.css` en utilisant les variables CSS
+- Le contenu peut être mis à jour dans `index.html`
+- Les champs du formulaire peuvent être modifiés dans la section adhésion
 
-## 🤝 Contributing
+## 🤝 Contribution
 
-We welcome contributions! Please read our contributing guidelines before submitting pull requests.
+Nous accueillons les contributions ! Veuillez lire nos directives de contribution avant de soumettre des pull requests.
 
-## 📝 License
+## 📝 Licence
 
-This project will be released under an open-source license. Stay tuned for updates.
-
-## 🙏 Acknowledgments
-
-- CGT Alteia for the initial development
-- All contributors who help make this project better
+Ce projet sera publié sous une licence open-source. Restez à l'écoute pour les mises à jour.
 
 ## 📞 Contact
 
-For questions or support, please contact:
-- Email: cgt.alteia@gmail.com
-- Phone: +33 6 46 76 55 54
+Pour toute question ou support, veuillez contacter :
+- Email : cgt.alteia@gmail.com
 
-## 🔜 Roadmap
+## 🔜 Feuille de Route
 
-- [ ] Complete documentation
-- [ ] Add more language support
-- [ ] Create installation wizard
-- [ ] Add more customization options
-- [ ] Implement analytics
-- [ ] Add content management system
-- [ ] Create deployment guides
-- [ ] Add automated testing
-- [ ] Create contribution guidelines
-- [ ] Set up CI/CD pipeline
+- [ ] Compléter la documentation
+- [ ] Ajouter plus de support linguistique
+- [ ] Créer un assistant d'installation
+- [ ] Ajouter plus d'options de personnalisation
+- [ ] Implémenter des analyses
+- [ ] Ajouter un système de gestion de contenu
+- [ ] Créer des guides de déploiement
+- [ ] Ajouter des tests automatisés
+- [ ] Créer des directives de contribution
+- [ ] Mettre en place un pipeline CI/CD
 
 ---
 
-Made with ❤️ for labor organizations worldwide
+Fait avec ❤️ pour les organisations syndicales du monde entier
