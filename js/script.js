@@ -13,16 +13,6 @@
         faqItems: document.querySelectorAll('.faq-item')
     };
 
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('hero-button') || e.target.classList.contains('hero-text')) {
-            if (window.getComputedStyle(elements.heroText).scale === '0') {
-                elements.heroText.style.scale = '1';
-            } else {
-                elements.heroText.style.scale = '0';
-            }
-        }
-    });
-
     // Initialize everything when DOM is loaded
     document.addEventListener('DOMContentLoaded', function() {
         // Initialize navigation with navModule
@@ -31,6 +21,7 @@
         // Merge the nav elements with our local elements
         elements = { ...elements, ...navElements };
         
+        initHeroText();
         initFAQ();
         initCopyButton();
         updateCurrentYear();
@@ -88,6 +79,36 @@
         });
     }
 
+    function initHeroText() {
+        function showHeroTextWithTransition(heroText) {
+            heroText.style.display = 'block';
+
+            void heroText.offsetWidth;
+            heroText.style.opacity = '1';
+            heroText.style.transform = 'translateY(0%)';
+        }
+        function hideHeroTextWithTransition(heroText) {
+            heroText.style.opacity = '0';
+            heroText.style.transform = 'translateY(10%)';
+
+            heroText.addEventListener('transitionend', function handler() {
+                if (window.getComputedStyle(heroText).opacity === '0') {
+                    heroText.style.display = 'none';
+                }
+                heroText.removeEventListener('transitionend', handler);
+            });
+        }
+
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('hero-button') || e.target.classList.contains('hero-text')) {
+                if (window.getComputedStyle(elements.heroText).display === 'none') {
+                    showHeroTextWithTransition(elements.heroText);
+                } else {
+                    hideHeroTextWithTransition(elements.heroText);
+                }
+            }
+        });
+    }
     /**
      * FAQ accordion functionality
      */

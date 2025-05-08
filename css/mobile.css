@@ -51,13 +51,13 @@
         border: var(--border-radius-sm) solid var(--color-black);
         border-radius: var(--border-radius-md);
         box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
-        background: var(--color-red);
+        background: var(--color-poppy);
         transition: var(--transition-default);
     }
     #nav-adhesion-button:hover {
         cursor: pointer;
         box-shadow: none;
-        background: var(--color-pumpkin);
+        background: var(--color-red);
         transition: var(--transition-default);
     }
     .hamburger {
@@ -70,19 +70,19 @@
         border: var(--border-radius-sm) solid var(--color-black);
         border-radius: var(--border-radius-md);
         box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
-        background: var(--color-linen);
+        background: var(--color-poppy);
         transition: var(--transition-default);
     }
     .hamburger:hover {
         cursor: pointer;
         box-shadow: none;
-        background: var(--color-melon);
+        background: var(--color-red);
         transition: var(--transition-default);
     }
     .hamburger .line {
         width: 16px;
         height: 2px;
-        background-color: var(--color-black);
+        background-color: var(--color-linen);
         margin: 4px;
     }
     .overlay {
@@ -118,7 +118,7 @@
     }
     .overlay a:hover {
         cursor: pointer;
-        background-color: var(--color-melon);
+        background-color: var(--color-dun);
         transition: var(--transition-default);
     }
     .hero {
@@ -152,19 +152,22 @@
         border-radius: var(--border-radius-md);
         border: var(--border-radius-sm) solid var(--color-black);
         box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
-        background-color: var(--color-linen);
+        background-color: var(--color-dun);
         transition: var(--transition-default);
     }
     .hero-button:hover {
         cursor: pointer;
         box-shadow: none;
-        background-color: var(--color-melon);
+        background-color: var(--color-linen);
         transition: var(--transition-default);
     }
     .hero-text {
-        scale: 0;
+        display: none;
+        opacity: 0;
         position: absolute;
         padding: var(--spacing-md);
+        margin: 0 auto;
+        transform: translateY(10%);
         border: var(--border-radius-sm) solid var(--color-black);
         box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
         transition: var(--transition-fast);
