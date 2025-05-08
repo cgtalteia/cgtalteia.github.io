@@ -306,7 +306,7 @@ section {
   box-shadow: 4px 4px var(--color-black);
   background-color: var(--color-linen);
   max-width: var(--max-width);
-  max-height: 70dvh;
+  max-height: 70lvh;
   transition: var(--transition-default);
 }
 
@@ -322,7 +322,7 @@ section {
   flex: 1;
   justify-content: flex-end;
   overflow-y: scroll;
-  height: 70dvh;
+  height: 70lvh;
 }
 
 .message-list::-webkit-scrollbar {
