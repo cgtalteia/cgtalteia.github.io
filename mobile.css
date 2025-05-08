@@ -9,9 +9,7 @@
     .nav {
         width: 100%;
         top: 0;
-        
     }
-
     .nav .nav-container {
         width: 100%;
         border: none;
@@ -19,26 +17,20 @@
         border-bottom: var(--border-radius-md) solid var(--color-black);
         border-radius: 0;
         box-shadow: none;
-        
     }
-
     .nav-logo {
         height: auto;
     }
-
     .nav-logo img {
         width: 40px;
         height: 40px;
     }
-
     .nav .nav-logo svg path {
         fill: var(--color-black);
     }
-
     .nav-menu {
         display: none !important;
     }
-
     #nav-adhesion-button {
         display: flex;
         align-items: center;
@@ -56,13 +48,12 @@
         background: var(--color-red);
         transition: var(--transition-default);
     }
-
     #nav-adhesion-button:hover {
+        cursor: pointer;
         box-shadow: none;
         background: var(--color-pumpkin);
         transition: var(--transition-default);
     }
-    
     .hamburger {
         display: flex;
         align-items: center;
@@ -76,20 +67,18 @@
         background: var(--color-linen);
         transition: var(--transition-default);
     }
-
     .hamburger:hover {
+        cursor: pointer;
         box-shadow: none;
         background: var(--color-melon);
         transition: var(--transition-default);
     }
-
     .hamburger .line {
         width: 16px;
         height: 2px;
         background-color: var(--color-black);
         margin: 4px;
     }
-
     .overlay {
         align-items: center;
         justify-content: center;
@@ -105,7 +94,6 @@
         overflow: hidden;
         z-index: 1;
     }
-
     .overlay a {
         display: block;
         font-family: var(--font-family-varuna);
@@ -119,17 +107,16 @@
         margin: var(--spacing-md) auto;
         transition: var(--transition-default);
     }
-
     .overlay a:hover {
+        cursor: pointer;
         background-color: var(--color-melon);
         transition: var(--transition-default);
     }
-
-
     .hero {
-        margin: 0 auto;
+        position: relative;
+        box-shadow: none;
+        box-sizing:content-box;
     }
-
     .hero-content {
         display: flex;
         flex-direction: column;
@@ -137,18 +124,15 @@
         justify-content:center;
         gap: var(--spacing-md);
     }
-
     .hero-title {
         text-align: center;
-        margin: auto;
+        margin: 0 auto;
         height: auto;
     }
-
     .hero-subtitle {
         font-size: var(--font-size-md);
         text-align: center;
     }
-
     .hero-button {
         width: fit-content;
         padding: var(--spacing-md);
@@ -161,58 +145,43 @@
         background-color: var(--color-linen);
         transition: var(--transition-default);
     }
-
     .hero-button:hover {
+        cursor: pointer;
         box-shadow: none;
         background-color: var(--color-melon);
         transition: var(--transition-default);
     }
-
     .hero-text {
         scale: 0;
         position: absolute;
         padding: var(--spacing-md);
         border: var(--border-radius-sm) solid var(--color-black);
         box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
-        transition: var(--transition-default);
+        transition: var(--transition-fast);
         z-index: 1;
     }
-
-    #faq-hero {
-        text-align: center;
-    }
-
-    .hero-text {
-        text-align: left;
-    }
-
     .faq-container {
         width: 100%;
-        margin: auto;
+        margin: 0 auto;
     }
-
     .faq-item {
         width: 90%;
         background-color: var(--color-linen);
     }
-
     .chat-container {
         width: 90%;
         background-color: var(--color-linen);
     }
-
     .input-container {
         width: 100%;
         padding: 0 10px;
         box-sizing: border-box;
     }
-
     .input-container input[type="text"] {
         width: 70%;
         margin: 0;
         padding: 0 10px;
     }
-
     .input-container button {
         width: 44px;
         height: 44px;
@@ -221,32 +190,26 @@
         justify-content: center;
         margin-right: 0;
     }
-
     .input-container button i {
         margin: 0;
     }
-
     .content-title {
         font-size: var(--font-size-lg);
     }
-
-    .faq-title {
+    .faq-item-title {
         padding-right: 10vw;
         font-size: var(--font-size-md);
         text-overflow: ellipsis;
     }
-
-    .faq-content {
+    .faq-item-content {
         font-size: var(--font-size-sm);
     }
-
     .adhesion-content {
         width: 82%;
         grid-template-columns: none;
         grid-template-rows: repeat(2, auto);
         justify-items: center;
     }
-
     .contact-container {
         flex-direction: column;
     }

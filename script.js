@@ -47,7 +47,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         initNavigation();
         initFAQ();
-        updateCurrentYear();
+        updateCurrentYear();    // Get the navigation and hero elements
     });
 
     /**
@@ -252,7 +252,8 @@
 
         if (hrefElement) {
             const targetElement = hrefElement.querySelector('.hero-title');
-            targetElement.scrollIntoView({
+            const parentContainer = targetElement.parentElement;
+            parentContainer.scrollIntoView({
                 behavior: 'smooth',
             });
         }
@@ -279,7 +280,7 @@
                 elements.faqItems.forEach(otherItem => {
                     if (otherItem !== item) {
                         otherItem.classList.remove('active');
-                        const content = otherItem.querySelector('.faq-content');
+                        const content = otherItem.querySelector('.faq-item-content');
                         content.style.maxHeight = null;
                         otherItem.style.height = 'auto';
                     }
@@ -287,7 +288,7 @@
                 
                 // Toggle current item
                 item.classList.toggle('active');
-                const content = item.querySelector('.faq-content');
+                const content = item.querySelector('.faq-item-content');
                 
                 if (content.style.maxHeight) {
                     content.style.maxHeight = null;
