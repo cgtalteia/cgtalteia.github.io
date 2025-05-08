@@ -27,12 +27,6 @@
         adhesionSection: document.querySelector('.adhesion-container'),
     };
 
-    elements.navAdhesionButton.addEventListener('click', function() {
-        elements.adhesionSection.scrollIntoView({
-            behavior: 'smooth',
-        });
-    });
-
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('hero-button') || e.target.classList.contains('hero-text')) {
             if (elements.heroText.style.scale == '0') {
@@ -64,6 +58,16 @@
      * Navigation Functionality
      */
     function initNavigation() {
+        var previousScrollPosition = window.scrollY;
+        window.onscroll = function() {
+            var currentScrollPosition = window.scrollY;
+            if (previousScrollPosition > currentScrollPosition) {
+                elements.nav.style.top = '0';
+            } else {
+                elements.nav.style.top = '-100%';
+            }
+            previousScrollPosition = currentScrollPosition;
+        };
         // Set logo path colors
         elements.logo.querySelectorAll('path').forEach(path => {
             path.setAttribute('fill', 'white');
