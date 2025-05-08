@@ -85,9 +85,12 @@
         margin: 4px;
     }
     .overlay {
+        display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         width: 90%;
+        transform: translateY(-5%);
         height: fit-content;
         padding: 0 var(--spacing-md);
         margin: var(--spacing-md) auto;

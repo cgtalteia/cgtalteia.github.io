@@ -8,15 +8,19 @@
     'use strict';
 
     // DOM Elements
-    const elements = {
-        navAdhesionButton: document.querySelector('#nav-adhesion-button'),
+    let elements = {
         adhesionForm: document.getElementById('adhesion-form'),
         currentYear: document.getElementById('current-year')
     };
 
     // Initialize everything when DOM is loaded
     document.addEventListener('DOMContentLoaded', function() {
-        initNavigation();
+        // Initialize navigation with navModule
+        const navElements = navModule.init({ isHomePage: false });
+        
+        // Merge the nav elements with our local elements
+        elements = { ...elements, ...navElements };
+        
         submitAdhesionForm();
         updateCurrentYear();
     });
@@ -28,44 +32,6 @@
         if (elements.currentYear) {
             elements.currentYear.textContent = new Date().getFullYear();
         }
-    }
-
-    /**
-     * Navigation Functionality
-     */
-    function initNavigation() {
-        // Hamburger menu handling
-        const hamburger = document.querySelector('.hamburger');
-        const overlay = document.querySelector('.overlay');
-        const navLogo = document.querySelector('.nav-logo');
-
-        navLogo.addEventListener('click', function() {
-            window.location.href = 'index.html';
-        });
-        
-        if (hamburger && overlay) {
-            hamburger.addEventListener('click', function() {
-                if (overlay.style.display == 'none') {
-                    overlay.style.display = 'block';
-                } else {
-                    overlay.style.display = 'none';
-                }
-            });
-        }
-
-        // Close overlay when clicking on a link
-        const navLinks = document.querySelectorAll('.nav a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                if (overlay) {
-                    overlay.style.display = 'none';
-                }
-                if (!link.getAttribute('href').includes('#') && !link.getAttribute('href').includes('.html')) {
-                    // open site in new tab
-                    window.open(link.getAttribute('href'), '_blank');
-                }
-            });
-        });
     }
     
     /**

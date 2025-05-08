@@ -3,23 +3,14 @@
  * Main script for handling UI interactions and initializations
  */
 
-
 // Immediately-invoked Function Expression for encapsulation
 (function() {
     'use strict';
 
     // DOM Elements
-    const elements = {
+    let elements = {
         heroText: document.querySelector('.hero-text'),
-        nav: document.querySelector('.nav'),
-        navLogo: document.querySelector('.nav-logo'),
-        navLinks: document.querySelectorAll('.nav a'),
-        quiSommesNousLink: document.querySelectorAll('.qui-sommes-nous-link'),
-        hamburger: document.querySelector('.hamburger'),
-        overlay: document.querySelector('.overlay'),
-        closeBtn: document.querySelector('.closebtn'),
-        faqItems: document.querySelectorAll('.faq-item'),
-        navAdhesionButton: document.querySelector('#nav-adhesion-button'),
+        faqItems: document.querySelectorAll('.faq-item')
     };
 
     document.addEventListener('click', function(e) {
@@ -34,9 +25,15 @@
 
     // Initialize everything when DOM is loaded
     document.addEventListener('DOMContentLoaded', function() {
-        initNavigation();
+        // Initialize navigation with navModule
+        const navElements = navModule.init({ isHomePage: true });
+        
+        // Merge the nav elements with our local elements
+        elements = { ...elements, ...navElements };
+        
         initFAQ();
-        updateCurrentYear();    // Get the navigation and hero elements
+        initCopyButton();
+        updateCurrentYear();
     });
 
     /**
@@ -47,88 +44,6 @@
         if (yearElement) {
             yearElement.textContent = new Date().getFullYear();
         }
-    }
-
-    /**
-     * Navigation Functionality
-     */
-    function initNavigation() {
-
-        initNavLogo();
-
-        // Navigation links smooth scrolling
-        elements.navLinks.forEach(anchor => {
-            if (anchor.getAttribute('href').startsWith('#')) {
-                anchor.addEventListener('click', handleSmoothScroll);
-            }
-        });
-
-        // Qui sommes-nous link special handling
-        elements.quiSommesNousLink.forEach(link => {
-            link.addEventListener('click', scrollToTop);
-        });
-
-
-        // Handle Se syndiquer button
-        if (elements.navAdhesionButton) {
-            elements.navAdhesionButton.addEventListener('click', function() {
-                window.location.href = 'adhesion.html';
-            });
-        }
-
-        handleOverlay();
-
-        initCopyButton();
-    }
-
-
-    function initNavLogo() {
-        // Navigation logo scrolling
-        elements.navLogo.addEventListener('click', scrollToTop);
-        // Navigation logo opacity handling
-        var previousScrollPosition = window.scrollY;
-        window.onscroll = function() {
-            var currentScrollPosition = window.scrollY;
-            if (Math.abs(previousScrollPosition - currentScrollPosition) > 20) {
-                if (previousScrollPosition > currentScrollPosition) {
-                    showNavWithTransition(elements.nav);
-                } else {
-                    hideNavWithTransition(elements.nav);
-                }
-            }
-            previousScrollPosition = currentScrollPosition;
-        };
-    }
-
-    function hideNavWithTransition(nav) {
-        nav.style.opacity = '0';
-        // Listen for the end of the transition
-        nav.addEventListener('transitionend', function handler() {
-            nav.style.display = 'none';
-            nav.removeEventListener('transitionend', handler);
-        });
-    }
-
-    function showNavWithTransition(nav) {
-        nav.style.display = 'block';
-        // Force a reflow to ensure the transition happens
-        void nav.offsetWidth;
-        nav.style.opacity = '1';
-    }
-
-    function handleOverlay() {
-        // Hamburger menu handling
-        elements.hamburger.addEventListener('click', function() {
-            if (elements.overlay.style.display == 'none') {
-                elements.overlay.style.display = 'block';
-            } else {
-                elements.overlay.style.display = 'none';
-            }
-        });
-        // CLose overlay when scrolling
-        window.addEventListener('scroll', function() {
-            elements.overlay.style.display = 'none';
-        });
     }
     
     /**
@@ -170,33 +85,6 @@
             } catch (err) {
                 console.error('Erreur lors de la copie :', err);
             }
-        });
-    }
-    
-    /**
-     * Handle smooth scrolling for navigation links
-     */
-    function handleSmoothScroll(e) {
-        e.preventDefault();
-        const hrefElement = document.querySelector(this.getAttribute('href'));
-
-        if (hrefElement) {
-            const targetElement = hrefElement.querySelector('.hero-title');
-            const parentContainer = targetElement.parentElement;
-            parentContainer.scrollIntoView({
-                behavior: 'smooth',
-            });
-        }
-    }
-
-    /**
-     * Scroll to top of page
-     */
-    function scrollToTop(e) {
-        e.preventDefault();
-        document.querySelector('body').scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
         });
     }
 
