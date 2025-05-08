@@ -65,26 +65,23 @@ body {
   right: 0;
   width: 90%;
   margin: 0 auto;
-  padding: var(--spacing-sm) 0;
-  font-weight: bold;
-  font-size: var(--font-size-md);
-  background: var(--color-white);
-  border: var(--border-radius-sm) solid var(--color-black);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
-
-  transition: var(--transition-default);
   z-index: 1000;
-  
+  box-sizing: border-box;
 }
 
 .nav .nav-container {
-  width: 95%;
-  margin: 0 auto;
-  padding: var(--spacing-sm) 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: var(--spacing-sm) 0;
+  margin: 0 auto;
+  font-weight: bold;
+  font-size: var(--font-size-md);
+  border: var(--border-radius-sm) solid var(--color-black);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
+  background: var(--color-white);
+  box-sizing: border-box;
   transition: var(--transition-default);
 }
 
@@ -247,29 +244,6 @@ body {
   font-size: var(--font-size-lg);
   font-weight: bold;
   text-align: justify;
-}
-
-.prochain-evenement{
-  align-self:center;
-  height: 95%;
-  width: 95%;
-  display: flex;
-  border: var(--border-radius-sm) solid var(--color-black);
-  border-radius: var(--border-radius-md);
-  box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
-  background-color: var(--color-yellow);
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-}
-
-.prochain-evenement img{
-  max-width: 100%;
-  max-height: 60dvh;
-  object-fit:scale-down;
-  border-radius: var(--border-radius-md);
-  border: var(--border-radius-md) solid var(--color-white);
 }
 
 /* ===== FAQ Section ===== */

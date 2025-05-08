@@ -15,12 +15,12 @@
         logo: document.querySelector('.nav-logo svg'),
         contentText: document.querySelector('.content-text'),
         navLogo: document.querySelector('.nav-logo'),
-        navLinks: document.querySelectorAll('.nav-container a'),
+        navLinks: document.querySelectorAll('.nav a'),
         quiSommesNousLink: document.querySelectorAll('.qui-sommes-nous-link'),
         dropdowns: document.querySelectorAll('.dropdown'),
         dropdownLinks: document.querySelectorAll('.dropdown-content a'),
         hamburger: document.querySelector('.hamburger'),
-        openBtn: document.querySelector('.openbtn'),
+        overlay: document.querySelector('.overlay'),
         closeBtn: document.querySelector('.closebtn'),
         faqItems: document.querySelectorAll('.faq-item'),
     };
@@ -75,16 +75,23 @@
         initDropdowns();
 
         // Hamburger menu handling
-        elements.openBtn.addEventListener('click', function() {
-            const overlay = elements.hamburger.querySelector('.overlay');
-            overlay.style.height = '100%';
+        elements.hamburger.addEventListener('click', function() {
+            if (elements.overlay.style.display == 'none') {
+                elements.overlay.style.display = 'block';
+            } else {
+                elements.overlay.style.display = 'none';
+            }
         });
 
-        document.addEventListener('click', function(e) {
-            if (!elements.openBtn.contains(e.target)) {
-                const overlay = elements.hamburger.querySelector('.overlay');
-                overlay.style.height = '0%';
-            }
+        // Close overlay when clicking on a link
+        elements.navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                elements.overlay.style.display = 'none';
+                if (!link.getAttribute('href').includes('#')) {
+                    // open site in new tab
+                    window.open(link.getAttribute('href'), '_blank');
+                }
+            });
         });
 
         initCopyButton();
@@ -236,7 +243,7 @@
         const hrefElement = document.querySelector(this.getAttribute('href'));
 
         if (hrefElement) {
-            const targetElement = hrefElement.querySelector('.content-title');
+            const targetElement = hrefElement.querySelector('.hero-title');
             targetElement.scrollIntoView({
                 behavior: 'smooth',
             });

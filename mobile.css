@@ -8,22 +8,17 @@
 @media (max-width: 980px) {
     .nav {
         width: 100%;
-        border-radius: 0;
         top: 0;
-        border: none;
-        border-bottom: var(--border-radius-md) solid var(--color-black);
-        background: var(--color-white);
-        padding: var(--spacing-xs);
-        box-shadow: none;
-        height: auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        box-sizing: border-box;
+        
     }
 
-    .nav-container {
+    .nav .nav-container {
         width: 100%;
+        border: none;
+        padding: var(--spacing-sm);
+        border-bottom: var(--border-radius-md) solid var(--color-black);
+        border-radius: 0;
+        box-shadow: none;
         
     }
 
@@ -48,18 +43,19 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-right: var(--border-radius-md);
-        background-color: var(--color-white);
         width: 40px;
         height: 40px;
+        margin-right: var(--border-radius-md);
         border: var(--border-radius-sm) solid var(--color-black);
         border-radius: var(--border-radius-md);
         box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
+        background: var(--color-white);
+        transition: var(--transition-default);
     }
 
     .hamburger:hover {
-        background-color: var(--color-red);
         box-shadow: none;
+        background: var(--color-red);
         transition: var(--transition-default);
     }
 
@@ -70,39 +66,40 @@
         margin: 4px;
     }
 
-    .hamburger .overlay {
-        height: 0;
-        width: 100%;
-        position: fixed;
-        left: 0;
-        top: 0;
+    .overlay {
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        height: fit-content;
+        padding: 0 var(--spacing-md);
+        margin: var(--spacing-md) auto;
+        border: var(--border-radius-sm) solid var(--color-black);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
+        background: var(--color-white);
+        transition: var(--transition-default);
+        overflow: hidden;
         z-index: 1;
-        border-radius: var(--border-radius-sm);
+    }
+
+    .overlay a {
+        display: block;
+        font-family: var(--font-family-varuna);
+        font-size: var(--font-size-md);
+        text-decoration: none;
+        color: var(--color-black);
+        border: var(--border-radius-sm) solid var(--color-black);
+        border-radius: var(--border-radius-md);
         background-color: var(--color-white);
-        overflow-x: hidden;
-        /* Disable horizontal scroll */
+        padding: var(--spacing-md);
+        margin: var(--spacing-md) auto;
         transition: var(--transition-default);
     }
 
-    .overlay .content {
-        position: relative;
-        top: 25%;
-        width: 100%;
-        text-align: center;
-    }
-
-    a {
-        display: block;
-    }
-
-    .overlay .dropdown-content {
-        align-items: center;
-        position: relative;
-        top: 0;
-    }
-
-    .dropdown-content a {
-        text-align: center;
+    .overlay a:hover {
+        background-color: var(--color-red);
+        color: var(--color-white);
+        transition: var(--transition-default);
     }
 
 
