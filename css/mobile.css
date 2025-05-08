@@ -43,7 +43,7 @@
         margin-left: auto;
         margin-right: var(--border-radius-xl);
         width: fit-content;
-        height: 44px;
+        height: 40px;
         font-family: var(--font-family-varuna);
         font-size: var(--font-size-sm);
         color: var(--color-linen);

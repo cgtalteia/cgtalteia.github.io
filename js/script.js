@@ -12,19 +12,14 @@
     const elements = {
         heroText: document.querySelector('.hero-text'),
         nav: document.querySelector('.nav'),
-        logo: document.querySelector('.nav-logo svg'),
-        contentText: document.querySelector('.content-text'),
         navLogo: document.querySelector('.nav-logo'),
         navLinks: document.querySelectorAll('.nav a'),
         quiSommesNousLink: document.querySelectorAll('.qui-sommes-nous-link'),
-        dropdowns: document.querySelectorAll('.dropdown'),
-        dropdownLinks: document.querySelectorAll('.dropdown-content a'),
         hamburger: document.querySelector('.hamburger'),
         overlay: document.querySelector('.overlay'),
         closeBtn: document.querySelector('.closebtn'),
         faqItems: document.querySelectorAll('.faq-item'),
         navAdhesionButton: document.querySelector('#nav-adhesion-button'),
-        adhesionSection: document.querySelector('.adhesion-container'),
     };
 
     document.addEventListener('click', function(e) {
@@ -58,6 +53,45 @@
      * Navigation Functionality
      */
     function initNavigation() {
+
+        initNavLogo();
+
+        // Navigation links smooth scrolling
+        elements.navLinks.forEach(anchor => {
+            if (anchor.getAttribute('href').startsWith('#')) {
+                anchor.addEventListener('click', handleSmoothScroll);
+            }
+        });
+
+        // Qui sommes-nous link special handling
+        elements.quiSommesNousLink.forEach(link => {
+            link.addEventListener('click', scrollToTop);
+        });
+
+        // Hamburger menu handling
+        elements.hamburger.addEventListener('click', function() {
+            if (elements.overlay.style.display == 'none') {
+                elements.overlay.style.display = 'block';
+            } else {
+                elements.overlay.style.display = 'none';
+            }
+        });
+
+        // Handle Se syndiquer button
+        if (elements.navAdhesionButton) {
+            elements.navAdhesionButton.addEventListener('click', function() {
+                window.location.href = 'adhesion.html';
+            });
+        }
+
+        initCopyButton();
+    }
+
+
+    function initNavLogo() {
+        // Navigation logo scrolling
+        elements.navLogo.addEventListener('click', scrollToTop);
+        // Navigation logo opacity handling
         var previousScrollPosition = window.scrollY;
         window.onscroll = function() {
             var currentScrollPosition = window.scrollY;
@@ -70,47 +104,6 @@
             }
             previousScrollPosition = currentScrollPosition;
         };
-        // Set logo path colors
-        elements.logo.querySelectorAll('path').forEach(path => {
-            path.setAttribute('fill', 'white');
-        });
-
-        // Navigation links smooth scrolling
-        elements.navLinks.forEach(anchor => {
-            anchor.addEventListener('click', handleSmoothScroll);
-        });
-
-        // Qui sommes-nous link special handling
-        elements.quiSommesNousLink.forEach(link => {
-            link.addEventListener('click', scrollToTop);
-        });
-
-        // Dropdown menu handling
-        initDropdowns();
-
-        // Hamburger menu handling
-        elements.hamburger.addEventListener('click', function() {
-            if (elements.overlay.style.display == 'none') {
-                elements.overlay.style.display = 'block';
-            } else {
-                elements.overlay.style.display = 'none';
-            }
-        });
-
-        // Close overlay when clicking on a link
-        elements.navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                elements.overlay.style.display = 'none';
-                if (!link.getAttribute('href').includes('#')) {
-                    // open site in new tab
-                    window.open(link.getAttribute('href'), '_blank');
-                }
-            });
-        });
-
-        initCopyButton();
-
-        submitAdhesionForm();
     }
 
     /**
@@ -156,100 +149,6 @@
     }
     
     /**
-     * Initialize dropdown functionality
-     */
-    function initDropdowns() {
-        // Handle dropdown links
-        elements.dropdownLinks.forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.open(this.getAttribute('href'), '_blank');
-            });
-        });
-    }
-
-
-    function submitAdhesionForm() {
-        document.getElementById("adhesion-form").addEventListener("submit", async function (e) {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-        
-            const existingPdfBytes = await fetch("http://localhost:8000/static/adhesion.pdf").then(res => res.arrayBuffer());
-        
-            const { PDFDocument } = PDFLib;
-            const pdfDoc = await PDFDocument.load(existingPdfBytes);
-            
-            const page = pdfDoc.getPages()[0];
-            
-            const { width, height } = page.getSize();
-            
-            if (formData.get('civility') == 'mr') {
-                page.drawText('X', {
-                    x: 160,
-                    y: height - 170,
-                    size: 12,
-                    color: PDFLib.rgb(0, 0, 0),
-                });
-            } else {
-                page.drawText('X', {
-                    x: 225,
-                    y: height - 170,
-                    size: 12,
-                    color: PDFLib.rgb(0, 0, 0),
-                });
-            }
-            page.drawText(formData.get('name'), {
-                x: 165,
-                y: height - 185,
-                size: 12,
-                color: PDFLib.rgb(0, 0, 0),
-            });
-            page.drawText(formData.get('firstname'), {
-                x: 465,
-                y: height - 185,
-                size: 12,
-                color: PDFLib.rgb(0, 0, 0),
-            });
-            var birthdate = formData.get('birthdate').split('-');
-            page.drawText(birthdate[2] + '   ' + birthdate[1] + '   ' + birthdate[0], {
-                x: 160,
-                y: height - 213,
-                size: 12,
-                color: PDFLib.rgb(0, 0, 0),
-            });
-            page.drawText(formData.get('nationality'), {
-                x: 465,
-                y: height - 210,
-                size: 12,
-                color: PDFLib.rgb(0, 0, 0),
-            });
-            
-            // page.getTextField('civility').setText(formData.get('civility'));
-            // page.getTextField('name').setText(formData.get('name'));
-            // page.getTextField('firstname').setText(formData.get('firstname'));
-            // page.getTextField('birthdate').setText(formData.get('birthdate'));
-            // page.getTextField('nationality').setText(formData.get('nationality'));
-            // page.getTextField('address').setText(formData.get('address'));
-            // page.getTextField('city').setText(formData.get('city'));
-            // page.getTextField('zipcode').setText(formData.get('zipcode'));
-            // page.getTextField('phone').setText(formData.get('phone'));
-            // page.getTextField('email').setText(formData.get('email'));
-            // page.getTextField('adhesion-date').setText(formData.get('adhesion-date'));
-            // page.getTextField('category').setText(formData.get('category'));
-            // page.getTextField('company-address').setText(formData.get('company-address'));
-            // page.getTextField('mailing-list').setText(formData.get('mailing-list'));
-        
-            const pdfBytes = await pdfDoc.save();
-        
-            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = "formulaire_adhesion.pdf";
-            link.click();
-        });
-    }
-
-    /**
      * Handle smooth scrolling for navigation links
      */
     function handleSmoothScroll(e) {
@@ -272,6 +171,7 @@
         e.preventDefault();
         document.querySelector('body').scrollIntoView({
             behavior: 'smooth',
+            block: 'start',
         });
     }
 
@@ -359,62 +259,54 @@
             ]
         };
 
-        try {
-            const bounds = new google.maps.LatLngBounds();
-            const mapElement = document.getElementById('google-map');
-            
-            if (!mapElement) {
-                console.error('Map element not found');
-                return;
-            }
+        // Initialize map
+        const map = new google.maps.Map(document.getElementById("google-map"), mapOptions);
 
-            const map = new google.maps.Map(mapElement, mapOptions);
-            const infoWindow = new google.maps.InfoWindow({
-                minWidth: 200,
+        // Add markers to map
+        const bounds = new google.maps.LatLngBounds();
+        
+        markers.forEach(markerInfo => {
+            const marker = new google.maps.Marker({
+                position: markerInfo.position,
+                map: map,
+                title: markerInfo.title,
+                icon: {
+                    url: 'media/poi.svg',
+                    scaledSize: new google.maps.Size(30, 30),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(15, 30),
+                }
+            });
+
+            // Info window content
+            const contentString = `
+                <div class="infowindow">
+                    <h3>${markerInfo.title}</h3>
+                    <p><strong>Adresse:</strong> ${markerInfo.address}</p>
+                    <p><strong>Téléphone:</strong> ${markerInfo.phone}</p>
+                </div>
+            `;
+
+            // Create info window
+            const infowindow = new google.maps.InfoWindow({
+                content: contentString,
                 maxWidth: 200
             });
-            const customIcon = "./media/poi.svg";
 
-            // Add markers to map
-            markers.forEach(markerData => {
-                const markerObj = new google.maps.Marker({
-                    position: markerData.position,
-                    map: map,
-                    title: markerData.title,
-                    icon: customIcon
-                });
-
-                // Add click listener to marker
-                markerObj.addListener('click', () => {
-                    infoWindow.setContent(`
-                        <div class="info-window">
-                            <h3>${markerData.title}</h3>
-                            <address>
-                                <p>${markerData.address}</p>
-                            </address>
-                            <p>${markerData.phone}</p>
-                        </div>
-                    `);
-                    infoWindow.open(map, markerObj);
-                });
-
-                // Extend bounds for map centering
-                bounds.extend(new google.maps.LatLng(markerData.position.lat, markerData.position.lng));
+            // Add click event to open info window on marker click
+            marker.addListener("click", () => {
+                infowindow.open(map, marker);
             });
-            
-            // Fit map to all markers
-            map.fitBounds(bounds);
-        } catch (error) {
-            console.error('Error initializing Google Maps:', error);
-        }
+
+            // Extend bounds with marker position
+            bounds.extend(markerInfo.position);
+        });
+
+        // Fit map to marker bounds
+        map.fitBounds(bounds);
+        
+        // Set center to third marker (CGT Alteia)
+        map.setCenter(markers[2].position);
     };
 
-    // Logo click event - scroll to top
-    elements.navLogo.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector('body').scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-        });
-    });
 })();
