@@ -15,7 +15,7 @@
 
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('hero-button') || e.target.classList.contains('hero-text')) {
-            if (elements.heroText.style.scale == '0') {
+            if (window.getComputedStyle(elements.heroText).scale === '0') {
                 elements.heroText.style.scale = '1';
             } else {
                 elements.heroText.style.scale = '0';

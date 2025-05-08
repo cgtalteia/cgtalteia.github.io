@@ -10,9 +10,10 @@
         box-sizing: border-box;
     }
     .nav {
+        display: block;
+        opacity: 1;
         width: 100%;
         top: 0;
-        opacity: 1;
         transition: var(--transition-slow);
     }
     .nav .nav-container {
@@ -85,8 +86,8 @@
         margin: 4px;
     }
     .overlay {
-        display: flex;
-        flex-direction: column;
+        display: none;
+        opacity: 0;
         align-items: center;
         justify-content: center;
         width: 90%;

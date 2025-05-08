@@ -25,7 +25,8 @@ const navModule = (function() {
         nav.style.opacity = '0';
         // Listen for the end of the transition
         nav.addEventListener('transitionend', function handler() {
-            if (nav.style.opacity == '0' && overlay.style.opacity == '0') {
+            if (window.getComputedStyle(nav).opacity === '0' && 
+                window.getComputedStyle(overlay).opacity === '0') {
                 nav.style.display = 'none';
             }
             nav.removeEventListener('transitionend', handler);
@@ -111,7 +112,7 @@ const navModule = (function() {
         overlay.style.transform = 'translateY(-5%)';
         // Listen for the end of the transition
         overlay.addEventListener('transitionend', function handler() {
-            if (overlay.style.opacity == '0') {
+            if (window.getComputedStyle(overlay).opacity === '0') {
                 overlay.style.display = 'none';
             }
             overlay.removeEventListener('transitionend', handler);
@@ -125,7 +126,7 @@ const navModule = (function() {
         // Hamburger menu handling
         if (elements.hamburger && elements.overlay) {
             elements.hamburger.addEventListener('click', function() {
-                if (elements.overlay.style.display == 'none') {
+                if (window.getComputedStyle(elements.overlay).display === 'none') {
                     showOverlayWithTransition(elements.overlay);
                 } else {
                     hideOverlayWithTransition(elements.overlay);
