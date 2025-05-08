@@ -61,10 +61,12 @@
         var previousScrollPosition = window.scrollY;
         window.onscroll = function() {
             var currentScrollPosition = window.scrollY;
-            if (previousScrollPosition > currentScrollPosition) {
-                elements.nav.style.top = '0';
-            } else {
-                elements.nav.style.top = '-100%';
+            if (Math.abs(previousScrollPosition - currentScrollPosition) > 20) {
+                if (previousScrollPosition > currentScrollPosition) {
+                    elements.nav.style.opacity = '1';
+                } else {
+                    elements.nav.style.opacity = '0';
+                }
             }
             previousScrollPosition = currentScrollPosition;
         };
