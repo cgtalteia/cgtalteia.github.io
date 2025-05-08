@@ -161,6 +161,13 @@ const navModule = (function() {
                 link.addEventListener('click', scrollToTop);
             }
         });
+
+        // Handle clicks outside of the overlay
+        document.addEventListener('click', function(e) {
+            if (elements.overlay && !elements.overlay.contains(e.target) && !elements.hamburger.contains(e.target)) {
+                hideOverlayWithTransition(elements.overlay);
+            }
+        });
     }
 
     /**
