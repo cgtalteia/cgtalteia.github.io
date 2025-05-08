@@ -49,13 +49,13 @@
         border: var(--border-radius-sm) solid var(--color-black);
         border-radius: var(--border-radius-md);
         box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
-        background: var(--color-white);
+        background: var(--color-linen);
         transition: var(--transition-default);
     }
 
     .hamburger:hover {
         box-shadow: none;
-        background: var(--color-red);
+        background: var(--color-melon);
         transition: var(--transition-default);
     }
 
@@ -76,7 +76,7 @@
         border: var(--border-radius-sm) solid var(--color-black);
         border-radius: var(--border-radius-md);
         box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
-        background: var(--color-white);
+        background: var(--color-linen);
         transition: var(--transition-default);
         overflow: hidden;
         z-index: 1;
@@ -90,15 +90,14 @@
         color: var(--color-black);
         border: var(--border-radius-sm) solid var(--color-black);
         border-radius: var(--border-radius-md);
-        background-color: var(--color-white);
+        background-color: var(--color-linen);
         padding: var(--spacing-md);
         margin: var(--spacing-md) auto;
         transition: var(--transition-default);
     }
 
     .overlay a:hover {
-        background-color: var(--color-red);
-        color: var(--color-white);
+        background-color: var(--color-melon);
         transition: var(--transition-default);
     }
 
@@ -135,13 +134,13 @@
         border-radius: var(--border-radius-md);
         border: var(--border-radius-sm) solid var(--color-black);
         box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
-        background-color: var(--color-red);
+        background-color: var(--color-linen);
         transition: var(--transition-default);
     }
 
     .hero-button:hover {
         box-shadow: none;
-        background-color: var(--color-white);
+        background-color: var(--color-melon);
         transition: var(--transition-default);
     }
 
@@ -159,21 +158,6 @@
         text-align: center;
     }
 
-    #faq-transition {
-        height: 100px;
-        background: linear-gradient(to bottom, #f92217, var(--color-yellow));
-    }
-
-    #adhesion-transition {
-        height: 100px;
-        background: linear-gradient(to bottom, var(--color-yellow), var(--color-red));
-    }
-
-    #contact-transition {
-        height: 100px;
-        background: linear-gradient(to bottom, var(--color-red), var(--color-pink));
-    }
-
     .hero-text {
         text-align: left;
     }
@@ -181,17 +165,16 @@
     .faq-container {
         width: 100%;
         margin: auto;
-        background: var(--color-yellow);
     }
 
     .faq-item {
         width: 90%;
-        background-color: var(--color-white);
+        background-color: var(--color-linen);
     }
 
     .chat-container {
         width: 90%;
-        background-color: var(--color-white);
+        background-color: var(--color-linen);
     }
 
     .input-container {
@@ -233,7 +216,7 @@
         font-size: var(--font-size-sm);
     }
 
-    #adhesion .container {
+    .adhesion-content {
         width: 82%;
         grid-template-columns: none;
         grid-template-rows: repeat(2, auto);
