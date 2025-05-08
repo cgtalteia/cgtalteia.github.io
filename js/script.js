@@ -68,14 +68,6 @@
             link.addEventListener('click', scrollToTop);
         });
 
-        // Hamburger menu handling
-        elements.hamburger.addEventListener('click', function() {
-            if (elements.overlay.style.display == 'none') {
-                elements.overlay.style.display = 'block';
-            } else {
-                elements.overlay.style.display = 'none';
-            }
-        });
 
         // Handle Se syndiquer button
         if (elements.navAdhesionButton) {
@@ -83,6 +75,8 @@
                 window.location.href = 'adhesion.html';
             });
         }
+
+        handleOverlay();
 
         initCopyButton();
     }
@@ -97,15 +91,46 @@
             var currentScrollPosition = window.scrollY;
             if (Math.abs(previousScrollPosition - currentScrollPosition) > 20) {
                 if (previousScrollPosition > currentScrollPosition) {
-                    elements.nav.style.opacity = '1';
+                    showNavWithTransition(elements.nav);
                 } else {
-                    elements.nav.style.opacity = '0';
+                    hideNavWithTransition(elements.nav);
                 }
             }
             previousScrollPosition = currentScrollPosition;
         };
     }
 
+    function hideNavWithTransition(nav) {
+        nav.style.opacity = '0';
+        // Listen for the end of the transition
+        nav.addEventListener('transitionend', function handler() {
+            nav.style.display = 'none';
+            nav.removeEventListener('transitionend', handler);
+        });
+    }
+
+    function showNavWithTransition(nav) {
+        nav.style.display = 'block';
+        // Force a reflow to ensure the transition happens
+        void nav.offsetWidth;
+        nav.style.opacity = '1';
+    }
+
+    function handleOverlay() {
+        // Hamburger menu handling
+        elements.hamburger.addEventListener('click', function() {
+            if (elements.overlay.style.display == 'none') {
+                elements.overlay.style.display = 'block';
+            } else {
+                elements.overlay.style.display = 'none';
+            }
+        });
+        // CLose overlay when scrolling
+        window.addEventListener('scroll', function() {
+            elements.overlay.style.display = 'none';
+        });
+    }
+    
     /**
      * Initialize copy button functionality
      */
