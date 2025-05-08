@@ -230,6 +230,7 @@ section {
 }
 
 .hero-title {
+  width: 80%;
   font-family: var(--font-family-varuna);
   font-weight: bold;
   font-size: var(--font-size-xl);
@@ -254,6 +255,7 @@ section {
 
 .faq-item {
   width: 100%;
+  height: fit-content;
   margin-bottom: 1rem;
   border: var(--border-radius-sm) solid var(--color-black);
   box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
