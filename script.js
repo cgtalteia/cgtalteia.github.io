@@ -23,7 +23,15 @@
         overlay: document.querySelector('.overlay'),
         closeBtn: document.querySelector('.closebtn'),
         faqItems: document.querySelectorAll('.faq-item'),
+        navAdhesionButton: document.querySelector('#nav-adhesion-button'),
+        adhesionSection: document.querySelector('.adhesion-container'),
     };
+
+    elements.navAdhesionButton.addEventListener('click', function() {
+        elements.adhesionSection.scrollIntoView({
+            behavior: 'smooth',
+        });
+    });
 
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('hero-button') || e.target.classList.contains('hero-text')) {

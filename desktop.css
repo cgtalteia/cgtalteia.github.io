@@ -53,8 +53,12 @@ body {
   padding: 0;
   line-height: 1.6;
   transition: var(--transition-default);
-  scroll-margin-top: 20dvh;
   overflow-x: hidden;
+}
+
+section {
+  scroll-margin-top: 10dvh;
+  padding: var(--spacing-xl) 0;
 }
 
 
@@ -227,7 +231,6 @@ body {
   font-size: var(--font-size-xl);
   color: var(--color-linen);
   margin: auto;
-  margin-left: 0;
   line-height: 1.2;
 }
 
@@ -459,8 +462,6 @@ body {
 /* ===== Se syndiquer Section ===== */
 
 .adhesion-container {
-  padding-top: 1em;
-  padding-bottom: 1em;
   height: auto;
   background: var(--color-tangerine);
 }

@@ -39,6 +39,30 @@
         display: none !important;
     }
 
+    #nav-adhesion-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: var(--border-radius-xl);
+        width: fit-content;
+        height: 44px;
+        font-family: var(--font-family-varuna);
+        font-size: var(--font-size-sm);
+        color: var(--color-linen);
+        border: var(--border-radius-sm) solid var(--color-black);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
+        background: var(--color-red);
+        transition: var(--transition-default);
+    }
+
+    #nav-adhesion-button:hover {
+        box-shadow: none;
+        background: var(--color-pumpkin);
+        transition: var(--transition-default);
+    }
+    
     .hamburger {
         display: flex;
         align-items: center;
