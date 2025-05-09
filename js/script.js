@@ -42,13 +42,26 @@
      * Initialize copy button functionality
      */
     function initCopyButton() {
+
+        function showSnackbarWithTransition(snackbar) {
+            snackbar.style.display = 'flex';
+            void snackbar.offsetWidth;
+            snackbar.style.opacity = '1';
+            snackbar.style.transform = 'translate(-50%, 0)';
+        
+            setTimeout(() => {
+                snackbar.style.opacity = 0;
+                snackbar.style.transform = 'translate(-50%, 10px)';
+            }, 2000);
+            if (snackbar.getComputedStyle(snackbar).opacity === '0') {
+                snackbar.style.display = 'none';
+            }
+        }
         function copiedSnackbar(textToCopy) {
             const snackbar = document.getElementById('copiedSnackbar');
-            snackbar.classList.add('show');
-            snackbar.innerHTML = `<p> Copié : ${textToCopy} </p>`;
-            setTimeout(() => {
-                snackbar.classList.remove('show');
-            }, 2000);
+            snackbar.innerHTML = `<p style="color: var(--color-linen);"> Copié ! </p> <p> ${textToCopy} </p>`;
+            void snackbar.clientWidth;
+            showSnackbarWithTransition(snackbar);
         }
         document.getElementById('copyPhone').addEventListener('click', async () => {
             const textToCopy = document.getElementById('tel').innerText;

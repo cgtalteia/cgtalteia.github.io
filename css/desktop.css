@@ -608,16 +608,23 @@ footer p {
 
 .copied-snackbar {
   position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--color-black);
-  color: var(--color-linen);
-  padding: 10px 20px;
-  border-radius: 5px;
   display: none;
-}
-
-.copied-snackbar.show {
-  display: block;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  left: 50%;
+  bottom: 20px;
+  transform: translate(-50%, 10px);
+  opacity: 0;
+  background-color: var(--color-pumpkin);
+  color: var(--color-black);
+  font-family: var(--font-family-varuna);
+  font-weight: bold;
+  line-height: 0.4;
+  padding: 0 10px;
+  border: var(--border-radius-sm) solid var(--color-black);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
+  transition: var(--transition-fast);
 }
