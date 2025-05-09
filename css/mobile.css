@@ -154,7 +154,7 @@
         box-sizing: border-box;
         gap: var(--spacing-md);
         flex-shrink: 0;
-        transition: var(--transition-slow);
+        transition: var(--transition-slowest);
     }
     .hero-content {
         opacity: 0;
@@ -168,6 +168,7 @@
         height: auto;
     }
     .hero-subtitle {
+        color: var(--color-linen);
         font-size: var(--font-size-md);
         text-align: center;
     }
@@ -195,6 +196,7 @@
         width: clamp(300px, 90%, 400px);
         padding: var(--spacing-md);
         margin: 0 auto;
+        font-family: var(--font-family-varuna);
         border: var(--border-radius-sm) solid var(--color-black);
         box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
         background-color: var(--color-linen);

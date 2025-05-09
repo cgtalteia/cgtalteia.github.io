@@ -34,6 +34,7 @@
   --transition-fast: all 0.1s ease;
   --transition-default: all 0.2s ease;
   --transition-slow: all 0.3s ease;
+  --transition-slowest: all 0.5s ease;
 
   /* Typography */
   --font-family-primary: 'Arial', sans-serif;

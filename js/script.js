@@ -95,7 +95,7 @@
                 elements.heroContentWrapper.style.overflowY = 'auto';
                 // Scroll to next hero-content
                 elements.heroContentWrapper.scrollTo({
-                    top: elements.heroContentWrapper.scrollHeight,
+                    top: elements.heroContentWrapper.children[0].scrollHeight,
                     behavior: 'smooth'
                 });
             }
