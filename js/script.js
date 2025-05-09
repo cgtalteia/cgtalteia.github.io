@@ -9,6 +9,7 @@
 
     // DOM Elements
     let elements = {
+        heroContentWrapper: document.querySelector('.hero-content-wrapper'),
         heroText: document.querySelector('.hero-text'),
         faqItems: document.querySelectorAll('.faq-item')
     };
@@ -20,8 +21,8 @@
         
         // Merge the nav elements with our local elements
         elements = { ...elements, ...navElements };
-        
-        initHeroText();
+        elements.heroContentWrapper.scrollTop = 0;
+        initHero();
         initFAQ();
         initCopyButton();
         updateCurrentYear();
@@ -79,33 +80,33 @@
         });
     }
 
-    function initHeroText() {
-        function showHeroTextWithTransition(heroText) {
-            heroText.style.display = 'block';
-
-            void heroText.offsetWidth;
-            heroText.style.opacity = '1';
-            heroText.style.transform = 'translateY(0%)';
-        }
-        function hideHeroTextWithTransition(heroText) {
-            heroText.style.opacity = '0';
-            heroText.style.transform = 'translateY(10%)';
-
-            heroText.addEventListener('transitionend', function handler() {
-                if (window.getComputedStyle(heroText).opacity === '0') {
-                    heroText.style.display = 'none';
+    function initHero() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
-                heroText.removeEventListener('transitionend', handler);
             });
-        }
-
+        }, { threshold: 0.1 });
+    
+        document.querySelectorAll('.hero-content').forEach(el => observer.observe(el));
         document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('hero-button') || e.target.classList.contains('hero-text')) {
-                if (window.getComputedStyle(elements.heroText).display === 'none') {
-                    showHeroTextWithTransition(elements.heroText);
-                } else {
-                    hideHeroTextWithTransition(elements.heroText);
-                }
+            if (e.target.classList.contains('hero-button')) {
+                elements.heroContentWrapper.style.overflowY = 'auto';
+                // Scroll to next hero-content
+                elements.heroContentWrapper.scrollTo({
+                    top: elements.heroContentWrapper.scrollHeight,
+                    behavior: 'smooth'
+                });
+            }
+        });
+        elements.heroContentWrapper.addEventListener('scroll', function() {
+            if (elements.heroContentWrapper.scrollTop === 0) {
+                elements.heroContentWrapper.style.overflowY = 'hidden';
+            }
+            // If the scrollbar is at the bottom, use the main scrollbar
+            if (elements.heroContentWrapper.scrollHeight - elements.heroContentWrapper.scrollTop === elements.heroContentWrapper.clientHeight) {
+                elements.heroContentWrapper.style.overflowY = 'auto';
             }
         });
     }
