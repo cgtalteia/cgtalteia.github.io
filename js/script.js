@@ -98,6 +98,23 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    const counter = entry.target.querySelector('.counter');
+                    if (counter) {
+                        const target = +counter.getAttribute('data-target');
+                        let current = 0;
+                        const duration = 2000;
+                        const startTime = performance.now();
+                        
+                        function update(timestamp) {
+                            const progress = Math.pow(Math.min((timestamp - startTime) / duration, 1), 5);
+                            current = Math.floor(progress * target);
+                            counter.textContent = current.toLocaleString(); // adds commas
+                            if (progress < 1) requestAnimationFrame(update);
+                        }
+                        requestAnimationFrame(update);
+                    }
+                } else {
+                    entry.target.classList.remove('visible');
                 }
             });
         }, { threshold: 0.1 });

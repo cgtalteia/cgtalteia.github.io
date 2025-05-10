@@ -1,6 +1,6 @@
 :root {
     --font-size-sm: 1em;
-    --font-size-md: 1em;
+    --font-size-md: 1.2em;
     --font-size-lg: 1.4em;
     --font-size-xl: 3.2em;
 }
@@ -183,13 +183,20 @@
         border: var(--border-radius-sm) solid var(--color-black);
         box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
         background-color: var(--color-linen);
-        transition: var(--transition-default);
+        animation: scale 1s ease infinite;
+        
+        
     }
     .hero-button:hover {
         cursor: pointer;
         box-shadow: none;
         background-color: var(--color-dun);
         transition: var(--transition-default);
+    }
+    @keyframes scale {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-4px); }
+        100% { transform: translateY(0px); }
     }
     .hero-text {
         display: flex;
