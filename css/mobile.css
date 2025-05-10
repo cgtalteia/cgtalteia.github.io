@@ -203,6 +203,7 @@
         padding: var(--spacing-md);
         margin: 0 auto;
         font-family: var(--font-family-varuna);
+        font-size: var(--font-size-sm);
         border: var(--border-radius-sm) solid var(--color-black);
         box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
         background-color: var(--color-linen);
