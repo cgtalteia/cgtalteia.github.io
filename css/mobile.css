@@ -1,11 +1,10 @@
-:root {
-    --font-size-sm: 1em;
-    --font-size-md: 1.2em;
-    --font-size-lg: 1.4em;
-    --font-size-xl: 3.2em;
-}
-
 @media (max-width: 980px) {
+    :root {
+        --font-size-sm: 0.8em;
+        --font-size-md: 1em;
+        --font-size-lg: 1.2em;
+        --font-size-xl: 2.8em;
+    }
     * {
         box-sizing: border-box;
     }
