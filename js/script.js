@@ -153,7 +153,7 @@
                         otherItem.classList.remove('active');
                         const content = otherItem.querySelector('.faq-item-content');
                         content.style.maxHeight = null;
-                        otherItem.style.height = 'auto';
+                        otherItem.style.height = 'fit-content';
                     }
                 });
                 

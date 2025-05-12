@@ -5,59 +5,15 @@
         --font-size-lg: 1.2em;
         --font-size-xl: 2.8em;
     }
-    * {
-        box-sizing: border-box;
-    }
-    .nav {
-        display: block;
-        opacity: 1;
-        width: 100%;
-        top: 0;
-        transition: var(--transition-slow);
-    }
-    .nav .nav-container {
-        width: 100%;
-        border: none;
-        padding: var(--spacing-sm);
-        border-bottom: var(--border-radius-md) solid var(--color-black);
-        border-radius: 0;
-        box-shadow: none;
-    }
-    .nav-logo {
-        height: auto;
-    }
-    .nav-logo img {
-        width: 40px;
-        height: 40px;
-    }
-    .nav .nav-logo svg path {
-        fill: var(--color-black);
-    }
     .nav-menu {
         display: none !important;
     }
-    #nav-adhesion-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: auto;
-        margin-right: var(--border-radius-xl);
-        width: fit-content;
-        height: 40px;
-        font-family: var(--font-family-varuna);
-        font-size: var(--font-size-sm);
-        color: var(--color-linen);
-        border: var(--border-radius-sm) solid var(--color-black);
-        border-radius: var(--border-radius-md);
-        box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
-        background: var(--color-red);
-        transition: var(--transition-default);
+    .nav .nav-logo {
+        margin: 0;
     }
-    #nav-adhesion-button:hover {
-        cursor: pointer;
-        box-shadow: none;
-        background: var(--color-poppy);
-        transition: var(--transition-default);
+    #nav-adhesion-button {
+        margin-right: var(--border-radius-xl);
+        font-size: var(--font-size-lg);
     }
     .hamburger {
         display: flex;
@@ -103,10 +59,11 @@
         z-index: 1;
     }
     .overlay a {
-        display: block;
+        display:flex;
         font-family: var(--font-family-varuna);
         font-size: var(--font-size-md);
         text-decoration: none;
+        vertical-align: bottom;
         color: var(--color-black);
         border: var(--border-radius-sm) solid var(--color-black);
         border-radius: var(--border-radius-md);
@@ -120,139 +77,23 @@
         background-color: var(--color-dun);
         transition: var(--transition-default);
     }
-    .hero {
-        position: relative;
-        box-shadow: none;
-        box-sizing: content-box;
-        height: 100vh;
-        padding: 0 var(--spacing-lg);
-        background: var(--color-red);
-    }
-    .hero-content-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 100%;
-        overflow-y: hidden;
-        scroll-snap-type: y mandatory;
-        scroll-behavior: smooth;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-    .hero-content-wrapper::-webkit-scrollbar {
-        display: none;
-    }
-    .hero-content {
-        scroll-snap-align: start;
-        min-height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        box-sizing: border-box;
-        gap: var(--spacing-md);
-        flex-shrink: 0;
-        transition: var(--transition-slowest);
-    }
-    .hero-content {
-        opacity: 0;
-    }
-    .hero-content.visible {
-        opacity: 1;
-    }
-    .hero-title {
-        text-align: center;
-        margin: 0 auto;
-        height: auto;
-    }
     .hero-subtitle {
-        color: var(--color-linen);
         font-size: var(--font-size-md);
-        text-align: center;
     }
     .hero-button {
-        width: fit-content;
-        padding: var(--spacing-md);
-        margin: 0 auto var(--spacing-md) auto;
-        font-family: var(--font-family-varuna);
         font-size: var(--font-size-md);
-        color: var(--color-black);
-        border-radius: var(--border-radius-md);
-        border: var(--border-radius-sm) solid var(--color-black);
-        box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
-        background-color: var(--color-linen);
-        animation: scale 1s ease infinite;
-        
-        
-    }
-    .hero-button:hover {
-        cursor: pointer;
-        box-shadow: none;
-        background-color: var(--color-dun);
-        transition: var(--transition-default);
-    }
-    @keyframes scale {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-4px); }
-        100% { transform: translateY(0px); }
-    }
-    .hero-text {
-        display: flex;
-        width: clamp(300px, 90%, 400px);
-        padding: var(--spacing-md);
-        margin: 0 auto;
-        font-family: var(--font-family-varuna);
-        font-size: var(--font-size-sm);
-        border: var(--border-radius-sm) solid var(--color-black);
-        box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
-        background-color: var(--color-linen);
-        transition: var(--transition-slow);
-        z-index: 1;
-    }
-    .faq-container {
-        width: 100%;
-        margin: 0 auto;
     }
     .faq-item {
         width: 90%;
-        background-color: var(--color-linen);
     }
     .chat-container {
         width: 90%;
-        background-color: var(--color-linen);
-    }
-    .input-container {
-        width: 100%;
-        padding: 0 10px;
-        box-sizing: border-box;
-    }
-    .input-container input[type="text"] {
-        width: 70%;
-        margin: 0;
-        padding: 0 10px;
     }
     .input-container button {
-        width: 44px;
-        height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 0;
-    }
-    .input-container button i {
-        margin: 0;
-    }
-    .content-title {
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-md);
     }
     .faq-item-title {
-        padding-right: 10vw;
         font-size: var(--font-size-md);
-        text-overflow: ellipsis;
-    }
-    .faq-item-content {
-        font-size: var(--font-size-sm);
     }
     .adhesion-content {
         width: 82%;
