@@ -104,4 +104,7 @@
     .contact-container {
         flex-direction: column;
     }
+    .adhesion-container {
+        min-height: max(1600px, 150vh);
+    }
 }

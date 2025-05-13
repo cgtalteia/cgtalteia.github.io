@@ -49,7 +49,9 @@ body {
   line-height: 1.6;
   transition: var(--transition-default);
   overflow-x: hidden;
-
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
 }
 
 section {
@@ -62,6 +64,7 @@ section {
   border-bottom: var(--border-radius-sm) solid var(--color-black);
   border-top: var(--border-radius-sm) solid var(--color-black);
   overflow: hidden;
+  scroll-snap-align: start;
 }
 
 
@@ -487,12 +490,20 @@ section {
 /* ===== Se syndiquer Section ===== */
 
 .adhesion-container {
-  height: auto;
-  background: var(--color-tangerine);
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  min-height: 100vh;
+  height: fit-content;
+  margin: 0 auto;
+  max-width: var(--max-width);
+  transition: var(--transition-slow);
+  background: var(--color-red);
 }
 
 .adhesion-content {
-  width: 100%;
+  width: 70%;
   margin: 0 auto;
   display: grid;
   align-items: center;

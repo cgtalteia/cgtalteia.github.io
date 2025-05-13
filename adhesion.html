@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <nav class="nav" aria-label="Navigation principale">
+    <nav class="nav" style="display: block;" aria-label="Navigation principale">
         <div class="nav-container">
             <div class="nav-logo">
                 <img src="media/logo.png" alt="Logo CGT Alteia" height="50px">
@@ -46,22 +46,14 @@
                         fill="black"></path>
                 </svg>
             </div>
-            <ul class="nav-menu" role="menubar">
-                <li role="none"><a href="index.html#qui-sommes-nous" class="qui-sommes-nous-link" role="menuitem">Qui sommes-nous ?</a></li>
-                <li role="none"><a href="index.html#contact" role="menuitem">Contactez-nous</a></li>
-                <li class="dropdown" role="none">
-                    <a href="#autres-ressources" role="menuitem" aria-haspopup="true" aria-expanded="false">
-                        Autres ressources 
-                        <span class="material-symbols-outlined" aria-hidden="true" style="vertical-align: bottom;">keyboard_arrow_down</span>
-                    </a>
-                    <ul class="dropdown-content" role="menu" aria-label="Ressources externes">
-                        <li role="none"><a href="https://www.cgt.fr" target="_blank" rel="noopener noreferrer" role="menuitem">CGT.fr</a></li>
-                        <li role="none"><a href="https://cgt31.fr" target="_blank" rel="noopener noreferrer" role="menuitem">CGT31.fr</a></li>
-                    </ul>
-                </li>
-                <li role="none"><a href="adhesion.html" id="se-syndiquer" role="menuitem">Se syndiquer</a></li>
-            </ul>
             <button id="nav-adhesion-button">Se syndiquer</button>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="#qui-sommes-nous" class="qui-sommes-nous-link" role="menuitem">Qui sommes-nous ?</a></li>
+                <li role="none"><a href="#contact" role="menuitem">Contactez-nous</a></li>
+                <li role="none"><a href="https://www.cgt.fr" target="_blank" rel="noopener noreferrer" role="menuitem">CGT.fr</a></li>
+                <li role="none"><a href="https://cgt31.fr" target="_blank" rel="noopener noreferrer" role="menuitem">CGT31.fr</a></li>
+            </ul>
+            
             <div class ="hamburger">
                 <div class="openbtn">
                     <div class="line"></div>
@@ -70,11 +62,9 @@
                 </div>
             </div>
         </div>
-        <div class="overlay" style="display: none;">
-            <a href="index.html#qui-sommes-nous" class="qui-sommes-nous-link" role="menuitem">Qui sommes-nous ?</a>
-            <a href="index.html#faq-container" role="menuitem">Foire aux questions</a>
-            <a href="adhesion.html" role="menuitem">Se syndiquer</a>
-            <a href="index.html#contact" role="menuitem">Contactez-nous</a>
+        <div class="overlay">
+            <a href="#qui-sommes-nous" class="qui-sommes-nous-link" role="menuitem">Qui sommes-nous ?</a>
+            <a href="#contact" role="menuitem">Contactez-nous</a>
             <a href="https://www.cgt.fr" target="_blank" rel="noopener noreferrer" role="menuitem">Site de la CGT</a>
             <a href="https://cgt31.fr" target="_blank" rel="noopener noreferrer" role="menuitem">Site de la CGT 31</a>
         </div>
@@ -84,9 +74,17 @@
             <h2 id="adhesion-title" class="hero-title">Se syndiquer</h2>
             <div class="adhesion-content">
                 <p class="text">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione dolorem voluptates eveniet tempora ut
-                    cupiditate magnam, sapiente, hic quo in ipsum iste soluta eaque perferendis nihil recusandae dolore
-                    officia aperiam corporis similique.
+                    Se syndiquer, c'est s'engager pour défendre ses droits et participer à la construction d'un avenir collectif plus juste. 
+                    La CGT Alteia représente et défend tous les salarié·es, quel que soit leur statut, qu'ils soient syndiqués ou non.
+                    <br><br>
+                    En adhérant à la CGT, vous bénéficiez :
+                    <br>
+                    • D'une information régulière sur vos droits<br>
+                    • D'une protection juridique en cas de litige<br>
+                    • D'une voix dans les décisions qui concernent votre travail<br>
+                    • D'un réseau de solidarité et de soutien<br>
+                    <br>
+                    La cotisation est fixée à 1% du salaire net. Elle est déductible à 66% des impôts.
                 </p>
                 <form id="adhesion-form" class="adhesion-form">
                     <label for="civility">Civilité</label>
@@ -95,40 +93,40 @@
                         <option value="mme">Madame</option>
                     </select>
                     <label for="name">Nom</label>
-                    <input type="text" id="name" name="name">
+                    <input type="text" id="name" name="name" required>
                     <label for="firstname">Prénom</label>
-                    <input type="text" id="firstname" name="firstname">
+                    <input type="text" id="firstname" name="firstname" required>
                     <label for="birthdate">Date de naissance</label>
-                    <input type="date" id="birthdate" name="birthdate">
+                    <input type="date" id="birthdate" name="birthdate" required>
                     <label for="nationality">Nationalité</label>
-                    <input type="text" id="nationality" name="nationality">
+                    <input type="text" id="nationality" name="nationality" required>
                     <label for="address">Adresse</label>
-                    <input type="text" id="address" name="address">
+                    <input type="text" id="address" name="address" required>
                     <label for="city">Ville</label>
-                    <input type="text" id="city" name="city">
+                    <input type="text" id="city" name="city" required>
                     <label for="zipcode">Code postal</label>
-                    <input type="text" id="zipcode" name="zipcode">
+                    <input type="text" id="zipcode" name="zipcode" required>
                     <label for="phone">Téléphone</label>
-                    <input type="tel" id="phone" name="phone">
+                    <input type="tel" id="phone" name="phone" required>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email">
+                    <input type="email" id="email" name="email" required>
                     <label for="adhesion-date">Date d'adhésion</label>
-                    <input type="date" id="adhesion-date" name="adhesion-date">
+                    <input type="date" id="adhesion-date" name="adhesion-date" required>
                     <label for="category">Catégorie</label>
-                    <select id="category" name="category">
+                    <select id="category" name="category" required>
                         <option value="Ouvrier.e/Employe.e">Ouvrier.e/Employe.e</option>
                         <option value="Technicien.ne">Technicien.ne</option>
                         <option value="Agent de maîtrise">Agent de maîtrise</option>
                         <option value="Ingénieur.e/Cadre">Ingénieur.e/Cadre</option>
                     </select>
                     <label for="company-address">Lieu de travail</label>     
-                    <select id="company-address" name="company-address">
+                    <select id="company-address" name="company-address" required>
                         <option value="Lyon">Lyon</option>
                         <option value="Paris">Paris</option>
                         <option value="Toulouse">Toulouse</option>
                     </select>
                     <label for="mailing-list">Newsletter</label>
-                    <select id="mailing-list" name="mailing-list">
+                    <select id="mailing-list" name="mailing-list" required>
                         <option value="email">Email</option>
                         <option value="courrier">Courrier</option>
                         <option value="aucun">Aucun des deux</option>

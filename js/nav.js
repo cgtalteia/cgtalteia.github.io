@@ -58,7 +58,6 @@ const navModule = (function() {
     function handleSmoothScroll(e) {
         e.preventDefault();
         const hrefElement = document.querySelector(this.getAttribute('href'));
-
         if (hrefElement) {
             const targetElement = hrefElement.querySelector('.hero-title');
             const parentContainer = targetElement.parentElement;
@@ -147,7 +146,10 @@ const navModule = (function() {
                 if (elements.overlay) {
                     hideOverlayWithTransition(elements.overlay);
                 }
-
+                // if not on home page, go to home page and then scroll to the target element
+                if (!window.location.pathname.endsWith('index.html') && !window.location.pathname.endsWith('/') && link.getAttribute('href').startsWith('#')) {
+                    window.location.href = 'index.html#' + link.getAttribute('href').slice(1);
+                }
                 // Handle smooth scrolling for anchor links on current page
                 if (link.getAttribute('href').startsWith('#')) {
                     handleSmoothScroll.call(link, e);
