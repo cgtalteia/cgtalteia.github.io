@@ -565,8 +565,8 @@ section {
   max-width: var(--max-width);
   background: var(--color-pumpkin);
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   transition: var(--transition-slow);
 }
@@ -606,10 +606,9 @@ section {
   display: flex;
   justify-content: center;
   width: 80%;
-  max-width: 600px;
+  max-width: 800px;
   height: 50%;
   margin: 0 auto;
-  border: var(--border-radius-lg) solid var(--color-tangerine);
   border-radius: var(--border-radius-lg);
 }
 
@@ -643,7 +642,7 @@ footer p {
   transform: translate(-50%, 10px);
   opacity: 0;
   background-color: var(--color-pumpkin);
-  color: var(--color-black);
+  color: var(--color-linen);
   font-family: var(--font-family-varuna);
   font-weight: bold;
   line-height: 0.4;
