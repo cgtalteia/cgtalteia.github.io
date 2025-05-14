@@ -509,6 +509,7 @@ section {
   max-width: var(--max-width);
   transition: var(--transition-slow);
   background: var(--color-red);
+  border-bottom: none;
 }
 
 .adhesion-content {
