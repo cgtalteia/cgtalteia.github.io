@@ -55,6 +55,11 @@ body {
   overflow-y: scroll;
 }
 
+/* If page is adhesion, body's background is red */
+body.adhesion {
+  background: var(--color-red);
+}
+
 section {
   display: flex;
   flex-direction: column;
