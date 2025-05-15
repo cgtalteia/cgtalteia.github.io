@@ -72,13 +72,14 @@
         border: var(--border-radius-sm) solid var(--color-black);
         border-radius: var(--border-radius-md);
         background-color: var(--color-linen);
+        box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
         padding: var(--spacing-md);
         margin: var(--spacing-md) auto;
         transition: var(--transition-default);
     }
     .overlay a:hover {
         cursor: pointer;
-        background-color: var(--color-dun);
+        box-shadow: none;
         transition: var(--transition-default);
     }
     .hero-subtitle {

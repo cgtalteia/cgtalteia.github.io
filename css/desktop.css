@@ -2,13 +2,13 @@
   /* Color variables */
   --color-black: #000000;
   --color-off-black: #111111;
-  --color-poppy: #da3838;
-  --color-red: #f03E3E;
+  --color-poppy: #da3838; /* da3838 */
+  --color-red: #f03E3E; /* f03E3E */
   --color-pumpkin: #ff7920;
   --color-melon: #f5c0b6;
   --color-linen: #f6ebdd;
   --color-dun: #D8C6AB;
-  --color-white: #ffffff;
+  --color-whote: #ffffff;
 
   /* Spacing */
   --spacing-xs: 4px;
@@ -136,7 +136,6 @@ section {
   transition: var(--transition-default);
 }
 .nav .nav-container ul li:hover {
-  background: var(--color-dun);
   transition: var(--transition-default);
 }
 .nav .nav-container a {
@@ -258,7 +257,6 @@ section {
 .hero-button:hover {
   cursor: pointer;
   box-shadow: none;
-  background-color: var(--color-dun);
   transition: var(--transition-default);
 }
 @keyframes scale {
@@ -314,7 +312,6 @@ section {
 }
 
 .faq-item:hover {
-  background: var(--color-dun);
   box-shadow: none;
   transition: var(--transition-default);
 }
@@ -353,7 +350,6 @@ section {
 
 .chat-container:hover {
   box-shadow: none;
-  background-color: var(--color-dun);
   transition: var(--transition-default);
 }
 
@@ -457,7 +453,6 @@ section {
 }
 
 .input-container button:hover {
-  background-color: var(--color-dun);
   box-shadow: none;
   transition: var(--transition-default);
 }
@@ -570,7 +565,6 @@ section {
 }
 
 .adhesion-form button:hover {
-  background: var(--color-dun);
   box-shadow: none;
   transition: var(--transition-default);
 }
