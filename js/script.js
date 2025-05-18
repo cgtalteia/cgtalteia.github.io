@@ -11,7 +11,6 @@
     let elements = {
         heroContentWrapper: document.querySelector('.hero-content-wrapper'),
         heroText: document.querySelector('.hero-text'),
-        faqItems: document.querySelectorAll('.faq-item')
     };
 
     // Initialize everything when DOM is loaded
@@ -140,38 +139,6 @@
             }
         });
     }
-    /**
-     * FAQ accordion functionality
-     */
-    function initFAQ() {
-        elements.faqItems.forEach(item => {
-
-            item.addEventListener('click', () => {
-                // Close other items
-                elements.faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                        const content = otherItem.querySelector('.faq-item-content');
-                        content.style.maxHeight = null;
-                        otherItem.style.height = 'fit-content';
-                    }
-                });
-                
-                // Toggle current item
-                item.classList.toggle('active');
-                const content = item.querySelector('.faq-item-content');
-                
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                    item.style.height = 'auto';
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                    item.style.height = 100 + content.scrollHeight + "px";
-                }
-            });
-        });
-    }
-
     /**
      * Google Maps initialization
      */

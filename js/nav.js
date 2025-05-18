@@ -146,11 +146,11 @@ const navModule = (function() {
                 if (elements.overlay) {
                     hideOverlayWithTransition(elements.overlay);
                 }
-                const href = link.getAttribute('href');
-                if (document.querySelector(href)) {
+                const element = document.querySelector(link.getAttribute('href'));
+                if (element) {
                     handleSmoothScroll.call(link, e);
                 } else {
-                    window.location.href = href;
+                    window.location.href = 'index.html' + link.getAttribute('href');
                 }
             });
         });

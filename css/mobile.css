@@ -88,6 +88,9 @@
     .hero-button {
         font-size: var(--font-size-md);
     }
+    .hero-text {
+        width: clamp(300px, 90%, 400px);
+    }
     .faq-item {
         width: 90%;
     }

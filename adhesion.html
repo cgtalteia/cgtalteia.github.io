@@ -21,7 +21,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=keyboard_arrow_down" />
 </head>
 
-<body style="background: var(--color-melon);">
+<body style="background: var(--color-linen);">
     <nav class="nav" style="display: block;" aria-label="Navigation principale">
         <div class="nav-container">
             <div class="nav-logo">
@@ -220,6 +220,20 @@
                             <strong>La cotisation fixée statutairement à 1 % du salaire net est un principe d'égalité. Chaque adhérent
                             cotise proportionnellement à ses revenus.</strong>
                         </p>
+                        <div class="simulator-item">
+                            <div class="simulator-item-content">
+                                <p>
+                                    <strong>Salaire net mensuel</strong>
+                                </p>
+                                <input type="number" id="net-salary" name="net-salary" required value="1500">
+                            </div>
+                            <div class="simulator-item-content">
+                                <p>
+                                    <strong>Cotisation mensuelle</strong>
+                                </p>
+                                <p id="simulator-result"></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

@@ -10,7 +10,8 @@
     // DOM Elements
     let elements = {
         adhesionForm: document.getElementById('adhesion-form'),
-        currentYear: document.getElementById('current-year')
+        currentYear: document.getElementById('current-year'),
+        faqItems: document.querySelectorAll('.faq-item')
     };
 
     // Initialize everything when DOM is loaded
@@ -23,6 +24,7 @@
         
         submitAdhesionForm();
         updateCurrentYear();
+        initFAQ();
         
         // Set default date values
         const today = new Date().toISOString().split('T')[0];
@@ -227,5 +229,57 @@
             });
         }
     }
+        /**
+     * FAQ accordion functionality and simulator
+     */
+        function initFAQ() {
+            // Initialize simulator
+            const salaryInput = document.getElementById('net-salary');
+            const resultElement = document.getElementById('simulator-result');
+            
+            function updateSimulator() {
+                const salary = parseFloat(salaryInput.value);
+                if (!isNaN(salary)) {
+                    const contribution = (salary * 0.01).toFixed(2);
+                    resultElement.innerHTML = `${contribution}€`;
+                }
+            }
+
+            salaryInput.addEventListener('input', updateSimulator);
+            updateSimulator(); // Initial calculation
+
+            elements.faqItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    // Don't close if clicking within simulator
+                    if (item.contains(salaryInput) && 
+                        (event.target === salaryInput || event.target.closest('.simulator-item'))) {
+                        return;
+                    }
+
+                    // Close other items
+                    elements.faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            const content = otherItem.querySelector('.faq-item-content');
+                            content.style.maxHeight = null;
+                            otherItem.style.height = 'fit-content';
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                    const content = item.querySelector('.faq-item-content');
+                    
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        item.style.height = 'auto';
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        item.style.height = 100 + content.scrollHeight + "px";
+                    }
+                });
+            });
+        }
+    
 
 })(); 

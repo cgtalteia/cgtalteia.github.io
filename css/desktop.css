@@ -8,7 +8,7 @@
   --color-melon: #f5c0b6;
   --color-linen: #f6ebdd;
   --color-dun: #D8C6AB;
-  --color-whote: #ffffff;
+  --color-white: #ffffff;
 
   /* Spacing */
   --spacing-xs: 4px;
@@ -30,7 +30,8 @@
 
   /* Typography */
   --font-family-mono: 'Ubuntu Mono', monospace;
-  --font-family-varuna: 'VARUNA', sans-serif;
+  /* --font-family-varuna: 'VARUNA', sans-serif; */
+  --font-family-varuna: 'Ubuntu Mono', monospace;
 
   /* Font size */
   --font-size-md: 1.5em;
@@ -44,7 +45,7 @@
 /* Base Styles */
 body {
   font-family: var(--font-family-mono);
-  background-color: var(--color-pumpkin);
+  background-color: var(--color-linen);
   margin: 0;
   padding: 0;
   line-height: 1.6;
@@ -136,6 +137,7 @@ section {
   transition: var(--transition-default);
 }
 .nav .nav-container ul li:hover {
+  box-shadow: none;
   transition: var(--transition-default);
 }
 .nav .nav-container a {
@@ -266,7 +268,7 @@ section {
 }
 .hero-text {
   display: flex;
-  width: clamp(300px, 90%, 400px);
+  width: 70%;
   padding: var(--spacing-md);
   margin: 0 auto;
   font-family: var(--font-family-varuna);
@@ -287,7 +289,7 @@ section {
   height: fit-content;
   width: 100%;
   margin: 0 auto;
-  background: var(--color-melon);
+  background: var(--color-linen);
   border-bottom: none;
 }
 .faq-container h2 {
@@ -307,7 +309,7 @@ section {
   border: var(--border-radius-sm) solid var(--color-black);
   border-radius: var(--border-radius-md);
   box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
-  background-color: var(--color-linen);
+  background-color: var(--color-dun);
   overflow: hidden;
   transition: var(--transition-default);
 }
@@ -331,6 +333,69 @@ section {
   overflow: hidden;
   transition: var(--transition-default);
 }
+.simulator-item {
+  display: inline-grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+  align-items: center;
+  justify-content: center;
+}
+.simulator-item-content {
+  padding: var(--spacing-sm);
+}
+.simulator-item-content p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.simulator-item-content p#simulator-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 40px;
+  margin: 0 auto;
+  font-weight: bold;
+  text-align: center;
+  border-radius: var(--border-radius-md);
+  border: 2px solid var(--color-black);
+  box-shadow: 4px 4px var(--color-black);
+  background-color: var(--color-white);
+}
+.simulator-item-content input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 40px;
+  margin: 0 auto;
+  font-family: var(--font-family-mono);
+  font-weight: bold;
+  text-align: center;
+  border-radius: var(--border-radius-md);
+  border: 2px solid var(--color-black);
+  box-shadow: 4px 4px var(--color-black);
+  background-color: var(--color-white);
+  transition: var(--transition-default);
+}
+.simulator-item-content input:focus {
+  outline: none;
+}
+.simulator-item-content input:hover {
+  cursor: text;
+  box-shadow: none;
+  transition: var(--transition-default);
+}
+.simulator-item-content input::-webkit-outer-spin-button,
+.simulator-item-content input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.simulator-item-content input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 
 
 /* Container for the chat */
@@ -343,7 +408,7 @@ section {
   border: 2px solid var(--color-black);
   border-radius: var(--border-radius-md);
   box-shadow: 4px 4px var(--color-black);
-  background-color: var(--color-linen);
+  background-color: var(--color-dun);
   max-width: var(--max-width);
   max-height: 70vh;
   transition: var(--transition-default);
@@ -574,7 +639,7 @@ section {
 .contact-container {
   width: 100%;
   max-width: var(--max-width);
-  background: var(--color-pumpkin);
+  background: var(--color-linen);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -582,19 +647,22 @@ section {
   border-bottom: none;
   transition: var(--transition-slow);
 }
+.contact-container h2 {
+  color: var(--color-black);
+}
 
 .contact-content p {
-  color: var(--color-linen);
+  color: var(--color-black);
 }
 
 .contact-content p strong {
-  color: var(--color-linen);
+  color: var(--color-black);
 }
 
 .contact-content a {
-  color: var(--color-linen);
+  color: var(--color-black);
   text-decoration: none;
-  border-bottom: 1px dotted var(--color-linen);
+  border-bottom: 1px dotted var(--color-black);
   transition: var(--transition-default);
 }
 
@@ -606,11 +674,6 @@ section {
   background: none;
   border: none;
   cursor: pointer;
-}
-
-.copy-icon {
-  width: 20px;
-  height: 20px;
 }
 
 /* ===== Google Maps ===== */
