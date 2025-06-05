@@ -15,16 +15,31 @@
 
     // Initialize everything when DOM is loaded
     document.addEventListener('DOMContentLoaded', function() {
-        // Initialize navigation with navModule
-        const navElements = navModule.init({ isHomePage: true });
-        
-        // Merge the nav elements with our local elements
-        elements = { ...elements, ...navElements };
-        elements.heroContentWrapper.scrollTop = 0;
-        initHero();
-        initFAQ();
-        initCopyButton();
-        updateCurrentYear();
+        try {
+            console.log('DOM Content Loaded - Starting initialization...');
+            
+            // Check if navModule is available
+            if (typeof navModule === 'undefined') {
+                console.error('navModule is not available');
+                return;
+            }
+            
+            // Initialize navigation with navModule
+            const navElements = navModule.init({ isHomePage: true });
+            
+            // Merge the nav elements with our local elements
+            elements = { ...elements, ...navElements };
+            elements.heroContentWrapper.scrollTop = 0;
+            
+            console.log('Initializing components...');
+            initHero();
+            initBlog();
+            initCopyButton();
+            updateCurrentYear();
+            console.log('All components initialized successfully');
+        } catch (error) {
+            console.error('Error during initialization:', error);
+        }
     });
 
     /**
@@ -240,5 +255,140 @@
         // Set center to third marker (CGT Alteia)
         map.setCenter(markers[2].position);
     };
+
+    /**
+     * Initialize blog expandable functionality
+     */
+    function initBlog() {
+        console.log('Initializing blog functionality...');
+        const blogItems = document.querySelectorAll('.blog-item');
+        const modal = document.getElementById('blogModal');
+        const modalClose = document.getElementById('blogModalClose');
+        
+        console.log('Found blog items:', blogItems.length);
+        console.log('Modal elements:', { modal: !!modal, modalClose: !!modalClose });
+        
+        if (blogItems.length === 0) {
+            console.warn('No blog items found');
+            return;
+        }
+        
+        if (!modal || !modalClose) {
+            console.error('Modal elements not found');
+            return;
+        }
+        
+        blogItems.forEach((item, index) => {
+            console.log(`Processing blog item ${index}:`, item);
+            const header = item.querySelector('.blog-item-header');
+            const expandIcon = item.querySelector('.blog-item-expand-icon');
+            
+            console.log(`Blog item ${index} elements:`, {
+                header: !!header,
+                expandIcon: !!expandIcon
+            });
+            
+            if (!header || !expandIcon) {
+                console.warn(`Blog item ${index} missing required elements`);
+                return;
+            }
+            
+            // Add click event to the entire header
+            header.addEventListener('click', function(e) {
+                console.log(`Header clicked for item ${index}`);
+                // Prevent event bubbling if clicking on the icon specifically
+                if (e.target.closest('.blog-item-expand-icon')) {
+                    console.log('Click was on expand icon, ignoring header click');
+                    return;
+                }
+                openBlogModal(item);
+            });
+            
+            // Add click event to the expand icon
+            expandIcon.addEventListener('click', function(e) {
+                console.log(`Expand icon clicked for item ${index}`);
+                e.stopPropagation();
+                openBlogModal(item);
+            });
+            
+            // Make header cursor pointer to indicate it's clickable
+            header.style.cursor = 'pointer';
+            expandIcon.style.cursor = 'pointer';
+            
+            console.log(`Blog item ${index} initialized successfully`);
+        });
+        
+        // Close modal events
+        modalClose.addEventListener('click', closeBlogModal);
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeBlogModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeBlogModal();
+            }
+        });
+        
+        console.log('Blog initialization complete');
+    }
+    
+    /**
+     * Open blog modal with article content
+     * @param {HTMLElement} item - The blog item to display
+     */
+    function openBlogModal(item) {
+        console.log('Opening blog modal for item:', item);
+        
+        const modal = document.getElementById('blogModal');
+        const modalTitle = document.getElementById('blogModalTitle');
+        const modalDate = document.getElementById('blogModalDate');
+        const modalSubtitle = document.getElementById('blogModalSubtitle');
+        const modalBody = document.getElementById('blogModalBody');
+        
+        // Extract content from the clicked item
+        const title = item.querySelector('.blog-item-title')?.textContent || '';
+        const date = item.querySelector('.blog-item-date')?.textContent || '';
+        const subtitle = item.querySelector('.blog-item-subtitle')?.textContent || '';
+        const content = item.querySelector('.blog-item-content')?.innerHTML || '';
+        
+        console.log('Extracted content:', { title, date, subtitle, contentLength: content.length });
+        
+        // Populate modal
+        modalTitle.textContent = title;
+        modalDate.textContent = date;
+        modalSubtitle.textContent = subtitle;
+        modalBody.innerHTML = content;
+        
+        // Show modal
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        
+        console.log('Modal opened successfully');
+    }
+    
+    /**
+     * Close blog modal
+     */
+    function closeBlogModal() {
+        console.log('Closing blog modal');
+        
+        const modal = document.getElementById('blogModal');
+        const modalContent = modal.querySelector('.blog-modal-content');
+        
+        // Add slide-out animation
+        modalContent.classList.add('slide-out');
+        
+        // Wait for animation to complete before hiding modal
+        setTimeout(() => {
+            modal.classList.remove('active');
+            modalContent.classList.remove('slide-out');
+            document.body.style.overflow = ''; // Restore background scrolling
+            console.log('Modal closed successfully');
+        }, 300); // Match the animation duration (0.3s = 300ms)
+    }
 
 })();
