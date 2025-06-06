@@ -34,10 +34,11 @@
   --font-family-libre-caslon: 'Libre Caslon Display', serif;
 
   /* Font size */
-  --font-size-md: 1.5em;
-  --font-size-lg: 2.5em;
-  --font-size-xl: 3.5em;
-  --font-size-xxl: 4.5em;
+  --font-size-sm: 1.2rem;
+  --font-size-md: 1.5rem;
+  --font-size-lg: 2.5rem;
+  --font-size-xl: 3.5rem;
+  --font-size-xxl: 4.5rem;
 }
 * {
   box-sizing: border-box;
@@ -156,6 +157,7 @@ section {
   height: 40px;
   font-family: var(--font-family-mono);
   font-size: var(--font-size-sm);
+  font-weight: bold;
   color: var(--color-linen);
   border: var(--border-radius-sm) solid var(--color-black);
   border-radius: var(--border-radius-md);
@@ -667,25 +669,56 @@ section {
   z-index: 2;
 }
 
+.blog-item-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: start;
+  gap: var(--spacing-lg);
+}
 .sort-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: var(--spacing-lg);
   background: var(--color-pumpkin);
-  border-radius: var(--border-radius-lg);
+  border: var(--border-radius-sm) solid var(--color-black);
+  box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
+  color: var(--color-off-black);
   padding: var(--spacing-md);
   margin: 0 auto;
   margin-right: 0;
+  transition: var(--transition-default);
+}
+
+.sort-container:hover {
+  box-shadow: none;
+  transition: var(--transition-default);
+  cursor: pointer;
+}
+
+.sort-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sort-button p {
+  font-size: var(--font-size-sm);
+  font-weight: bold;
+  font-family: var(--font-family-mono);
+  color: var(--color-off-black);
+  padding: 0;
+  margin: 0;
 }
 
 .blog-item {
   width: 100%;
-  height: fit-content;
-  border-radius: var(--border-radius-lg);
+  height: 100%;
   color: var(--color-black);
-  background: var(--color-dun);
+  background: var(--color-linen);
   border: var(--border-radius-sm) solid var(--color-black);
+  box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
   margin: 0 auto;
   overflow: hidden;
   cursor: pointer;
@@ -694,7 +727,8 @@ section {
 }
 
 .blog-item:hover {
-  transform: translateY(-2px);
+  box-shadow: none;
+  background: var(--color-dun);
   transition: var(--transition-default);
 }
 
@@ -711,6 +745,7 @@ section {
   margin: 0 0 var(--spacing-sm) 0;
   line-height: 1.2;
   color: var(--color-black);
+  line-clamp: 3;
 }
 
 .blog-item-date {
@@ -727,7 +762,6 @@ section {
 }
 
 .blog-item-subtitle {
-  font-size: var(--font-size-md);
   font-family: var(--font-family-mono);
   font-weight: bold;
   margin-top: 0;
@@ -780,13 +814,13 @@ section {
   display: flex;
 }
 .blog-modal-content {
-  background: var(--color-linen);
-  border: var(--border-radius-sm) solid var(--color-black);
-  border-radius: var(--border-radius-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-lg);
   width: 50%;
   max-height: 80vh;
-  overflow-y: auto;
-  position: relative;
   animation: modalSlideIn 0.3s ease;
 }
 
@@ -817,12 +851,12 @@ section {
 }
 
 .blog-modal-header {
+  position: relative;
   padding: var(--spacing-lg);
-  border-bottom: 2px solid var(--color-black);
-  position: sticky;
-  top: 0;
+  border: var(--border-radius-sm) solid var(--color-black);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
   background: var(--color-dun);
-  z-index: 1;
 }
 
 .blog-modal-close {
@@ -876,12 +910,16 @@ section {
 
 .blog-modal-body {
   padding: var(--spacing-lg);
+  border: var(--border-radius-sm) solid var(--color-black);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--border-radius-md) var(--border-radius-md) var(--color-black);
+  background: var(--color-linen);
+  overflow-y: auto;
+  z-index: 1;
 }
 
 .blog-modal-body p {
-  font-size: var(--font-size-md);
   font-family: var(--font-family-mono);
-  text-align: justify;
   margin: 0 0 var(--spacing-md) 0;
   line-height: 1.1;
   color: var(--color-black);
