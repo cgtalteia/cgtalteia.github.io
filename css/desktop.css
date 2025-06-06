@@ -655,16 +655,28 @@ section {
 }
 
 .blog-content {
-  width: 80%;
+  width: 60%;
   padding-top: var(--spacing-lg);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: 1fr;
   justify-content: center;
   align-items: start;
   gap: var(--spacing-lg);
   position: relative;
   z-index: 2;
+}
+
+.sort-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-lg);
+  background: var(--color-pumpkin);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-md);
+  margin: 0 auto;
+  margin-right: 0;
 }
 
 .blog-item {
