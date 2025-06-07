@@ -73,7 +73,7 @@
         }
         function copiedSnackbar(textToCopy) {
             const snackbar = document.getElementById('copiedSnackbar');
-            snackbar.innerHTML = `<p style="color: var(--color-linen);"> Copié ! </p> <p> ${textToCopy} </p>`;
+            snackbar.innerHTML = `<p style="color: var(--color-linen);"> ${textToCopy} </p>`;
             void snackbar.clientWidth;
             showSnackbarWithTransition(snackbar);
         }
