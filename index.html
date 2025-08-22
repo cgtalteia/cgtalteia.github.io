@@ -13,18 +13,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=keyboard_arrow_down" />
 </head>
-
-
-<!-- BODY -->
-
 
 <body>
     <nav class="nav" style="display: block;" aria-label="Navigation principale">
@@ -33,14 +27,14 @@
                 <img id="cgt-logo" src="media/logo.png" alt="Logo CGT Alteia" height="50px">
                 <img id="alteia-logo" src="media/alteia.svg" alt="Logo Alteia" width="80px">
             </div>
-            <button id="nav-adhesion-button">Se syndiquer</button>
+            
             <ul class="nav-menu" role="menubar">
-                <li role="none"><a href="#qui-sommes-nous" class="qui-sommes-nous-link" role="menuitem">Qui sommes-nous ?</a></li>
-                <li role="none"><a href="#contact" role="menuitem">Contactez-nous</a></li>
+                <button id="nav-adhesion-button">Se syndiquer</button>
+                <li role="none"><a href="#blog" role="menuitem">Actualités</a></li>
+                <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
                 <li role="none"><a href="https://www.cgt.fr" target="_blank" rel="noopener noreferrer" role="menuitem">CGT.fr</a></li>
                 <li role="none"><a href="https://cgt31.fr" target="_blank" rel="noopener noreferrer" role="menuitem">CGT31.fr</a></li>
             </ul>
-            
             <div class ="hamburger">
                 <div class="openbtn">
                     <div class="line"></div>
@@ -48,239 +42,130 @@
                     <div class="line"></div>
                 </div>
             </div>
+            <button id="admin-login-button">
+                <i class="fa-solid fa-user-shield"></i>
+            </button>       
         </div>
+        <!-- Floating Login Container -->
+        <div id="floating-login-container" class="floating-login-container">
+            <div id="floating-login" class="floating-login">
+                <h3>Administration</h3>
+                <form id="floating-login-form">
+                    <div class="form-group">
+                        <label for="floating-username">Nom d'utilisateur</label>
+                        <input type="text" id="floating-username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="floating-password">Mot de passe</label>
+                        <input type="password" id="floating-password" name="password" required>
+                    </div>
+                    <button type="submit">Se connecter</button>
+                </form>
+                <div id="floating-login-error" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- Floating Admin Menu -->
+        <div id="floating-admin-menu" class="floating-admin-menu">
+            <button class="admin-menu-item" id="admin-edit-posts">
+                <i class="fa-solid fa-edit"></i>
+                Gérer les articles
+            </button>
+            <button class="admin-menu-item logout" id="admin-logout">
+                <i class="fa-solid fa-sign-out-alt"></i>
+                Déconnexion
+            </button>
+        </div>   
         <div class="overlay">
-            <a href="#qui-sommes-nous" class="qui-sommes-nous-link" role="menuitem">Qui sommes-nous ?</a>
-            <a href="#faq" role="menuitem">Foire Aux Questions</a>
-            <a href="#contact" role="menuitem">Contactez-nous</a>
+            <a href="#blog" role="menuitem">Actualités</a>
+            <a href="#contact" role="menuitem">Contact</a>
             <a href="https://www.cgt.fr" target="_blank" rel="noopener noreferrer" role="menuitem">Site de la CGT</a>
             <a href="https://cgt31.fr" target="_blank" rel="noopener noreferrer" role="menuitem">Site de la CGT 31</a>
         </div>
     </nav>
-    <main>
-        <section class="hero">
-            <div class="hero-content-wrapper">
-                <div class="hero-content">
-                    <h2 id="hero-title" class="hero-title">
-                        Info, Lutte<br>&<br>Camaraderie
-                    </h2>
-                    <p id="hero-subtitle" class="hero-subtitle">
-                        Toutes les informations nécessaires <br> sur ta section syndicale et la CGT.
-                    </p>
-                    <button class="hero-button">En savoir plus</button>
-                </div>
-                <div class="hero-content">
-                    <h2 id="hero-title" class="hero-title">
-                        <i class="fa-solid fa-people-group"></i>
-                        <br>
-                        <div class="counter" data-target="605000">0</div> adhérent·es
-                        <p style="font-size: var(--font-size-md);">
-                            La CGT (Confédération Générale du Travail) est l'une des
-                            principales organisations syndicales en France.
-                        </p>
-                    </h2>
-                    <div class="hero-text" style="font-size: var(--font-size-sm);">
-                        Elle regroupe les salarié·es de tous les
-                        secteurs, publics comme privés, pour défendre leurs droits, améliorer leurs conditions de
-                        travail, et faire entendre leur voix face aux employeurs et au pouvoir public.
-                    </div>
-                    <!-- <h2 id="hero-title" class="hero-title"><i class="fa-solid fa-chevron-down fa-beat" style="color: var(--color-linen);"></i></h2> -->
-                </div>
-                <div class="hero-content">
-                    <h2 id="hero-title" class="hero-title" style="width: fit-content; margin: 0 auto;">
-                        <img src="media/poi_bw.svg" alt="Poi" style="width: clamp(100px, 20vw, 150px); height: clamp(100px, 20vw, 150px);">
-                        <br>
-                        <p style="font-size: var(--font-size-md); margin-top: 0;">
-                            Notre section syndicale CGT est présente au sein d'Alteia pour
-                            représenter l'ensemble des salarié·es, syndiqué·es ou non.
-                        </p>
-                    </h2>
-                    <div class="hero-text" style="font-size: var(--font-size-sm);">
-                        Nous sommes des collègues
-                        de travail, élu·es ou mandaté·es, engagé·es pour faire respecter vos droits, lutter contre
-                        les injustices, et porter des revendications collectives.
-                    </div>
-                </div>
-                <div class="hero-content">
-                    <blockquote class="instagram-media"
-                        data-instgrm-permalink="https://www.instagram.com/p/DJIMj3vMapA/?utm_source=ig_embed&amp;utm_campaign=loading"
-                        data-instgrm-version="14"
-                        style="max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-                    </blockquote>
-                    <script async src="https://www.instagram.com/embed.js"></script>
-                </div>
-            </div>
-        </section>
-        <section id="blog" class="blog-container" aria-labelledby="blog-title">
-            <h2 id="blog-title" class="hero-title" style="font-family: var(--font-family-unifraktur);">La Dépêche Syndicale</h2>
-            <p id="blog-subtitle" class="hero-subtitle">Les dernières actualités <br> et communications syndicales</p>
-            <div class="blog-content">
-                <div class="sort-container">
-                    <div class="sort-button" id="sortButton" role="button" aria-label="Trier les articles" tabindex="0">
-                        <p>Trier par date</p>
-                    </div>
-                </div>
-                <div class="blog-item-container">
-                    <div class="blog-item" data-expanded="false">
-                        <div class="blog-item-header">
-                            <h3 class="blog-item-title">Négociations Salariales : Une Victoire Collective</h3>
-                            <span class="blog-item-date">15 janvier 2025</span>
-                            <p class="blog-item-subtitle">Après plusieurs semaines de mobilisation, la direction accepte enfin nos revendications concernant les augmentations salariales et les primes exceptionnelles.</p>
-                            <div class="blog-item-expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        <div class="blog-item-content">
-                            <p>Les négociations qui ont débuté en décembre dernier ont abouti à un accord historique pour l'ensemble des salarié·es d'Alteia. Grâce à la mobilisation de tous et toutes, nous avons obtenu une augmentation générale de 3,5% des salaires, ainsi qu'une prime exceptionnelle de 800€ pour chaque employé·e.</p>
-                            <p>Cette victoire démontre une fois de plus l'importance de l'action collective et de la solidarité syndicale. La direction, initialement réticente, a dû céder face à notre détermination et à l'unité de nos revendications.</p>
-                            <p>Nous tenons à remercier tous les collègues qui ont participé aux assemblées générales et qui ont soutenu cette action. C'est ensemble que nous construisons de meilleures conditions de travail pour tous.</p>
-                        </div>
-                    </div>
-                    <div class="blog-item" data-expanded="false">
-                        <div class="blog-item-header">
-                            <h3 class="blog-item-title">Réorganisation des Services : Vigilance Requise</h3>
-                            <span class="blog-item-date">8 janvier 2025</span>
-                            <p class="blog-item-subtitle">La direction annonce une restructuration des équipes. Nous analysons les impacts sur l'emploi et les conditions de travail de chacun·e.</p>
-                            <div class="blog-item-expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        <div class="blog-item-content">
-                            <p>Suite à l'annonce de la direction concernant la réorganisation des services, votre section syndicale CGT reste mobilisée pour défendre vos intérêts et surveiller les évolutions.</p>
-                            <p>Nous avons demandé la tenue d'un Comité Social et Économique extraordinaire afin d'obtenir toutes les informations nécessaires sur cette restructuration. Aucune décision ne doit être prise sans consultation préalable des représentant·es du personnel.</p>
-                            <p>Si vous avez des questions ou des inquiétudes concernant votre poste ou votre service, n'hésitez pas à nous contacter. Nous sommes là pour vous accompagner et défendre vos droits.</p>
-                            <p>Suite à l'annonce de la direction concernant la réorganisation des services, votre section syndicale CGT reste mobilisée pour défendre vos intérêts et surveiller les évolutions.</p>
-                            <p>Nous avons demandé la tenue d'un Comité Social et Économique extraordinaire afin d'obtenir toutes les informations nécessaires sur cette restructuration. Aucune décision ne doit être prise sans consultation préalable des représentant·es du personnel.</p>
-                            <p>Si vous avez des questions ou des inquiétudes concernant votre poste ou votre service, n'hésitez pas à nous contacter. Nous sommes là pour vous accompagner et défendre vos droits.</p>
-                            <p>Suite à l'annonce de la direction concernant la réorganisation des services, votre section syndicale CGT reste mobilisée pour défendre vos intérêts et surveiller les évolutions.</p>
-                            <p>Nous avons demandé la tenue d'un Comité Social et Économique extraordinaire afin d'obtenir toutes les informations nécessaires sur cette restructuration. Aucune décision ne doit être prise sans consultation préalable des représentant·es du personnel.</p>
-                            <p>Si vous avez des questions ou des inquiétudes concernant votre poste ou votre service, n'hésitez pas à nous contacter. Nous sommes là pour vous accompagner et défendre vos droits.</p>
-                        </div>
-                    </div>
-                    <div class="blog-item" data-expanded="false">
-                        <div class="blog-item-header">
-                            <h3 class="blog-item-title">Formation Syndicale : Inscriptions Ouvertes</h3>
-                            <span class="blog-item-date">22 décembre 2024</span>
-                            <p class="blog-item-subtitle">La CGT organise des sessions de formation pour mieux connaître vos droits et comprendre le fonctionnement syndical. Rejoignez-nous !</p>
-                            <div class="blog-item-expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        <div class="blog-item-content">
-                            <p>Dans le cadre de notre mission d'information et de formation, nous organisons plusieurs sessions dédiées à la connaissance de vos droits en tant que salarié·e.</p>
-                            <p>Au programme : droit du travail, négociation collective, fonctionnement des instances représentatives du personnel, et bien d'autres sujets essentiels pour votre vie professionnelle.</p>
-                            <p>Ces formations sont ouvertes à tous les salarié·es, syndiqué·es ou non. Elles se dérouleront sur le temps de travail, conformément au droit à la formation syndicale. Pour vous inscrire, contactez-nous par email ou passez nous voir directement.</p>
-                        </div>
-                    </div>
 
-                    <div class="blog-item" data-expanded="false">
-                        <div class="blog-item-header">
-                            <h3 class="blog-item-title">Télétravail : Nouveaux Accords en Vue</h3>
-                            <span class="blog-item-date">18 décembre 2024</span>
-                            <p class="blog-item-subtitle">Les discussions sur l'évolution du télétravail progressent. Nous défendons un cadre équitable et respectueux de l'équilibre vie privée-vie professionnelle.</p>
-                            <div class="blog-item-expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        <div class="blog-item-content">
-                            <p>Les négociations sur le télétravail entrent dans une phase décisive. Votre section syndicale porte des propositions concrètes pour améliorer les conditions de travail à distance.</p>
-                            <p>Nos revendications portent notamment sur : la prise en charge des frais liés au télétravail, la garantie du droit à la déconnexion, l'amélioration de l'équipement informatique, et la préservation du lien social entre collègues.</p>
-                            <p>Nous veillerons à ce que le télétravail reste un choix et non une obligation, et qu'il ne devienne pas un prétexte pour dégrader les conditions de travail ou réduire les espaces collectifs.</p>
+    <main>
+        <section id="blog" class="blog-container" aria-labelledby="blog-title">
+            <div class="blog-content">
+                <div class="blog-filters">
+                    <div class="sort-container">
+                        <div class="sort-button" id="sortButton" role="button" aria-label="Trier les articles" tabindex="0">
+                            <i class="fa-solid fa-sort"></i>
+                            <span>Trier par date</span>
                         </div>
                     </div>
-                    <div class="blog-item" data-expanded="false">
-                        <div class="blog-item-header">
-                            <h3 class="blog-item-title">Solidarité : Collecte pour les Sinistrés</h3>
-                            <span class="blog-item-date">10 décembre 2024</span>
-                            <p class="blog-item-subtitle">Face aux récentes catastrophes naturelles, notre section organise une collecte de solidarité. Chaque geste compte pour aider les familles touchées.</p>
-                            <div class="blog-item-expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
+                </div>
+                
+                <div class="blog-timeline">
+                    <!-- Blog posts will be loaded dynamically from localStorage -->
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-container" aria-labelledby="contact-title">
+            <h2 id="contact-title">Contact</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-envelope"></i>
                         </div>
-                        <div class="blog-item-content">
-                            <p>La solidarité est une valeur fondamentale de la CGT. Face aux difficultés que traversent de nombreuses familles suite aux intempéries récentes, nous ne pouvions rester indifférents.</p>
-                            <p>Une collecte est organisée dans tous les services de l'entreprise. Les dons récoltés seront intégralement reversés aux associations locales qui viennent en aide aux sinistrés.</p>
-                            <p>Au-delà de l'aide matérielle, cette action témoigne de notre engagement pour une société plus juste et solidaire. Merci à tous ceux qui participent à cet élan de générosité collective.</p>
+                        <div class="contact-details">
+                            <strong>Email</strong>
+                            <div class="contact-row">
+                                <span class="contact-text">
+                                    <a href="mailto:cgt.alteia@gmail.com" id="mail">cgt.alteia@gmail.com</a>
+                                </span>
+                                <button class="copy-button" id="copyMail">
+                                    <i class="fa-solid fa-copy"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <div class="blog-item" data-expanded="false">
-                        <div class="blog-item-header">
-                            <h3 class="blog-item-title">Solidarité : Collecte pour les Sinistrés</h3>
-                            <span class="blog-item-date">10 décembre 2024</span>
-                            <p class="blog-item-subtitle">Face aux récentes catastrophes naturelles, notre section organise une collecte de solidarité. Chaque geste compte pour aider les familles touchées.</p>
-                            <div class="blog-item-expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-phone"></i>
                         </div>
-                        <div class="blog-item-content">
-                            <p>La solidarité est une valeur fondamentale de la CGT. Face aux difficultés que traversent de nombreuses familles suite aux intempéries récentes, nous ne pouvions rester indifférents.</p>
-                            <p>Une collecte est organisée dans tous les services de l'entreprise. Les dons récoltés seront intégralement reversés aux associations locales qui viennent en aide aux sinistrés.</p>
-                            <p>Au-delà de l'aide matérielle, cette action témoigne de notre engagement pour une société plus juste et solidaire. Merci à tous ceux qui participent à cet élan de générosité collective.</p>
+                        <div class="contact-details">
+                            <strong>Téléphone</strong>
+                            <div class="contact-row">
+                                <span class="contact-text">
+                                    <a href="tel:+33646765554" id="tel">+33 6 46 76 55 54</a>
+                                </span>
+                                <button class="copy-button" id="copyPhone">
+                                    <i class="fa-solid fa-copy"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <div class="blog-item" data-expanded="false">
-                        <div class="blog-item-header">
-                            <h3 class="blog-item-title">Solidarité : Collecte pour les Sinistrés</h3>
-                            <span class="blog-item-date">10 décembre 2024</span>
-                            <p class="blog-item-subtitle">Face aux récentes catastrophes naturelles, notre section organise une collecte de solidarité. Chaque geste compte pour aider les familles touchées.</p>
-                            <div class="blog-item-expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-location-dot"></i>
                         </div>
-                        <div class="blog-item-content">
-                            <p>La solidarité est une valeur fondamentale de la CGT. Face aux difficultés que traversent de nombreuses familles suite aux intempéries récentes, nous ne pouvions rester indifférents.</p>
-                            <p>Une collecte est organisée dans tous les services de l'entreprise. Les dons récoltés seront intégralement reversés aux associations locales qui viennent en aide aux sinistrés.</p>
-                            <p>Au-delà de l'aide matérielle, cette action témoigne de notre engagement pour une société plus juste et solidaire. Merci à tous ceux qui participent à cet élan de générosité collective.</p>
+                        <div class="contact-details">
+                            <strong>Adresse</strong>
+                            <div class="contact-row">
+                                <span class="contact-text" id="adresse">1 L'Occitane, 31670 Labège</span>
+                                <button class="copy-button" id="copyAddress">
+                                    <i class="fa-solid fa-copy"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <div class="blog-item" data-expanded="false">
-                        <div class="blog-item-header">
-                            <h3 class="blog-item-title">Solidarité : Collecte pour les Sinistrés</h3>
-                            <span class="blog-item-date">10 décembre 2024</span>
-                            <p class="blog-item-subtitle">Face aux récentes catastrophes naturelles, notre section organise une collecte de solidarité. Chaque geste compte pour aider les familles touchées.</p>
-                            <div class="blog-item-expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-clock"></i>
                         </div>
-                        <div class="blog-item-content">
-                            <p>La solidarité est une valeur fondamentale de la CGT. Face aux difficultés que traversent de nombreuses familles suite aux intempéries récentes, nous ne pouvions rester indifférents.</p>
-                            <p>Une collecte est organisée dans tous les services de l'entreprise. Les dons récoltés seront intégralement reversés aux associations locales qui viennent en aide aux sinistrés.</p>
-                            <p>Au-delà de l'aide matérielle, cette action témoigne de notre engagement pour une société plus juste et solidaire. Merci à tous ceux qui participent à cet élan de générosité collective.</p>
-                        </div>
-                    </div>
-                    <div class="blog-item" data-expanded="false">
-                        <div class="blog-item-header">
-                            <h3 class="blog-item-title">Solidarité : Collecte pour les Sinistrés</h3>
-                            <span class="blog-item-date">10 décembre 2024</span>
-                            <p class="blog-item-subtitle">Face aux récentes catastrophes naturelles, notre section organise une collecte de solidarité. Chaque geste compte pour aider les familles touchées.</p>
-                            <div class="blog-item-expand-icon">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        <div class="blog-item-content">
-                            <p>La solidarité est une valeur fondamentale de la CGT. Face aux difficultés que traversent de nombreuses familles suite aux intempéries récentes, nous ne pouvions rester indifférents.</p>
-                            <p>Une collecte est organisée dans tous les services de l'entreprise. Les dons récoltés seront intégralement reversés aux associations locales qui viennent en aide aux sinistrés.</p>
-                            <p>Au-delà de l'aide matérielle, cette action témoigne de notre engagement pour une société plus juste et solidaire. Merci à tous ceux qui participent à cet élan de générosité collective.</p>
+                        <div class="contact-details">
+                            <strong>Horaires</strong>
+                            <span>Lundi au Vendredi, 9h-17h</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <section id="contact" class="contact-container" aria-labelledby="contact-title">
-            <h2 id="contact-title" class="hero-title">Contactez-nous</h2>
-            <div class="contact-content">
-                <p style="display: flex; align-items: center; gap: 10px;"><strong>Email :</strong> <a href="mailto:cgt.alteia@gmail.com" id="mail">cgt.alteia@gmail.com</a>
-                    <button class="copy-button" id="copyMail"><i class="fa-solid fa-copy"></i></button>
-                </p>
-                <p style="display: flex; align-items: center; gap: 10px;"><strong>Téléphone :</strong> <a href="tel:+33646765554" id="tel">+33 6 46 76 55 54</a>
-                    <button class="copy-button" id="copyPhone"><i class="fa-solid fa-copy"></i></button>
-                </p>
-                <p style="display: flex; align-items: center; gap: 10px;"><strong>Adresse :</strong> <span id="adresse">1 L'Occitane, 31670 Labège</span>
-                    <button class="copy-button" id="copyAddress"><i class="fa-solid fa-copy"></i></button>
-                </p>
-                <p><strong>Horaires :</strong> Lundi au Vendredi, 9h-17h</p>
-            </div>
-            <div id="google-map" aria-label="Carte Google Maps montrant l'emplacement du syndicat"></div>
         </section>
     </main>
 
@@ -307,8 +192,6 @@
         </div>
     </div>
 </body>
-<script defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHe3Vb4L8M7SICMWh1Om8-y97-R6f4mio&callback=initMap"></script>
 <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 <script src="js/nav.js"></script>
 <script src="js/script.js"></script>

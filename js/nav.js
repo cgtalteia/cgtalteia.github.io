@@ -13,10 +13,16 @@ const navModule = (function() {
             nav: document.querySelector('.nav'),
             navLogo: document.querySelector('.nav-logo'),
             navLinks: document.querySelectorAll('.nav a'),
-            quiSommesNousLink: document.querySelectorAll('.qui-sommes-nous-link'),
             hamburger: document.querySelector('.hamburger'),
             overlay: document.querySelector('.overlay'),
-            navAdhesionButton: document.querySelector('#nav-adhesion-button')
+            navAdhesionButton: document.querySelector('#nav-adhesion-button'),
+            adminLoginButton: document.querySelector('#admin-login-button'),
+            floatingLoginContainer: document.querySelector('#floating-login-container'),
+            floatingAdminMenu: document.querySelector('#floating-admin-menu'),
+            floatingLoginForm: document.querySelector('#floating-login-form'),
+            floatingLoginError: document.querySelector('#floating-login-error'),
+            adminEditPosts: document.querySelector('#admin-edit-posts'),
+            adminLogout: document.querySelector('#admin-logout')
         };
     };
 
@@ -59,9 +65,7 @@ const navModule = (function() {
         e.preventDefault();
         const hrefElement = document.querySelector(this.getAttribute('href'));
         if (hrefElement) {
-            const targetElement = hrefElement.querySelector('.hero-title');
-            const parentContainer = targetElement.parentElement;
-            parentContainer.scrollIntoView({
+            hrefElement.scrollIntoView({
                 behavior: 'smooth',
             });
         }
@@ -150,16 +154,10 @@ const navModule = (function() {
                 if (element) {
                     handleSmoothScroll.call(link, e);
                 } else {
-                    window.location.href = 'index.html' + link.getAttribute('href');
+                    // External links don't need special handling
+                    return;
                 }
             });
-        });
-
-        // Qui sommes-nous link special handling
-        elements.quiSommesNousLink.forEach(link => {
-            if (window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/')) {
-                link.addEventListener('click', scrollToTop);
-            }
         });
 
         // Handle clicks outside of the overlay
@@ -181,6 +179,180 @@ const navModule = (function() {
         }
     }
 
+    /**
+     * Handle admin logout functionality
+     */
+    function initAdminLogout(elements) {
+        if (elements.adminLogout) {
+            elements.adminLogout.addEventListener('click', function() {
+                sessionStorage.removeItem('adminLoggedIn');
+                sessionStorage.removeItem('adminUsername');
+                updateAdminButtonState(elements, false);
+                hideFloatingMenus(elements);
+            });
+        }
+    }
+
+    /**
+     * Initialize floating login system
+     */
+    function initFloatingLogin(elements) {
+        // Simple demo credentials
+        const ADMIN_CREDENTIALS = {
+            'admin': 'cgt2025',
+            'moderateur': 'alteia123'
+        };
+
+        // Admin login button click handler
+        if (elements.adminLoginButton) {
+            elements.adminLoginButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isLoggedIn = sessionStorage.getItem('adminLoggedIn') === 'true';
+                
+                if (isLoggedIn) {
+                    // Show admin menu
+                    hideFloatingMenus(elements);
+                    showFloatingAdminMenu(elements);
+                } else {
+                    // Show login form
+                    hideFloatingMenus(elements);
+                    showFloatingLogin(elements);
+                }
+            });
+        }
+
+        // Floating login form handler
+        if (elements.floatingLoginForm) {
+            elements.floatingLoginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const username = document.getElementById('floating-username').value;
+                const password = document.getElementById('floating-password').value;
+                
+                if (ADMIN_CREDENTIALS[username] && ADMIN_CREDENTIALS[username] === password) {
+                    sessionStorage.setItem('adminLoggedIn', 'true');
+                    sessionStorage.setItem('adminUsername', username);
+                    updateAdminButtonState(elements, true);
+                    hideFloatingMenus(elements);
+                    elements.floatingLoginError.style.display = 'none';
+                    
+                    // Clear form
+                    elements.floatingLoginForm.reset();
+                } else {
+                    elements.floatingLoginError.textContent = 'Nom d\'utilisateur ou mot de passe incorrect';
+                    elements.floatingLoginError.style.display = 'block';
+                }
+            });
+        }
+
+        // Admin edit posts button
+        if (elements.adminEditPosts) {
+            elements.adminEditPosts.addEventListener('click', function() {
+                window.location.href = 'admin.html';
+            });
+        }
+
+        // Close floating menus when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.floating-login') && 
+                !e.target.closest('.floating-admin-menu') && 
+                !e.target.closest('#admin-login-button')) {
+                hideFloatingMenus(elements);
+            }
+        });
+    }
+
+    /**
+     * Position the floating login container correctly
+     */
+    function positionFloatingLogin(elements) {
+        const navContainer = elements.nav.querySelector('.nav-container');
+        const loginButton = elements.adminLoginButton;
+        const loginContainer = elements.floatingLoginContainer;
+
+        if (navContainer && loginButton && loginContainer) {
+            const navRect = navContainer.getBoundingClientRect();
+            const buttonRect = loginButton.getBoundingClientRect();
+
+            // Calculate the correct position
+            const offsetRight = window.innerWidth - navRect.right + parseInt(getComputedStyle(document.documentElement).getPropertyValue(window.innerWidth <= 760 ? '--spacing-xs' : '--spacing-lg'));
+            loginContainer.style.top = `${buttonRect.bottom}px`;
+            loginContainer.style.right = `${offsetRight}px`;
+        }
+    }
+
+    /**
+     * Position the floating admin menu correctly
+     */
+    function positionFloatingAdminMenu(elements) {
+        const navContainer = elements.nav.querySelector('.nav-container');
+        const loginButton = elements.adminLoginButton;
+        const adminMenu = elements.floatingAdminMenu;
+
+        if (navContainer && loginButton && adminMenu) {
+            const navRect = navContainer.getBoundingClientRect();
+            const buttonRect = loginButton.getBoundingClientRect();
+
+            // Calculate the correct position
+            const offsetRight = window.innerWidth - navRect.right;
+            adminMenu.style.top = `${buttonRect.bottom}px`;
+            adminMenu.style.right = `${offsetRight}px`;
+        }
+    }
+
+    /**
+     * Show floating login
+     */
+    function showFloatingLogin(elements) {
+        if (elements.floatingLoginContainer) {
+            positionFloatingLogin(elements);
+            elements.floatingLoginContainer.classList.add('active');
+        }
+    }
+
+    /**
+     * Show floating admin menu
+     */
+    function showFloatingAdminMenu(elements) {
+        if (elements.floatingAdminMenu) {
+            positionFloatingAdminMenu(elements);
+            elements.floatingAdminMenu.classList.add('active');
+        }
+    }
+
+    /**
+     * Hide all floating menus
+     */
+    function hideFloatingMenus(elements) {
+        if (elements.floatingLoginContainer) {
+            elements.floatingLoginContainer.classList.remove('active');
+        }
+        if (elements.floatingAdminMenu) {
+            elements.floatingAdminMenu.classList.remove('active');
+        }
+    }
+
+    /**
+     * Update admin button state
+     */
+    function updateAdminButtonState(elements, isLoggedIn) {
+        if (elements.adminLoginButton) {
+            if (isLoggedIn) {
+                elements.adminLoginButton.classList.add('logged-in');
+            } else {
+                elements.adminLoginButton.classList.remove('logged-in');
+            }
+        }
+    }
+
+    /**
+     * Check admin session and show/hide logout button
+     */
+    function checkAdminSession(elements) {
+        const isLoggedIn = sessionStorage.getItem('adminLoggedIn') === 'true';
+        updateAdminButtonState(elements, isLoggedIn);
+    }
+
     // Public API
     return {
         /**
@@ -195,6 +367,9 @@ const navModule = (function() {
             initNavLogo(elements, isHomePage);
             handleOverlay(elements);
             initAdhesionButton(elements);
+            initAdminLogout(elements);
+            initFloatingLogin(elements); // Initialize floating login
+            checkAdminSession(elements);
             
             // Return elements for page-specific customization
             return elements;

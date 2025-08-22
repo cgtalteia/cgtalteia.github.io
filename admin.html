@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta name="description" content="Administration CGT Alteia - Gestion du blog">
+    <meta name="theme-color" content="#f03e3e">
+    <title>Admin - CGT Alteia</title>
+    <link rel="icon" type="image/png" href="media/favicon.png">
+    <link rel="stylesheet" href="css/desktop.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="nav" style="display: block;" aria-label="Navigation principale">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img id="cgt-logo" src="media/logo.png" alt="Logo CGT Alteia" height="50px">
+                <img id="alteia-logo" src="media/alteia.svg" alt="Logo Alteia" width="80px">
+            </div>
+            <button id="nav-adhesion-button">Se syndiquer</button>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="index.html#blog" role="menuitem">Actualités</a></li>
+                <li role="none"><a href="index.html#contact" role="menuitem">Contact</a></li>
+                <li role="none"><a href="https://www.cgt.fr" target="_blank" rel="noopener noreferrer" role="menuitem">CGT.fr</a></li>
+                <li role="none"><a href="https://cgt31.fr" target="_blank" rel="noopener noreferrer" role="menuitem">CGT31.fr</a></li>
+            </ul>
+            <button id="admin-login-button">
+                <i class="fa-solid fa-user-shield"></i>
+            </button>
+            
+            <div class ="hamburger">
+                <div class="openbtn">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+        <div class="overlay">
+            <a href="index.html#blog" role="menuitem">Actualités</a>
+            <a href="index.html#contact" role="menuitem">Contact</a>
+            <a href="https://www.cgt.fr" target="_blank" rel="noopener noreferrer" role="menuitem">Site de la CGT</a>
+            <a href="https://cgt31.fr" target="_blank" rel="noopener noreferrer" role="menuitem">Site de la CGT 31</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Admin Dashboard will be shown when logged in -->
+        <div id="admin-dashboard" class="admin-container" style="display: none;">
+            <div class="admin-header">
+                <h2>Gestion du Blog</h2>
+                <button id="add-post-button" class="primary-button">
+                    <i class="fa-solid fa-plus"></i>
+                    Nouvel Article
+                </button>
+            </div>
+            
+            <div class="admin-content">
+                <div id="posts-list" class="posts-list">
+                    <!-- Blog posts will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Default message when not logged in -->
+        <div id="admin-default" class="admin-container">
+            <div class="login-form">
+                <h2>Administration CGT Alteia</h2>
+                <p style="font-family: var(--font-family-mono); color: var(--color-gray); margin: 0;">
+                    Cliquez sur l'icône d'administration dans la barre de navigation pour vous connecter.
+                </p>
+            </div>
+        </div>
+
+        <!-- Post Editor Modal -->
+        <div id="post-editor-modal" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="editor-title">Nouvel Article</h3>
+                    <button id="close-editor" class="close-button">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <form id="post-form" class="post-form">
+                    <div class="form-group">
+                        <label for="post-date">Date</label>
+                        <input type="date" id="post-date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="post-title">Titre</label>
+                        <input type="text" id="post-title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="post-subtitle">Sous-titre</label>
+                        <textarea id="post-subtitle" name="subtitle" rows="2" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="post-thumbnail">Image (URL)</label>
+                        <input type="url" id="post-thumbnail" name="thumbnail" placeholder="https://example.com/image.jpg">
+                        <div id="thumbnail-preview" class="thumbnail-preview"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="post-content">Contenu</label>
+                        <textarea id="post-content" name="content" rows="8" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" id="cancel-edit">Annuler</button>
+                        <button type="submit" class="primary-button">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="current-year">2025</span> CGT Alteia - Administration</p>
+    </footer>
+
+    <!-- Floating Login Container -->
+    <div id="floating-login" class="floating-login">
+        <h3>Administration</h3>
+        <form id="floating-login-form">
+            <div class="form-group">
+                <label for="floating-username">Nom d'utilisateur</label>
+                <input type="text" id="floating-username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="floating-password">Mot de passe</label>
+                <input type="password" id="floating-password" name="password" required>
+            </div>
+            <button type="submit">Se connecter</button>
+        </form>
+        <div id="floating-login-error" class="error-message" style="display: none;"></div>
+    </div>
+
+    <!-- Floating Admin Menu -->
+    <div id="floating-admin-menu" class="floating-admin-menu">
+        <button class="admin-menu-item" id="admin-edit-posts">
+            <i class="fa-solid fa-edit"></i>
+            Gérer les articles
+        </button>
+        <button class="admin-menu-item logout" id="admin-logout">
+            <i class="fa-solid fa-sign-out-alt"></i>
+            Déconnexion
+        </button>
+    </div>
+
+    <script src="js/nav.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html> 
