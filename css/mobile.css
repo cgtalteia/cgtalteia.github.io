@@ -96,6 +96,30 @@
         transform: translateY(-1px);
         transition: var(--transition-default);
     }
+    
+    #overlay-adhesion-button {
+        display: flex;
+        width: 100%;
+        font-family: var(--font-family-mono);
+        font-size: var(--font-size-md);
+        color: var(--color-linen);
+        border: 1px solid var(--color-black-light);
+        border-radius: var(--border-radius-lg);
+        background: var(--color-red);
+        box-shadow: var(--shadow-md);
+        padding: var(--spacing-md);
+        margin: var(--spacing-md) 0;
+        transition: var(--transition-default);
+        cursor: pointer;
+        font-weight: 600;
+    }
+    
+    #overlay-adhesion-button:hover {
+        background: var(--color-poppy);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-1px);
+        transition: var(--transition-default);
+    }
 }
 
 @media (max-width: 760px) {
@@ -126,12 +150,7 @@
         margin-right: var(--spacing-sm);
     }
     
-    #admin-login-button {
-        width: 36px;
-        height: 36px;
-        font-size: var(--font-size-sm);
-        margin-left: var(--spacing-sm);
-    }
+
     
     .hamburger {
         width: 36px;
@@ -167,17 +186,64 @@
         padding: 0 var(--spacing-md);
     }
     
+    /* Blog Filters Mobile */
     .blog-filters {
+        flex-direction: column;
+        align-items: stretch;
+        padding: var(--spacing-md);
+        gap: var(--spacing-md);
         margin-bottom: var(--spacing-lg);
     }
     
-    .sort-container {
-        padding: var(--spacing-sm) var(--spacing-md);
+    /* Hide desktop filters, show mobile dropdown */
+    .desktop-filters {
+        display: none !important;
     }
     
-    .sort-button {
-        font-size: var(--font-size-xs);
+    .mobile-filters {
+        display: flex !important;
+        justify-content: center;
     }
+    
+    /* Style the mobile dropdown */
+    .category-dropdown {
+        width: 100%;
+        max-width: 280px;
+        padding: var(--spacing-sm) var(--spacing-md);
+        background: var(--color-white);
+        color: var(--color-off-black);
+        border: 1px solid var(--color-black-light);
+        border-radius: var(--border-radius-lg);
+        font-family: var(--font-family-mono);
+        font-size: var(--font-size-sm);
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition-default);
+        box-shadow: var(--shadow-sm);
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right var(--spacing-sm) center;
+        background-size: 16px;
+        padding-right: calc(var(--spacing-md) + 20px);
+    }
+    
+    .category-dropdown:focus {
+        outline: none;
+        border-color: var(--color-red);
+        box-shadow: 0 0 0 2px rgba(240, 62, 62, 0.1);
+    }
+    
+    .sort-section {
+        justify-content: center;
+    }
+    
+    .sort-btn {
+        font-size: var(--font-size-xs);
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+    
+
     
     /* Blog Timeline Mobile */
     .blog-timeline {
@@ -235,6 +301,20 @@
         font-size: var(--font-size-xs);
     }
     
+    .blog-item-category {
+        top: var(--spacing-sm);
+        left: var(--spacing-sm);
+        padding: var(--spacing-xs);
+        font-size: 10px;
+        gap: var(--spacing-xs);
+    }
+    
+    .blog-item-category i {
+        font-size: 10px;
+    }
+    
+
+    
     .blog-item-body {
         padding-top: var(--spacing-md);
     }
@@ -279,6 +359,18 @@
     
     .blog-modal-body p {
         font-size: var(--font-size-xs);
+    }
+    
+    /* Blog Read More Button Mobile */
+    .blog-read-more-container {
+        margin-top: var(--spacing-lg);
+        margin-bottom: var(--spacing-md);
+        padding: 0 var(--spacing-md);
+    }
+    
+    .blog-read-more-btn {
+        font-size: var(--font-size-xs);
+        padding: var(--spacing-sm) var(--spacing-lg);
     }
     
     .blog-modal-thumbnail {
@@ -362,142 +454,52 @@
         font-size: var(--font-size-xs);
     }
     
-    /* Adhesion Section Mobile */
-    .adhesion-container {
-        padding: var(--spacing-xl) 0;
+    
+
+    /* Adhesion Modal Mobile */
+    .adhesion-modal-content {
+        width: 95%;
+        margin: var(--spacing-sm);
+        max-height: 95vh;
     }
     
-    .adhesion-container #adhesion-title {
-        font-size: var(--font-size-xl);
-        margin-bottom: var(--spacing-lg);
-    }
-    
-    .adhesion-content {
-        width: 90%;
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-    }
-    
-    .adhesion-content .text {
-        font-size: var(--font-size-sm);
-    }
-    
-    .adhesion-form {
-        grid-template-columns: 1fr;
+    .adhesion-modal-header {
         padding: var(--spacing-lg);
-        gap: var(--spacing-sm);
     }
     
-    .adhesion-form label {
-        font-size: var(--font-size-xs);
+    .adhesion-modal-close {
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+        width: 28px;
+        height: 28px;
     }
     
-    .adhesion-form input,
-    .adhesion-form select {
-        padding: var(--spacing-sm);
-        font-size: var(--font-size-xs);
+    .adhesion-celebration h3 {
+        font-size: var(--font-size-lg);
     }
     
-    .adhesion-form button {
-        font-size: var(--font-size-sm);
-    }
-    
-    /* FAQ Section Mobile */
-    .faq-container {
-        padding: var(--spacing-xl) 0;
-    }
-    
-    .faq-container h2 {
+    .adhesion-celebration i {
         font-size: var(--font-size-xl);
-        margin-bottom: var(--spacing-lg);
     }
     
-    .faq-item-container {
-        gap: var(--spacing-md);
-        padding: 0 var(--spacing-md);
-    }
-    
-    .faq-item-title {
-        font-size: var(--font-size-sm);
-        padding: var(--spacing-md);
-    }
-    
-    .faq-item-content {
-        padding: 0 var(--spacing-md) var(--spacing-md);
-        font-size: var(--font-size-xs);
-    }
-    
-    .simulator-item {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-md);
-    }
-    
-    .simulator-item-content {
-        padding: var(--spacing-sm);
-    }
-    
-    .simulator-item-content p {
-        font-size: var(--font-size-xs);
-    }
-    
-    .simulator-item-content p#simulator-result {
-        width: 100px;
-        height: 40px;
+    .celebration-text {
         font-size: var(--font-size-sm);
     }
     
-    .simulator-item-content input {
-        width: 100px;
-        height: 40px;
+    .adhesion-modal-body {
+        padding: var(--spacing-lg);
+    }
+    
+    .adhesion-info h4 {
+        font-size: var(--font-size-md);
+    }
+    
+    .adhesion-info li {
         font-size: var(--font-size-xs);
     }
     
-    /* Chat Container Mobile */
-    .chat-container {
-        padding: var(--spacing-md);
-        margin-top: var(--spacing-lg);
-    }
-    
-    .message-list {
-        height: 50vh;
-        padding: var(--spacing-sm);
-    }
-    
-    .message-bubble {
-        padding: var(--spacing-sm) var(--spacing-md);
-        font-size: var(--font-size-xs);
-    }
-    
-    .input-container {
-        padding: var(--spacing-sm);
-        gap: var(--spacing-xs);
-    }
-    
-    .input-container input[type="text"] {
-        padding: var(--spacing-sm);
-        font-size: var(--font-size-xs);
-    }
-    
-    .input-container button {
-        width: 40px;
-        height: 40px;
-        font-size: var(--font-size-xs);
-    }
-
-    .floating-login,
-    .floating-admin-menu {
-        top: 60px;
-        right: var(--spacing-sm);
-        width: calc(100vw - var(--spacing-lg));
-        max-width: 300px;
-    }
-
-    .floating-login-container {
-        width: calc(100vw - var(--spacing-lg));
-        max-width: 300px;
-    }
-
-    .floating-login-container .floating-login {
-        width: 100%;
+    .download-button {
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-sm) var(--spacing-lg);
     }
 }

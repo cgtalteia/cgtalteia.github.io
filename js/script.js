@@ -33,33 +33,7 @@
             initCopyButton();
             updateCurrentYear();
             
-            // Listen for storage changes from other tabs/windows
-            window.addEventListener('storage', function(e) {
-                if (e.key === 'blogPosts') {
-                    console.log('Blog posts updated from another tab, refreshing timeline...');
-                    loadBlogFromStorage();
-                }
-            });
-            
-            // Listen for custom event for same-page updates
-            window.addEventListener('blogPostsUpdated', function() {
-                console.log('Blog posts updated on same page, refreshing timeline...');
-                loadBlogFromStorage();
-            });
-            
-            // Polling mechanism for localStorage changes (fallback)
-            let lastBlogPostsHash = '';
-            setInterval(() => {
-                const currentPosts = localStorage.getItem('blogPosts');
-                if (currentPosts) {
-                    const currentHash = btoa(currentPosts).slice(0, 20); // Simple hash
-                    if (lastBlogPostsHash && lastBlogPostsHash !== currentHash) {
-                        console.log('Blog posts changed detected via polling, refreshing...');
-                        loadBlogFromStorage();
-                    }
-                    lastBlogPostsHash = currentHash;
-                }
-            }, 2000); // Check every 2 seconds
+            // Load the static blog posts - no dynamic updating needed
             
             console.log('All components initialized successfully');
         } catch (error) {
@@ -162,57 +136,7 @@
             return;
         }
         
-        // Initialize sort functionality (only once)
-        if (sortButton && !sortButton.hasAttribute('data-initialized')) {
-            let isSorted = false;
-            sortButton.addEventListener('click', function() {
-                const timeline = document.querySelector('.blog-timeline');
-                const items = Array.from(timeline.children);
-                
-                if (!isSorted) {
-                    // Sort by date (newest first)
-                    items.sort((a, b) => {
-                        const dateA = parseFrenchDate(a.querySelector('.blog-item-date').textContent);
-                        const dateB = parseFrenchDate(b.querySelector('.blog-item-date').textContent);
-                        return dateB - dateA;
-                    });
-                    sortButton.querySelector('span').textContent = 'Trier par date (plus récent)';
-                    isSorted = true;
-                } else {
-                    // Sort by date (oldest first)
-                    items.sort((a, b) => {
-                        const dateA = parseFrenchDate(a.querySelector('.blog-item-date').textContent);
-                        const dateB = parseFrenchDate(b.querySelector('.blog-item-date').textContent);
-                        return dateA - dateB;
-                    });
-                    sortButton.querySelector('span').textContent = 'Trier par date (plus ancien)';
-                    isSorted = false;
-                }
-                
-                // Re-append sorted items
-                items.forEach(item => timeline.appendChild(item));
-            });
-            sortButton.setAttribute('data-initialized', 'true');
-        }
-        
-        /**
-         * Parse French date format (e.g., "15 janvier 2025")
-         * @param {string} dateString - French date string
-         * @returns {Date} - JavaScript Date object
-         */
-        function parseFrenchDate(dateString) {
-            const months = {
-                'janvier': 0, 'février': 1, 'mars': 2, 'avril': 3, 'mai': 4, 'juin': 5,
-                'juillet': 6, 'août': 7, 'septembre': 8, 'octobre': 9, 'novembre': 10, 'décembre': 11
-            };
-            
-            const parts = dateString.split(' ');
-            const day = parseInt(parts[0]);
-            const month = months[parts[1].toLowerCase()];
-            const year = parseInt(parts[2]);
-            
-            return new Date(year, month, day);
-        }
+        // Sort functionality removed for static newspaper format
         
         blogItems.forEach((item, index) => {
             console.log(`Processing blog item ${index}:`, item);
@@ -352,34 +276,22 @@
     }
 
     /**
-     * Load blog posts from localStorage if available (for admin-created posts)
+     * Load static blog posts for newspaper format
      */
     function loadBlogFromStorage() {
-        console.log('Loading blog from storage...');
-        const savedPosts = localStorage.getItem('blogPosts');
-        let posts;
-        
-        if (savedPosts) {
-            try {
-                posts = JSON.parse(savedPosts);
-                console.log('Loaded saved posts:', posts.length, 'posts');
-                console.log('First post thumbnail:', posts[0]?.thumbnail);
-            } catch (e) {
-                console.error('Error loading saved posts:', e);
-                posts = getDefaultPosts();
-            }
-        } else {
-            // Load default posts if no saved posts exist
-            console.log('No saved posts found, loading defaults');
-            posts = getDefaultPosts();
-            localStorage.setItem('blogPosts', JSON.stringify(posts));
-        }
-        
+        console.log('Loading static blog posts...');
+        const posts = getDefaultPosts();
+        initBlogFiltersAndSort(posts);
         updateBlogTimeline(posts);
     }
 
+    // Global variables for filtering and sorting
+    let allPosts = [];
+    let currentFilter = 'all';
+    let currentSort = 'newest';
+
     /**
-     * Get default blog posts
+     * Get default blog posts with categories
      */
     function getDefaultPosts() {
         return [
@@ -389,6 +301,7 @@
                 title: 'Négociations Salariales : Une Victoire Collective',
                 subtitle: 'Après plusieurs semaines de mobilisation, la direction accepte enfin nos revendications concernant les augmentations salariales et les primes exceptionnelles.',
                 thumbnail: 'https://images.unsplash.com/photo-1521791055366-0d553872125f?w=400&h=200&fit=crop',
+                category: 'enterprise',
                 content: 'Les négociations qui ont débuté en décembre dernier ont abouti à un accord historique pour l\'ensemble des salarié·es d\'Alteia. Grâce à la mobilisation de tous et toutes, nous avons obtenu une augmentation générale de 3,5% des salaires, ainsi qu\'une prime exceptionnelle de 800€ pour chaque employé·e.\n\nCette victoire démontre une fois de plus l\'importance de l\'action collective et de la solidarité syndicale. La direction, initialement réticente, a dû céder face à notre détermination et à l\'unité de nos revendications.\n\nNous tenons à remercier tous les collègues qui ont participé aux assemblées générales et qui ont soutenu cette action. C\'est ensemble que nous construisons de meilleures conditions de travail pour tous.'
             },
             {
@@ -397,6 +310,7 @@
                 title: 'Réorganisation des Services : Vigilance Requise',
                 subtitle: 'La direction annonce une restructuration des équipes. Nous analysons les impacts sur l\'emploi et les conditions de travail de chacun·e.',
                 thumbnail: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop',
+                category: 'enterprise',
                 content: 'Suite à l\'annonce de la direction concernant la réorganisation des services, votre section syndicale CGT reste mobilisée pour défendre vos intérêts et surveiller les évolutions.\n\nNous avons demandé la tenue d\'un Comité Social et Économique extraordinaire afin d\'obtenir toutes les informations nécessaires sur cette restructuration. Aucune décision ne doit être prise sans consultation préalable des représentant·es du personnel.\n\nSi vous avez des questions ou des inquiétudes concernant votre poste ou votre service, n\'hésitez pas à nous contacter. Nous sommes là pour vous accompagner et défendre vos droits.'
             },
             {
@@ -405,6 +319,7 @@
                 title: 'Formation Syndicale : Inscriptions Ouvertes',
                 subtitle: 'La CGT organise des sessions de formation pour mieux connaître vos droits et comprendre le fonctionnement syndical. Rejoignez-nous !',
                 thumbnail: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=200&fit=crop',
+                category: 'daily',
                 content: 'Dans le cadre de notre mission d\'information et de formation, nous organisons plusieurs sessions dédiées à la connaissance de vos droits en tant que salarié·e.\n\nAu programme : droit du travail, négociation collective, fonctionnement des instances représentatives du personnel, et bien d\'autres sujets essentiels pour votre vie professionnelle.\n\nCes formations sont ouvertes à tous les salarié·es, syndiqué·es ou non. Elles se dérouleront sur le temps de travail, conformément au droit à la formation syndicale. Pour vous inscrire, contactez-nous par email ou passez nous voir directement.'
             },
             {
@@ -413,6 +328,7 @@
                 title: 'Télétravail : Nouveaux Accords en Vue',
                 subtitle: 'Les discussions sur l\'évolution du télétravail progressent. Nous défendons un cadre équitable et respectueux de l\'équilibre vie privée-vie professionnelle.',
                 thumbnail: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=200&fit=crop',
+                category: 'enterprise',
                 content: 'Les négociations sur le télétravail entrent dans une phase décisive. Votre section syndicale porte des propositions concrètes pour améliorer les conditions de travail à distance.\n\nNos revendications portent notamment sur : la prise en charge des frais liés au télétravail, la garantie du droit à la déconnexion, l\'amélioration de l\'équipement informatique, et la préservation du lien social entre collègues.\n\nNous veillerons à ce que le télétravail reste un choix et non une obligation, et qu\'il ne devienne pas un prétexte pour dégrader les conditions de travail ou réduire les espaces collectifs.'
             },
             {
@@ -421,37 +337,242 @@
                 title: 'Solidarité : Collecte pour les Sinistrés',
                 subtitle: 'Face aux récentes catastrophes naturelles, notre section organise une collecte de solidarité. Chaque geste compte pour aider les familles touchées.',
                 thumbnail: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&h=200&fit=crop',
+                category: 'world',
                 content: 'La solidarité est une valeur fondamentale de la CGT. Face aux difficultés que traversent de nombreuses familles suite aux intempéries récentes, nous ne pouvions rester indifférents.\n\nUne collecte est organisée dans tous les services de l\'entreprise. Les dons récoltés seront intégralement reversés aux associations locales qui viennent en aide aux sinistrés.\n\nAu-delà de l\'aide matérielle, cette action témoigne de notre engagement pour une société plus juste et solidaire. Merci à tous ceux qui participent à cet élan de générosité collective.'
+            },
+            {
+                id: 6,
+                date: '2024-12-05',
+                title: 'Le Saviez-vous ? Histoire de la CGT',
+                subtitle: 'Retour sur les origines de notre confédération et ses moments clés qui ont façonné le mouvement syndical français.',
+                thumbnail: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=200&fit=crop',
+                category: 'trivia',
+                content: 'La Confédération générale du travail (CGT) a été fondée le 23 septembre 1895 à Limoges, lors du congrès constitutif des syndicats ouvriers de France. Elle naît de la fusion de plusieurs fédérations syndicales.\n\nParmi les dates marquantes : la Charte d\'Amiens en 1906 qui proclame l\'indépendance syndicale, les grandes grèves de 1936 et les accords de Matignon, ou encore Mai 68 qui transforme durablement les relations sociales.\n\nAujourd\'hui, la CGT reste le premier syndicat de France et continue de porter les valeurs de justice sociale, d\'égalité et de solidarité qui l\'ont fondée.'
+            },
+            {
+                id: 7,
+                date: '2024-11-28',
+                title: 'Grève Mondiale pour le Climat : La CGT Mobilisée',
+                subtitle: 'Les syndicats du monde entier s\'unissent pour exiger des politiques environnementales ambitieuses et une transition juste.',
+                thumbnail: 'https://images.unsplash.com/photo-1569163139394-de4e4f43e4e3?w=400&h=200&fit=crop',
+                category: 'world',
+                content: 'La CGT participe activement au mouvement mondial pour la justice climatique. Car l\'urgence écologique ne peut être séparée de la justice sociale.\n\nNous défendons le concept de "transition juste" : les transformations nécessaires pour lutter contre le changement climatique ne doivent pas se faire au détriment des travailleur·ses. Il faut créer de nouveaux emplois durables, former les salarié·es aux métiers de demain, et garantir que personne ne soit laissé pour compte.\n\nLa lutte pour le climat est aussi une lutte pour de meilleures conditions de travail et une économie plus équitable.'
             }
         ];
     }
 
-    // Make loadBlogFromStorage globally available
-    window.loadBlogFromStorage = loadBlogFromStorage;
-    window.updateBlogTimeline = updateBlogTimeline;
+    /**
+     * Initialize blog filters and sorting
+     */
+    function initBlogFiltersAndSort(posts) {
+        allPosts = posts;
+        
+        // Initialize desktop filter buttons
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(btn => {
+            if (!btn.hasAttribute('data-initialized')) {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Update current filter
+                    currentFilter = this.getAttribute('data-category');
+                    
+                    // Sync mobile dropdown
+                    const categoryDropdown = document.getElementById('categoryDropdown');
+                    if (categoryDropdown) {
+                        categoryDropdown.value = currentFilter;
+                    }
+                    
+                    // Apply filter and sort, then update timeline
+                    const filteredAndSorted = getFilteredAndSortedPosts();
+                    updateBlogTimeline(filteredAndSorted);
+                });
+                btn.setAttribute('data-initialized', 'true');
+            }
+        });
+        
+        // Initialize mobile dropdown
+        const categoryDropdown = document.getElementById('categoryDropdown');
+        if (categoryDropdown && !categoryDropdown.hasAttribute('data-initialized')) {
+            categoryDropdown.addEventListener('change', function() {
+                // Update current filter
+                currentFilter = this.value;
+                
+                // Sync desktop filter buttons
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-category') === currentFilter) {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                // Apply filter and sort, then update timeline
+                const filteredAndSorted = getFilteredAndSortedPosts();
+                updateBlogTimeline(filteredAndSorted);
+            });
+            categoryDropdown.setAttribute('data-initialized', 'true');
+        }
+        
+        // Initialize sort button
+        const sortBtn = document.getElementById('sortBtn');
+        if (sortBtn && !sortBtn.hasAttribute('data-initialized')) {
+            sortBtn.addEventListener('click', function() {
+                // Toggle sort order
+                if (currentSort === 'newest') {
+                    currentSort = 'oldest';
+                    sortBtn.querySelector('span').textContent = 'Plus ancien';
+                    sortBtn.querySelector('i').style.transform = 'rotate(180deg)';
+                } else {
+                    currentSort = 'newest';
+                    sortBtn.querySelector('span').textContent = 'Plus récent';
+                    sortBtn.querySelector('i').style.transform = 'rotate(0deg)';
+                }
+                
+                // Apply filter and sort, then update timeline
+                const filteredAndSorted = getFilteredAndSortedPosts();
+                updateBlogTimeline(filteredAndSorted);
+            });
+            sortBtn.setAttribute('data-initialized', 'true');
+        }
+    }
 
     /**
-     * Update blog timeline with posts from localStorage
+     * Get filtered and sorted posts
+     */
+    function getFilteredAndSortedPosts() {
+        let filteredPosts = allPosts;
+        
+        // Apply category filter
+        if (currentFilter !== 'all') {
+            filteredPosts = allPosts.filter(post => post.category === currentFilter);
+        }
+        
+        // Apply sorting
+        filteredPosts = [...filteredPosts].sort((a, b) => {
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            
+            if (currentSort === 'newest') {
+                return dateB - dateA; // Newest first
+            } else {
+                return dateA - dateB; // Oldest first
+            }
+        });
+        
+        return filteredPosts;
+    }
+
+    // Export functions for potential external use
+    window.loadBlogFromStorage = loadBlogFromStorage;
+
+    /**
+     * Update blog timeline with static posts
      */
     function updateBlogTimeline(posts) {
         console.log('Updating blog timeline with', posts.length, 'posts');
         const timeline = document.querySelector('.blog-timeline');
+        const readMoreContainer = document.getElementById('blogReadMoreContainer');
+        const readMoreBtn = document.getElementById('blogReadMoreBtn');
+        
         if (!timeline || !posts || posts.length === 0) return;
 
         // Clear existing posts
         timeline.innerHTML = '';
 
-        // Add each post
-        posts.forEach((post, index) => {
-            console.log(`Creating blog item ${index} with thumbnail:`, post.thumbnail);
-            const blogItem = createBlogItemElement(post);
-            timeline.appendChild(blogItem);
-        });
+        const INITIAL_POSTS_COUNT = 4; // Show 4 posts initially
+        let showingAll = false;
+
+        function renderPosts(count = INITIAL_POSTS_COUNT) {
+            timeline.innerHTML = '';
+            const postsToShow = posts.slice(0, count);
+            
+            postsToShow.forEach((post, index) => {
+                console.log(`Creating blog item ${index} with thumbnail:`, post.thumbnail);
+                const blogItem = createBlogItemElement(post);
+                timeline.appendChild(blogItem);
+            });
+            
+            // Re-initialize blog functionality for new items
+            setTimeout(() => {
+                initBlogInteractions();
+            }, 100);
+        }
+
+        // Initial render with limited posts
+        renderPosts();
         
-        // Re-initialize blog functionality for new items
-        setTimeout(() => {
-            initBlogInteractions();
-        }, 100);
+        // Show/hide read more button
+        if (posts.length <= INITIAL_POSTS_COUNT) {
+            readMoreContainer.classList.add('hidden');
+        } else {
+            readMoreContainer.classList.remove('hidden');
+            
+            // Reset read more button state
+            showingAll = false;
+            readMoreBtn.querySelector('span').textContent = 'Voir plus d\'articles';
+            readMoreBtn.querySelector('i').style.transform = 'rotate(0deg)';
+            
+            // Handle read more button click
+            if (readMoreBtn && !readMoreBtn.hasAttribute('data-initialized')) {
+                readMoreBtn.addEventListener('click', function() {
+                    if (!showingAll) {
+                        renderPosts(posts.length); // Show all posts
+                        readMoreBtn.querySelector('span').textContent = 'Voir moins d\'articles';
+                        readMoreBtn.querySelector('i').style.transform = 'rotate(180deg)';
+                        showingAll = true;
+                    } else {
+                        renderPosts(INITIAL_POSTS_COUNT); // Show limited posts
+                        readMoreBtn.querySelector('span').textContent = 'Voir plus d\'articles';
+                        readMoreBtn.querySelector('i').style.transform = 'rotate(0deg)';
+                        showingAll = false;
+                        
+                        // Scroll back to blog section
+                        document.getElementById('blog').scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+                readMoreBtn.setAttribute('data-initialized', 'true');
+            }
+        }
+    }
+
+    /**
+     * Get category information with icons and labels
+     */
+    function getCategoryInfo(categoryKey) {
+        const categories = {
+            'enterprise': {
+                label: 'Entreprise',
+                icon: 'fa-solid fa-building',
+                color: 'var(--color-red)'
+            },
+            'daily': {
+                label: 'Actu du jour',
+                icon: 'fa-solid fa-calendar-day',
+                color: 'var(--color-pumpkin)'
+            },
+            'world': {
+                label: 'Monde',
+                icon: 'fa-solid fa-globe',
+                color: 'var(--color-poppy)'
+            },
+            'trivia': {
+                label: 'Le saviez-vous ?',
+                icon: 'fa-solid fa-lightbulb',
+                color: 'var(--color-dun)'
+            }
+        };
+        
+        return categories[categoryKey] || {
+            label: 'Actualité',
+            icon: 'fa-solid fa-newspaper',
+            color: 'var(--color-gray)'
+        };
     }
 
     /**
@@ -462,16 +583,25 @@
         const blogItem = document.createElement('div');
         blogItem.className = 'blog-item';
         blogItem.setAttribute('data-expanded', 'false');
+        blogItem.setAttribute('data-category', post.category || 'general');
 
         // Format date to French
         const formattedDate = formatDateToFrench(post.date);
         
         // Convert content newlines to paragraphs
         const contentParagraphs = post.content.split('\n\n').map(p => `<p>${p}</p>`).join('');
+        
+        // Get category info
+        const categoryInfo = getCategoryInfo(post.category);
 
         blogItem.innerHTML = `
             <div class="blog-item-content">
-                <div class="blog-item-thumbnail" style="background-image: url('${post.thumbnail}')"></div>
+                <div class="blog-item-thumbnail" style="background-image: url('${post.thumbnail}')">
+                    <div class="blog-item-category" style="background-color: ${categoryInfo.color}">
+                        <i class="${categoryInfo.icon}"></i>
+                        <span>${categoryInfo.label}</span>
+                    </div>
+                </div>
                 <div class="blog-item-text">
                     <div class="blog-item-header">
                         <span class="blog-item-date">${formattedDate}</span>

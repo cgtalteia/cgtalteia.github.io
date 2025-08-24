@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=keyboard_arrow_down" />
 </head>
@@ -27,56 +29,26 @@
                 <img id="cgt-logo" src="media/logo.png" alt="Logo CGT Alteia" height="50px">
                 <img id="alteia-logo" src="media/alteia.svg" alt="Logo Alteia" width="80px">
             </div>
-            
+
             <ul class="nav-menu" role="menubar">
                 <button id="nav-adhesion-button">Se syndiquer</button>
                 <li role="none"><a href="#blog" role="menuitem">Actualités</a></li>
                 <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
-                <li role="none"><a href="https://www.cgt.fr" target="_blank" rel="noopener noreferrer" role="menuitem">CGT.fr</a></li>
-                <li role="none"><a href="https://cgt31.fr" target="_blank" rel="noopener noreferrer" role="menuitem">CGT31.fr</a></li>
+                <li role="none"><a href="https://www.cgt.fr" target="_blank" rel="noopener noreferrer"
+                        role="menuitem">CGT.fr</a></li>
+                <li role="none"><a href="https://cgt31.fr" target="_blank" rel="noopener noreferrer"
+                        role="menuitem">CGT31.fr</a></li>
             </ul>
-            <div class ="hamburger">
+            <div class="hamburger">
                 <div class="openbtn">
                     <div class="line"></div>
                     <div class="line"></div>
                     <div class="line"></div>
                 </div>
             </div>
-            <button id="admin-login-button">
-                <i class="fa-solid fa-user-shield"></i>
-            </button>       
         </div>
-        <!-- Floating Login Container -->
-        <div id="floating-login-container" class="floating-login-container">
-            <div id="floating-login" class="floating-login">
-                <h3>Administration</h3>
-                <form id="floating-login-form">
-                    <div class="form-group">
-                        <label for="floating-username">Nom d'utilisateur</label>
-                        <input type="text" id="floating-username" name="username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="floating-password">Mot de passe</label>
-                        <input type="password" id="floating-password" name="password" required>
-                    </div>
-                    <button type="submit">Se connecter</button>
-                </form>
-                <div id="floating-login-error" class="error-message" style="display: none;"></div>
-            </div>
-        </div>
-
-        <!-- Floating Admin Menu -->
-        <div id="floating-admin-menu" class="floating-admin-menu">
-            <button class="admin-menu-item" id="admin-edit-posts">
-                <i class="fa-solid fa-edit"></i>
-                Gérer les articles
-            </button>
-            <button class="admin-menu-item logout" id="admin-logout">
-                <i class="fa-solid fa-sign-out-alt"></i>
-                Déconnexion
-            </button>
-        </div>   
         <div class="overlay">
+            <button id="overlay-adhesion-button" role="menuitem">Se syndiquer</button>
             <a href="#blog" role="menuitem">Actualités</a>
             <a href="#contact" role="menuitem">Contact</a>
             <a href="https://www.cgt.fr" target="_blank" rel="noopener noreferrer" role="menuitem">Site de la CGT</a>
@@ -87,17 +59,61 @@
     <main>
         <section id="blog" class="blog-container" aria-labelledby="blog-title">
             <div class="blog-content">
-                <div class="blog-filters">
-                    <div class="sort-container">
-                        <div class="sort-button" id="sortButton" role="button" aria-label="Trier les articles" tabindex="0">
-                            <i class="fa-solid fa-sort"></i>
-                            <span>Trier par date</span>
+                                <div class="blog-filters">
+                    <!-- Desktop filter buttons -->
+                    <div class="filter-section desktop-filters">
+                        <div class="category-filters">
+                            <button class="filter-btn active" data-category="all">
+                                <i class="fa-solid fa-newspaper"></i>
+                                <span>Tous</span>
+                            </button>
+                            <button class="filter-btn" data-category="enterprise">
+                                <i class="fa-solid fa-building"></i>
+                                <span>Entreprise</span>
+                            </button>
+                            <button class="filter-btn" data-category="daily">
+                                <i class="fa-solid fa-calendar-day"></i>
+                                <span>Actu du jour</span>
+                            </button>
+                            <button class="filter-btn" data-category="world">
+                                <i class="fa-solid fa-globe"></i>
+                                <span>Monde</span>
+                            </button>
+                            <button class="filter-btn" data-category="trivia">
+                                <i class="fa-solid fa-lightbulb"></i>
+                                <span>Le saviez-vous ?</span>
+                            </button>
                         </div>
                     </div>
+                    
+                    <!-- Mobile filter dropdown -->
+                    <div class="filter-section mobile-filters">
+                        <select class="category-dropdown" id="categoryDropdown">
+                            <option value="all">📰 Tous les articles</option>
+                            <option value="enterprise">🏢 Entreprise</option>
+                            <option value="daily">📅 Actu du jour</option>
+                            <option value="world">🌍 Monde</option>
+                            <option value="trivia">💡 Le saviez-vous ?</option>
+                        </select>
+                    </div>
+                    
+                    <div class="sort-section">
+                        <button class="sort-btn" id="sortBtn">
+                            <i class="fa-solid fa-sort"></i>
+                            <span>Plus récent</span>
+                        </button>
+                    </div>
                 </div>
-                
+
                 <div class="blog-timeline">
                     <!-- Blog posts will be loaded dynamically from localStorage -->
+                </div>
+
+                <div class="blog-read-more-container" id="blogReadMoreContainer">
+                    <button class="blog-read-more-btn" id="blogReadMoreBtn">
+                        <span>Voir plus d'articles</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
                 </div>
             </div>
         </section>
@@ -122,7 +138,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fa-solid fa-phone"></i>
@@ -139,7 +155,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fa-solid fa-location-dot"></i>
@@ -154,7 +170,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fa-solid fa-clock"></i>
@@ -191,9 +207,55 @@
             </div>
         </div>
     </div>
+
+    <!-- Adhesion Popup -->
+    <div id="adhesionModal" class="adhesion-modal-overlay">
+        <div class="adhesion-modal-content">
+            <div class="adhesion-modal-header">
+                <div class="adhesion-modal-close" id="adhesionModalClose"><i class="fa-solid fa-xmark"></i></div>
+                <div class="adhesion-celebration">
+
+                    <h3>Bienvenue, camarade !</h3>
+                    <p class="celebration-text">Quoi ??? Tu hésites encore à nous rejoindre ?</p>
+                </div>
+            </div>
+            <div class="adhesion-modal-body">
+                <div class="adhesion-info">
+
+                    <h4><i class="fa-solid fa-handshake"></i> Adhérer à la CGT, c'est :</h4>
+                    <ul>
+                        <li><strong>Défendre tes droits</strong> et améliorer tes conditions de travail</li>
+                        <li><strong>Négocier collectivement</strong> pour de meilleurs salaires et avantages</li>
+                        <li><strong>Renforcer tes idées</strong> dans l'entreprise</li>
+                        <li><strong>Te protéger juridiquement</strong> en cas de litige</li>
+                        <li><strong>Réfléchir ensemble</strong> à une société plus juste et solidaire</li>
+                    </ul>
+                    <h4><i class="fa-solid fa-info-circle"></i> Comment ça marche ?</h4>
+                    <ul>
+                        <li>Télécharge le formulaire d'adhésion</li>
+                        <li>Remplis-le et retourne-le nous par email ou en main propre</li>
+                        <li>La cotisation est fixée à 1% du salaire net</li>
+                        <li>Elle est déductible à 66% de tes impôts</li>
+                    </ul>
+
+                    <p>Pas convaincu ? N'hésite
+                        pas à nous contacter en bas de page pour en discuter !</p>
+
+                </div>
+
+                <div class="adhesion-download">
+                    <button id="downloadAdhesionBtn" class="download-button">
+                        <i class="fa-solid fa-download"></i>
+                        Télécharger le formulaire d'adhésion
+                    </button>
+                    <p class="download-note">Le formulaire sera téléchargé au format PDF</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 <script src="js/nav.js"></script>
 <script src="js/script.js"></script>
 <script src="js/mistral.js"></script>
+
 </html>
