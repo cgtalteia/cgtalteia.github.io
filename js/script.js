@@ -28,8 +28,7 @@
             elements = { ...elements, ...navElements };
             
             console.log('Initializing components...');
-            loadBlogFromStorage(); // Load blog posts from localStorage if available
-            initBlog();
+            loadBlogFromStorage(); // Load blog posts and initialize filters
             initCopyButton();
             updateCurrentYear();
             
