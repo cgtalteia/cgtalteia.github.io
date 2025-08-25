@@ -33,12 +33,15 @@
             <ul class="nav-menu" role="menubar">
                 <button id="nav-adhesion-button">Se syndiquer</button>
                 <li role="none"><a href="#blog" role="menuitem">Actualités</a></li>
-                <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
                 <li role="none"><a href="https://www.cgt.fr" target="_blank" rel="noopener noreferrer"
                         role="menuitem">CGT.fr</a></li>
                 <li role="none"><a href="https://cgt31.fr" target="_blank" rel="noopener noreferrer"
                         role="menuitem">CGT31.fr</a></li>
             </ul>
+            <button id="nav-contact-button" class="nav-contact-btn">
+                <i class="fa-solid fa-phone"></i>
+                <span>Contact</span>
+            </button>
             <div class="hamburger">
                 <div class="openbtn">
                     <div class="line"></div>
@@ -50,53 +53,106 @@
         <div class="overlay">
             <button id="overlay-adhesion-button" role="menuitem">Se syndiquer</button>
             <a href="#blog" role="menuitem">Actualités</a>
-            <a href="#contact" role="menuitem">Contact</a>
             <a href="https://www.cgt.fr" target="_blank" rel="noopener noreferrer" role="menuitem">Site de la CGT</a>
             <a href="https://cgt31.fr" target="_blank" rel="noopener noreferrer" role="menuitem">Site de la CGT 31</a>
+            <button id="overlay-contact-button" role="menuitem">Contact</button>
         </div>
     </nav>
 
     <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-container" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <div class="hero-main">
+                    <div class="hero-text">
+                        <div class="hero-badge">
+                            <i class="fa-solid fa-fire"></i>
+                            <span>Article à la Une</span>
+                        </div>
+                        <h1 id="hero-title" class="hero-title">
+                            10 Septembre : Bloquons la France !
+                        </h1>
+
+                        <p class="hero-subtitle">
+                            Face au plan d'austérité brutal de Bayrou, un mouvement d'ampleur se dessine. Rejoignez la
+                            grève !
+                        </p>
+
+                        <div class="hero-highlights">
+                            <div class="highlight-item">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <span><strong>2 jours fériés supprimés</strong></span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fa-solid fa-coins"></i>
+                                <span><strong>Baisse de la couverture sociale : </strong> allocations, bourses,
+                                    etc.</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fa-solid fa-users"></i>
+                                <span><strong>Baisse des retraites</strong></span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fa-solid fa-person-digging"></i>
+                                <span><strong>Baisse des droits au chômage</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="hero-actions">
+                            <button class="hero-btn primary" id="heroJoinStrike">
+                                <i class="fa-solid fa-fist-raised"></i>
+                                <span>Rejoindre la grève</span>
+                            </button>
+                            <a href="https://stopbudgetbayrou.fr" target="_blank" rel="noopener noreferrer"
+                                class="hero-btn secondary" id="heroReadMore">
+                                <i class="fa-solid fa-eye"></i>
+                                <span>Le détail des mesures</span>
+                            </a>
+                        </div>
+
+                        <div class="hero-date">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>Publié le 25 Août 2025</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual">
+                        <div class="hero-image">
+                            <div class="hero-overlay">
+                                <img src="media/blog/bayrou_10_sept.jpeg" alt="Bayrou 10 Septembre">
+                            </div>
+                        </div>
+
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">10 SEPT - 11 H 00</span>
+                                <span class="stat-label">Metro Compans-Cafarelli</span>
+                                <span class="stat-desc">Manifestation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-scroll-indicator">
+                    <i class="fa-solid fa-chevron-down"></i>
+                    <span>Découvrir nos actualités</span>
+                </div>
+            </div>
+        </section>
+
         <section id="blog" class="blog-container" aria-labelledby="blog-title">
             <div class="blog-content">
                 <div class="blog-filters">
-                    <!-- Desktop filter buttons -->
-                    <div class="filter-section desktop-filters">
-                        <div class="category-filters">
-                            <button class="filter-btn active" data-category="all">
-                                <i class="fa-solid fa-newspaper"></i>
-                                <span>Tous</span>
-                            </button>
-                            <button class="filter-btn" data-category="enterprise">
-                                <i class="fa-solid fa-building"></i>
-                                <span>Entreprise</span>
-                            </button>
-                            <button class="filter-btn" data-category="daily">
-                                <i class="fa-solid fa-calendar-day"></i>
-                                <span>Actu du jour</span>
-                            </button>
-                            <button class="filter-btn" data-category="world">
-                                <i class="fa-solid fa-globe"></i>
-                                <span>Monde</span>
-                            </button>
-                            <button class="filter-btn" data-category="trivia">
-                                <i class="fa-solid fa-lightbulb"></i>
-                                <span>Le saviez-vous ?</span>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Mobile filter dropdown -->
-                    <div class="filter-section mobile-filters">
+                    <div class="filter-section">
                         <select class="category-dropdown" id="categoryDropdown">
-                            <option value="all">📰 Tous les articles</option>
-                            <option value="enterprise">🏢 Entreprise</option>
-                            <option value="daily">📅 Actu du jour</option>
-                            <option value="world">🌍 Monde</option>
-                            <option value="trivia">💡 Le saviez-vous ?</option>
+                            <option value="all">Tous les articles</option>
+                            <option value="enterprise">Entreprise</option>
+                            <option value="daily">Actu du jour</option>
+                            <option value="world">Monde</option>
+                            <option value="trivia">Le saviez-vous ?</option>
                         </select>
                     </div>
-                    
+
                     <div class="sort-section">
                         <button class="sort-btn" id="sortBtn">
                             <i class="fa-solid fa-sort"></i>
@@ -157,6 +213,22 @@
                     </div>
 
                     <div class="contact-item">
+                        <div class="contact-icon whatsapp-icon">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-details">
+                            <strong>Groupe WhatsApp</strong>
+                            <div class="contact-row">
+                                <span class="contact-text">Rejoignez notre groupe de mobilisation</span>
+                                <button class="contact-whatsapp-btn" id="contactWhatsappBtn">
+                                    <i class="fa-solid fa-qrcode"></i>
+                                    <span>QR Code</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fa-solid fa-location-dot"></i>
                         </div>
@@ -204,6 +276,67 @@
             </div>
             <div class="blog-modal-body" id="blogModalBody">
                 <!-- Article content will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp QR Code Modal -->
+    <div id="whatsappModal" class="whatsapp-modal-overlay">
+        <div class="whatsapp-modal-content">
+            <div class="whatsapp-modal-header">
+                <div class="whatsapp-modal-close" id="whatsappModalClose"><i class="fa-solid fa-xmark"></i></div>
+                <div class="whatsapp-celebration">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <h3>Rejoignez notre groupe WhatsApp !</h3>
+                    <p class="celebration-text">Organisez-vous avec vos camarades pour la grève du 10 septembre</p>
+                </div>
+            </div>
+            <div class="whatsapp-modal-body">
+                <div class="whatsapp-qr-container">
+                    <div class="qr-code-wrapper">
+                        <img src="https://free-qr.com/qrcodes/d976d56a8da6b7acd5c3084442c66053.png?t=1756117213552"
+                            alt="QR Code WhatsApp CGT Alteia" class="whatsapp-qr-code" />
+                    </div>
+                    <div class="qr-instructions">
+                        <h4></i> Comment rejoindre le groupe ?</h4>
+                        <ol>
+                            <li>Ouvrez l'appareil photo de votre téléphone</li>
+                            <li>Pointez vers le QR code ci-dessus</li>
+                            <li>Appuyez sur le lien WhatsApp qui apparaît</li>
+                            <li>Rejoignez notre groupe de mobilisation !</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="whatsapp-alternative">
+                    <h4><i class="fa-solid fa-envelope"></i> Autre moyen de contact</h4>
+                    <p>Vous pouvez aussi nous contacter directement :</p>
+                    <div class="contact-info-compact">
+                        <div class="contact-item-compact">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>cgt.alteia@gmail.com</span>
+                            <button class="copy-btn-compact" id="copyEmailFromWhatsapp">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="contact-item-compact">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>+33 6 46 76 55 54</span>
+                            <button class="copy-btn-compact" id="copyPhoneFromWhatsapp">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mobilization-call">
+                    <div class="call-to-action">
+                        <h4><i class="fa-solid fa-fist-raised"></i> Ensemble, nous sommes plus forts !</h4>
+                        <p>La réussite de la grève du <strong>10 septembre</strong> dépend de notre notre et de notre
+                            organisation collective.C'est dans la lutte et seulement dans la lutte que les victoires
+                            sont possibles.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -256,6 +389,4 @@
 </body>
 <script src="js/nav.js"></script>
 <script src="js/script.js"></script>
-<script src="js/mistral.js"></script>
-
 </html>

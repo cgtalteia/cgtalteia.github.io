@@ -30,6 +30,9 @@
             console.log('Initializing components...');
             loadBlogFromStorage(); // Load blog posts and initialize filters
             initCopyButton();
+            initHero();
+            initWhatsAppModal();
+            initContactButtons();
             updateCurrentYear();
             
             // Load the static blog posts - no dynamic updating needed
@@ -103,6 +106,199 @@
                 console.error('Erreur lors de la copie :', err);
             }
         });
+    }
+
+    /**
+     * Initialize hero section functionality
+     */
+    function initHero() {
+        console.log('Initializing hero section...');
+        
+        const heroJoinStrikeBtn = document.getElementById('heroJoinStrike');
+        const heroScrollIndicator = document.querySelector('.hero-scroll-indicator');
+        
+        // Hero join strike button - show WhatsApp QR modal
+        if (heroJoinStrikeBtn) {
+            heroJoinStrikeBtn.addEventListener('click', function() {
+                openWhatsAppModal();
+            });
+        }
+        
+        // Hero scroll indicator - smooth scroll to blog section
+        if (heroScrollIndicator) {
+            heroScrollIndicator.addEventListener('click', function() {
+                document.getElementById('blog').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        }
+        
+        console.log('Hero section initialization complete');
+    }
+    
+    /**
+     * Initialize contact buttons functionality
+     */
+    function initContactButtons() {
+        console.log('Initializing contact buttons...');
+        
+        const navContactBtn = document.getElementById('nav-contact-button');
+        const overlayContactBtn = document.getElementById('overlay-contact-button');
+        const contactWhatsappBtn = document.getElementById('contactWhatsappBtn');
+        
+        // Navigation contact button - scroll to contact section
+        if (navContactBtn) {
+            navContactBtn.addEventListener('click', function() {
+                document.getElementById('contact').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        }
+        
+        // Mobile overlay contact button - scroll to contact section
+        if (overlayContactBtn) {
+            overlayContactBtn.addEventListener('click', function() {
+                // Close mobile menu first (if navModule is available)
+                if (typeof navModule !== 'undefined' && navModule.closeMobileMenu) {
+                    navModule.closeMobileMenu();
+                }
+                
+                // Then scroll to contact
+                setTimeout(() => {
+                    document.getElementById('contact').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 300); // Wait for menu close animation
+            });
+        }
+        
+        // Contact section WhatsApp button - open WhatsApp modal
+        if (contactWhatsappBtn) {
+            contactWhatsappBtn.addEventListener('click', function() {
+                openWhatsAppModal();
+            });
+        }
+        
+        console.log('Contact buttons initialization complete');
+    }
+    
+    /**
+     * Helper function to show snackbar with transition (exposed for hero usage)
+     */
+    function showSnackbarWithTransition(snackbar) {
+        snackbar.style.display = 'flex';
+        void snackbar.offsetWidth;
+        snackbar.style.opacity = '1';
+        snackbar.style.transform = 'translate(-50%, 0)';
+    
+        setTimeout(() => {
+            snackbar.style.opacity = 0;
+            snackbar.style.transform = 'translate(-50%, 10px)';
+        }, 2000);
+        if (snackbar.getComputedStyle(snackbar).opacity === '0') {
+            snackbar.style.display = 'none';
+        }
+    }
+
+    /**
+     * Initialize WhatsApp modal functionality
+     */
+    function initWhatsAppModal() {
+        console.log('Initializing WhatsApp modal...');
+        
+        const whatsappModal = document.getElementById('whatsappModal');
+        const whatsappModalClose = document.getElementById('whatsappModalClose');
+        const copyEmailFromWhatsapp = document.getElementById('copyEmailFromWhatsapp');
+        const copyPhoneFromWhatsapp = document.getElementById('copyPhoneFromWhatsapp');
+        
+        // Close modal events
+        if (whatsappModalClose) {
+            whatsappModalClose.addEventListener('click', closeWhatsAppModal);
+        }
+        
+        if (whatsappModal) {
+            whatsappModal.addEventListener('click', function(e) {
+                if (e.target === whatsappModal) {
+                    closeWhatsAppModal();
+                }
+            });
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && whatsappModal && whatsappModal.classList.contains('active')) {
+                closeWhatsAppModal();
+            }
+        });
+        
+        // Copy email button
+        if (copyEmailFromWhatsapp) {
+            copyEmailFromWhatsapp.addEventListener('click', async function() {
+                try {
+                    await navigator.clipboard.writeText('cgt.alteia@gmail.com');
+                    const snackbar = document.getElementById('copiedSnackbar');
+                    snackbar.innerHTML = '<p style="color: var(--color-linen);">📧 Email copié !</p>';
+                    showSnackbarWithTransition(snackbar);
+                } catch (error) {
+                    console.error('Error copying email:', error);
+                }
+            });
+        }
+        
+        // Copy phone button
+        if (copyPhoneFromWhatsapp) {
+            copyPhoneFromWhatsapp.addEventListener('click', async function() {
+                try {
+                    await navigator.clipboard.writeText('+33 6 46 76 55 54');
+                    const snackbar = document.getElementById('copiedSnackbar');
+                    snackbar.innerHTML = '<p style="color: var(--color-linen);">📞 Téléphone copié !</p>';
+                    showSnackbarWithTransition(snackbar);
+                } catch (error) {
+                    console.error('Error copying phone:', error);
+                }
+            });
+        }
+        
+        console.log('WhatsApp modal initialization complete');
+    }
+    
+    /**
+     * Open WhatsApp QR modal
+     */
+    function openWhatsAppModal() {
+        console.log('Opening WhatsApp modal');
+        
+        const modal = document.getElementById('whatsappModal');
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+    }
+    
+    /**
+     * Close WhatsApp QR modal
+     */
+    function closeWhatsAppModal() {
+        console.log('Closing WhatsApp modal');
+        
+        const modal = document.getElementById('whatsappModal');
+        const modalContent = modal?.querySelector('.whatsapp-modal-content');
+        
+        if (modal && modalContent) {
+            // Add slide-out animation
+            modalContent.classList.add('slide-out');
+            
+            // Wait for animation to complete before hiding modal
+            setTimeout(() => {
+                modal.classList.remove('active');
+                modalContent.classList.remove('slide-out');
+                document.body.style.overflow = ''; // Restore background scrolling
+                console.log('WhatsApp modal closed successfully');
+            }, 300); // Match the animation duration (0.3s = 300ms)
+        }
     }
 
     /**
@@ -294,6 +490,110 @@
      */
     function getDefaultPosts() {
         return [
+            {
+                id: 0,
+                date: '2025-08-25',
+                title: '10 Septembre : Bloquons la France !',
+                subtitle: 'Un mouvement d\'ampleur qui dépasse le répertoire syndical habituel se dessine. Face au plan d\'austérité de Bayrou, l\'heure est à la mobilisation générale.',
+                thumbnail: 'https://images.unsplash.com/photo-1541746972996-4e0b0f93e586?w=400&h=200&fit=crop',
+                category: 'daily',
+                content: `**"Il faut des mobilisations, elles seront nombreuses comme celle du 10 septembre, et il y en aura d'autres"** prévient Thomas Vacheron, secrétaire confédéral CGT. L'appel à bloquer la France le 10 septembre s'impose désormais dans le débat politique.
+
+## 🔴 Un mouvement qui dépasse le cadre syndical
+
+D'un côté, l'intersyndicale (CFDT, CGT, FO, CFE-CGC, CFTC, UNSA, FSU, SOLIDAIRES) doit déterminer les suites à donner à leur opposition au budget 2026 de François Bayrou. De l'autre, **des appels à bloquer le pays lancés dès mi-juillet sur les réseaux sociaux se structurent via les boucles Telegram.**
+
+### Soutien politique massif
+**LFI, le PCF, EELV et, dans une moindre mesure le PS ont annoncé soutenir cette mobilisation.** Pour ces formations, le 10 septembre est une opportunité pour renforcer leur stratégie d'opposition au gouvernement Bayrou, en l'articulant à une mobilisation sociale.
+
+## ✊ Des actions qui débordent le répertoire habituel
+
+**Camarades, rejoignez la grève !** Ce mouvement prévoit des modes d'action très variés :
+
+### 🚫 Boycotts économiques
+- Boycott des grandes surfaces
+- Retrait d'argent des banques
+- Consommation locale privilégiée
+
+### 🏠 Confinement volontaire
+- Rester chez soi pour paralyser l'économie
+- Télétravail refusé
+- Consommation minimale
+
+### 🛑 Blocages des flux
+- Blocages d'autoroutes et de ronds-points
+- Perturbations dans les transports
+- Arrêt des livraisons
+
+### 🏭 Grèves d'entreprise
+**Organisez-vous dans vos boîtes !** La réussite dépend de l'implication des syndicalistes d'entreprise capables d'impulser la mobilisation.
+
+## 💥 Face au plan d'austérité brutal
+
+### 43,8 milliards d'euros de coupes budgétaires !
+Le gouvernement Bayrou impose :
+- Suppression de 2 jours fériés
+- Coupes dans les services publics  
+- Remise en cause du droit du travail
+- Énième réforme de l'assurance chômage
+- Gel des prestations sociales
+- Gel des salaires des fonctionnaires
+- Désindexation des pensions
+- Doublement des franchises médicales
+- Remise en cause de la 5ème semaine de congés payés
+
+## 🎯 Leçons du mouvement de 2023
+
+L'échec de la mobilisation contre la réforme des retraites reste dans les esprits. **Le 7 mars 2023, au plus fort du mouvement, l'intersyndicale avait échoué car les grèves n'ont pas été suffisamment suivies.**
+
+Mais cette fois, c'est différent ! Le mouvement s'organise au-delà des structures traditionnelles, avec une **diversité de modalités d'action** qui permet à chacun·e de participer selon ses moyens.
+
+## 🚀 Une rentrée sociale bouillante
+
+**La colère est palpable** contre les mesures d'austérité. L'appel du 10 septembre **"a d'ores et déjà eu un impact médiatique et politique important"** selon Baptiste Giraud, maître de conférences en science politique.
+
+### Organisation en cours :
+- **1er septembre :** Réunion de l'intersyndicale pour décider des suites
+- **26-27 août :** Comité confédéral national CGT
+- **10 septembre :** Journée de mobilisation nationale
+
+## 💪 Comment participer ?
+
+### Dans votre entreprise :
+- Contactez votre section syndicale CGT
+- Organisez des assemblées générales
+- Préparez les débrayages et grèves
+
+### Dans votre quartier :
+- Rejoignez les groupes Telegram locaux
+- Participez aux blocages organisés
+- Informez vos voisin·es
+
+### Individuellement :
+- Boycottez les grandes enseignes
+- Restez confiné·e le 10 septembre
+- Partagez l'information massivement
+
+## ⚡ L'objectif : un arrêt total du pays
+
+**"Ce mouvement appelle à des actions qui débordent le répertoire syndical habituel"** - c'est notre force ! Contrairement aux gouvernements précédents, celui de Bayrou refuse tout compromis, même avec les syndicats les plus modérés.
+
+### Ensemble, nous pouvons :
+- Bloquer l'économie française
+- Faire reculer le gouvernement 
+- Défendre nos acquis sociaux
+- Construire un rapport de force
+
+## 🔥 Rejoignez le mouvement !
+
+**Camarades de travail, l'heure est grave !** Le 10 septembre doit marquer l'histoire. Un mouvement d'une ampleur inédite se dessine, porté par la base, organisé par les travailleuses et travailleurs eux-mêmes.
+
+**📧 Contactez-nous :** cgt.alteia@gmail.com  
+**📱 Rejoignez les groupes Telegram locaux**  
+**✊ Organisez-vous dans vos entreprises**
+
+*La France peut être bloquée le 10 septembre si nous nous mobilisons tou·te·s ensemble !*`
+            },
             {
                 id: 1,
                 date: '2025-01-15',
