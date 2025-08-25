@@ -257,11 +257,11 @@
     
     .hero-text {
         gap: var(--spacing-md);
-        order: 1;
+        order: 2;
     }
     
     .hero-visual {
-        order: 2;
+        order: 1;
         width: 100%;
         gap: var(--spacing-sm);
     }
@@ -355,6 +355,7 @@
     
     .hero-image {
         width: 100%;
+        order: 2;
     }
     
     .hero-stats {
