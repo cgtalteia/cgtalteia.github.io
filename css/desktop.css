@@ -102,7 +102,6 @@ section {
   transition: var(--transition-default);
   backdrop-filter: blur(5px) saturate(180%);
   -webkit-backdrop-filter: blur(5px) saturate(180%);
-  background-color: rgba(232, 240, 255, 0.231);
   border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
@@ -480,8 +479,7 @@ section {
   box-shadow: var(--shadow-md);
   border-radius: var(--border-radius-xl);
   padding: var(--spacing-xxl);
-  background: var(--color-white);
-  background: #ffffff;
+  background: linear-gradient(180deg, #ffffff, #dfdfdf10);
   align-items: center;
   -webkit-align-items: center;
   -ms-grid-row-align: center;
@@ -866,7 +864,7 @@ section {
 .blog-item {
   position: relative;
   margin-bottom: var(--spacing-xxl);
-  background: var(--color-white);
+  background: linear-gradient(180deg, #ffffff, #dfdfdf10);
   border-radius: var(--border-radius-xl);
   box-shadow: var(--shadow-md);
   transition: var(--transition-default);
@@ -1265,7 +1263,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
-  background: var(--color-white);
+  background: linear-gradient(180deg, #ffffff, #dfdfdf10);
   border-radius: var(--border-radius-xl);
   box-shadow: var(--shadow-md);
   padding: var(--spacing-xxl);
