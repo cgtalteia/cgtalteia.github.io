@@ -21,11 +21,11 @@ const navModule = (function() {
 
     // Hide nav with transition
     function hideNavWithTransition(nav, overlay) {
-        nav.style.opacity = '0';
+        nav.style.transform = 'translateY(-100%)';
         // Listen for the end of the transition
         nav.addEventListener('transitionend', function handler() {
-            if (window.getComputedStyle(nav).opacity === '0' && 
-                window.getComputedStyle(overlay).opacity === '0') {
+            if (window.getComputedStyle(nav).transform === 'translateY(-100%)' && 
+                window.getComputedStyle(overlay).transform === 'translateY(-100%)') {
                 nav.style.display = 'none';
             }
             nav.removeEventListener('transitionend', handler);
@@ -37,7 +37,7 @@ const navModule = (function() {
         nav.style.display = 'block';
         // Force a reflow to ensure the transition happens
         void nav.offsetWidth;
-        nav.style.opacity = '1';
+        nav.style.transform = 'translateY(0%)';
     }
 
     /**

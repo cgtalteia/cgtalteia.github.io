@@ -627,82 +627,67 @@
         min-height: auto;
     }
     
-    .contact-header {
-        margin-bottom: var(--spacing-xl);
-        padding: 0 var(--spacing-md);
-    }
-    
-    .contact-title {
-        font-size: var(--font-size-xl);
-    }
-    
-    .contact-subtitle {
-        font-size: var(--font-size-md);
-    }
-    
     .contact-content {
-        flex-direction: column;
-        gap: var(--spacing-lg);
-        padding: 0;
-    }
-    
-    .contact-info {
-        gap: var(--spacing-md);
         padding: 0 var(--spacing-md);
+        gap: 0;
     }
     
-    .contact-item {
-        padding: var(--spacing-lg);
+    .contact-text {
         gap: var(--spacing-md);
+        padding: var(--spacing-lg);
+        background: var(--color-white);
+        border-radius: var(--border-radius-xl);
+        box-shadow: var(--shadow-md);
     }
     
-    .contact-icon {
-        width: 40px;
-        height: 40px;
+    .contact-badge {
+        padding: var(--spacing-xs) var(--spacing-md);
+        font-size: var(--font-size-xs);
+        align-self: flex-start;
     }
     
-    .contact-icon i {
-        font-size: var(--font-size-sm);
-    }
-    
-    .contact-details strong {
+    .contact-badge i {
         font-size: var(--font-size-xs);
     }
     
-    .contact-details a,
-    .contact-details span {
+    .contact-title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        text-align: left;
+        line-height: 1.2;
+    }
+    
+    .contact-subtitle {
+        font-size: var(--font-size-sm);
+        max-width: 100%;
+        text-align: left;
+        line-height: 1.4;
+    }
+    
+    .contact-actions {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        width: 100%;
+    }
+    
+    .contact-btn {
+        width: 100%;
+        justify-content: center;
+        padding: var(--spacing-md) var(--spacing-lg);
         font-size: var(--font-size-sm);
     }
     
-    .copy-button {
-        align-self: flex-end;
-        margin-left: 0;
+    .contact-btn i {
+        font-size: var(--font-size-sm);
     }
     
-    .contact-whatsapp-btn {
-        padding: var(--spacing-xs);
-        padding: 4px;
-        font-size: 10px;
-        margin-left: 0;
-        margin-top: var(--spacing-xs);
-        margin-top: 4px;
-        display: flex;
-        display: -webkit-flex;
-        align-items: center;
-        -webkit-align-items: center;
-        gap: var(--spacing-xs);
-        gap: 4px;
+    .contact-date {
+        justify-content: flex-start;
+        font-size: var(--font-size-xs);
+        margin-top: var(--spacing-sm);
     }
     
-    /* Safari fallback for contact whatsapp button gap */
-    @supports not (gap: 4px) {
-        .contact-whatsapp-btn i {
-            margin-right: 4px;
-        }
-    }
-    
-    .contact-whatsapp-btn span {
-        display: none;
+    .contact-date i {
+        font-size: var(--font-size-xs);
     }
     
     /* Footer Mobile */
@@ -842,17 +827,7 @@
         justify-content: center;
     }
     
-    .contact-info-compact {
-        gap: var(--spacing-xs);
-    }
-    
-    .contact-item-compact {
-        padding: var(--spacing-xs);
-    }
-    
-    .contact-item-compact span {
-        font-size: var(--font-size-xs);
-    }
+
     
     .mobilization-call {
         padding: var(--spacing-md);

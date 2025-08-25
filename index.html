@@ -138,10 +138,10 @@
             </div>
         </section>
 
-                <div class="hero-scroll-indicator">
-                    <i class="fa-solid fa-chevron-down"></i>
-                    <span>Découvrir notre actualité</span>
-                </div>
+        <div class="hero-scroll-indicator">
+            <i class="fa-solid fa-chevron-down"></i>
+            <span>Découvrir notre actualité</span>
+        </div>
         <section id="blog" class="blog-container" aria-labelledby="blog-title">
             <div class="blog-content">
                 <div class="blog-filters">
@@ -177,82 +177,46 @@
         </section>
 
         <section id="contact" class="contact-container" aria-labelledby="contact-title">
-            <h2 id="contact-title">Contact</h2>
             <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <strong>Email</strong>
-                            <div class="contact-row">
-                                <span class="contact-text">
-                                    <a href="mailto:cgt.alteia@gmail.com" id="mail">cgt.alteia@gmail.com</a>
-                                </span>
-                                <button class="copy-button" id="copyMail">
-                                    <i class="fa-solid fa-copy"></i>
-                                </button>
-                            </div>
-                        </div>
+                <div class="contact-text">
+                    <div class="contact-badge">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Nous Contacter</span>
                     </div>
 
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <strong>Téléphone</strong>
-                            <div class="contact-row">
-                                <span class="contact-text">
-                                    <a href="tel:+33646765554" id="tel">+33 6 46 76 55 54</a>
-                                </span>
-                                <button class="copy-button" id="copyPhone">
-                                    <i class="fa-solid fa-copy"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    <h2 id="contact-title" class="contact-title">
+                        Une question ?
+                    </h2>
 
-                    <div class="contact-item">
-                        <div class="contact-icon whatsapp-icon">
+                    <p class="contact-subtitle">
+                        Vous pouvez nous contacter par email, téléphone ou vous pouvez nous rejoindre sur WhatsApp pour
+                        avoir plus d'informations.
+                    </p>
+
+                    <div class="contact-actions">
+                        <button class="contact-btn whatsapp" id="contactWhatsappBtn">
                             <i class="fa-brands fa-whatsapp"></i>
-                        </div>
-                        <div class="contact-details">
-                            <strong>Groupe WhatsApp</strong>
-                            <div class="contact-row">
-                                <span class="contact-text">Rejoignez notre groupe de mobilisation</span>
-                                <button class="contact-whatsapp-btn" id="contactWhatsappBtn">
-                                    <i class="fa-solid fa-qrcode"></i>
-                                    <span>QR Code</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
+                            <span>Groupe WhatsApp</span>
+                        </button>
+                        <button class="contact-btn secondary" id="copyMail">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>Copier l'email</span>
+                        </button>
+                        <button class="contact-btn secondary" id="copyPhone">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>Copier le téléphone</span>
+                        </button>
+                        <button class="contact-btn secondary" id="copyAddress">
                             <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <div class="contact-details">
-                            <strong>Adresse</strong>
-                            <div class="contact-row">
-                                <span class="contact-text" id="adresse">1 L'Occitane, 31670 Labège</span>
-                                <button class="copy-button" id="copyAddress">
-                                    <i class="fa-solid fa-copy"></i>
-                                </button>
-                            </div>
-                        </div>
+                            <span>Copier l'adresse</span>
+                        </button>
                     </div>
 
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fa-solid fa-clock"></i>
-                        </div>
-                        <div class="contact-details">
-                            <strong>Horaires</strong>
-                            <span>Lundi au Vendredi, 9h-17h</span>
-                        </div>
+                    <!-- Hidden elements for JavaScript functionality -->
+                    <div style="display: none;">
+                        <span id="mail">cgt.alteia@gmail.com</span>
+                        <span id="tel">+33 6 46 76 55 54</span>
+                        <span id="adresse">1 L'Occitane, 31670 Labège</span>
                     </div>
                 </div>
             </div>
@@ -312,30 +276,14 @@
 
                 <div class="whatsapp-alternative">
                     <h4><i class="fa-solid fa-envelope"></i> Autre moyen de contact</h4>
-                    <p>Vous pouvez aussi nous contacter directement :</p>
-                    <div class="contact-info-compact">
-                        <div class="contact-item-compact">
-                            <i class="fa-solid fa-envelope"></i>
-                            <span>cgt.alteia@gmail.com</span>
-                            <button class="copy-btn-compact" id="copyEmailFromWhatsapp">
-                                <i class="fa-solid fa-copy"></i>
-                            </button>
-                        </div>
-                        <div class="contact-item-compact">
-                            <i class="fa-solid fa-phone"></i>
-                            <span>+33 6 46 76 55 54</span>
-                            <button class="copy-btn-compact" id="copyPhoneFromWhatsapp">
-                                <i class="fa-solid fa-copy"></i>
-                            </button>
-                        </div>
-                    </div>
+                    <p>Vous pouvez aussi retrouver nos coordonnées sur la carte de contact en bas de page.</p>
                 </div>
 
                 <div class="mobilization-call">
                     <div class="call-to-action">
                         <h4><i class="fa-solid fa-fist-raised"></i> Ensemble, nous sommes plus forts !</h4>
-                        <p>La réussite de la grève du <strong>10 septembre</strong> dépend de notre notre et de notre
-                            organisation collective.C'est dans la lutte et seulement dans la lutte que les victoires
+                        <p>La réussite de la grève du <strong>10 septembre</strong> dépend de notre nombre et de notre
+                            organisation collective. C'est dans la lutte et seulement dans la lutte que les victoires
                             sont possibles.</p>
                     </div>
                 </div>
@@ -351,7 +299,7 @@
                 <div class="adhesion-celebration">
 
                     <h3>Bienvenue, camarade !</h3>
-                    <p class="celebration-text">Quoi ??? Tu hésites encore à nous rejoindre ?</p>
+                    <p class="celebration-text">Quoi ? Tu hésites encore à nous rejoindre ?</p>
                 </div>
             </div>
             <div class="adhesion-modal-body">
@@ -361,7 +309,6 @@
                     <ul>
                         <li><strong>Défendre tes droits</strong> et améliorer tes conditions de travail</li>
                         <li><strong>Négocier collectivement</strong> pour de meilleurs salaires et avantages</li>
-                        <li><strong>Renforcer tes idées</strong> dans l'entreprise</li>
                         <li><strong>Te protéger juridiquement</strong> en cas de litige</li>
                         <li><strong>Réfléchir ensemble</strong> à une société plus juste et solidaire</li>
                     </ul>
@@ -372,10 +319,6 @@
                         <li>La cotisation est fixée à 1% du salaire net</li>
                         <li>Elle est déductible à 66% de tes impôts</li>
                     </ul>
-
-                    <p>Pas convaincu ? N'hésite
-                        pas à nous contacter en bas de page pour en discuter !</p>
-
                 </div>
 
                 <div class="adhesion-download">
@@ -391,4 +334,5 @@
 </body>
 <script src="./js/nav.js"></script>
 <script src="./js/script.js"></script>
+
 </html>
